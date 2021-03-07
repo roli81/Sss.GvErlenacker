@@ -1,0 +1,78 @@
+﻿@using Sss.GvErlenacker.Extensions
+@using Sss.GvErlenacker.Models.PageModels
+@model IEnumerable<Sss.GvErlenacker.Models.PageModels.NewsPage>
+
+<div class="jumbotron  mx-auto latest-news">
+    <h2>Aktuelles</h2>
+    <div class="row">
+        <div class="col-12 latest-news-list">
+            @if (Model.Any())
+            {
+                <ul>
+                    @foreach (var news in Model)
+                    {
+
+
+                        if (news.GetType() == typeof(Sss.GvErlenacker.Models.PageModels.Event))
+                        {
+                            <li>
+                                <a href="@news.Url" class="latest-event">
+                                    <div>
+                                        @if (!((Sss.GvErlenacker.Models.PageModels.Event) news).UnknownDate)
+                                        {
+                                            @news.ReleaseDate.ToString("dd.MM.yyyy")
+                                        }
+                                    </div>
+                                    <div>
+                                        <h3>
+                                            @news.Title
+                                        </h3>
+                                    </div>
+                                    <div>
+                                        
+                                        @if (((Sss.GvErlenacker.Models.PageModels.Event) news).UnknownDate)
+                                        {
+                                            @Html.UnknownDate()
+                                        }
+                                        else
+                                        {
+                                            @Html.CalendarSheet(((Sss.GvErlenacker.Models.PageModels.Event) news).DateFrom)
+                                        }
+
+                                    
+                                    </div>
+
+                                </a>
+
+                            </li>
+                        }
+                        else
+                        {
+                            <li>
+                                <a href="@news.Url">
+                                    <div>
+                                        @news.ReleaseDate.ToString("dd.MM.yyyy")
+                                    </div>
+                                    <div>
+                                        <h3>
+                                            @news.Title
+                                        </h3>
+                                   
+                                    </div>
+
+                                </a>
+                            </li>
+                        }
+
+
+                    }
+                </ul>
+            }
+            else
+            {
+                <p>Keine aktuellen Meldungen</p>
+            }
+        </div>
+    </div>
+</div>
+

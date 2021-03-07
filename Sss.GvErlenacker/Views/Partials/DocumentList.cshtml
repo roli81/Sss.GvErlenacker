@@ -1,0 +1,12 @@
+﻿@model IEnumerable<Sss.GvErlenacker.Models.Poco.Document>
+
+<div class="documents-container">
+    <ul class="documents-list">
+        @foreach (var doc in Model)
+        {
+            <li>
+                <a href="@doc.Link" target="_blank"><span class="oi oi-document"></span>@doc.Label</a>
+            </li>
+        }
+    </ul>
+</div>

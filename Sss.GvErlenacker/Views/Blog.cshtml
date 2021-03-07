@@ -1,0 +1,53 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<Sss.GvErlenacker.Models.PageModels.BasePage>
+@using System.Globalization
+@using Sss.GvErlenacker.Extensions
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+    Layout = "basePage.cshtml";
+}
+
+<div class="page-intro-container">
+    @if (Model.EmotionImage != null)
+    {
+        <img src="@Model.EmotionImage.SmallUrl" alt="@Model.EmotionImage.Alt" />
+    }
+    <div class="page-intro">
+        <h1 class="page-title">@Model.Title</h1>
+        <article class="lead-text">
+            @Model.Abstract.ToString()
+        </article>
+    </div>
+</div>
+<div class="mx-auto content-panel">
+    <div class="blog-list w-100">
+        @foreach (var ev in Model.BlogEntries)
+        {
+            <a href="@(!string.IsNullOrEmpty(ev.RedirectLink) ? ev.RedirectLink : ev.Url)" @(!string.IsNullOrEmpty(ev.RedirectLink) ? "target=\"_blank\"" : string.Empty)>
+
+                <div class="row">
+
+                    <div class="col-12">
+                        @if (string.IsNullOrEmpty(ev.RedirectLink))
+                        {
+                            <small>@ev.ReleaseDate.ToString("dd. MMMM yyyy", new CultureInfo("de-CH"))</small>
+                        }
+                        <h2>@ev.Title</h2>
+                    </div>
+
+
+                </div>
+                <div class="row blog-item">
+                    <div class="col-xs-12 col-md-5">
+                        @if (ev.EmotionImage != null)
+                        {
+                            <img src="@ev.EmotionImage.LargeUrl" class="rounded mx-auto d-block" alt="@ev.EmotionImage.Alt" />
+                        }
+                    </div>
+                    <div class="col-xs-12 col-md-7">
+                        @ev.Abstract
+                    </div>
+                </div>
+            </a>
+        }
+    </div>
+</div>

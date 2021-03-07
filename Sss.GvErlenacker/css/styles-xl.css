@@ -1,0 +1,73 @@
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        height: 100%;
+    }
+
+
+
+    .page-intro {
+        font-size: 1.3em;
+    }
+
+    .page-intro-container img {
+        height: 300px; 
+    }
+
+    .logo img {
+        width: 40%;
+        filter: grayscale(20%);
+        object-fit: contain;
+    }
+
+    a.sponsor-link, a.sponsor-link:link, a.sponsor-link:visited, a.sponsor-link:hover {
+        font-size: 2em;
+
+
+    }
+
+    div.private-sponsors {
+        font-size: 1.2em;
+    }
+
+    div.sponsor-linkless {
+        font-size: 1.5em;
+    }
+
+
+    .tile {
+        height: 200px;
+    }
+
+    .tile-inner {
+        font-size: 0.8em;
+    }
+
+  
+
+    .premium-sponsor img {
+        width: 400px;
+    }
+
+ 
+
+
+
+
+    .latest-news {
+        width: 25%;
+    }
+
+
+
+    div.content-panel {
+        width: 50%;
+    }
+
+    .sponsor-link img {
+        object-fit: cover;
+        max-width: 500px;
+    }
+}

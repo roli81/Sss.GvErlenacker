@@ -1,0 +1,27 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<Sss.GvErlenacker.Models.PageModels.FormPage>
+@using System.ServiceModel.Activities
+@using Sss.GvErlenacker.Models.Poco
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+    Layout = "basePage.cshtml";
+}
+<div class="page-intro-container">
+    @if (Model.EmotionImage != null)
+    {
+        <img src="@Model.EmotionImage.SmallUrl" alt="@Model.EmotionImage.Alt" />
+    }
+    <div class="page-intro">
+        <h1 class="page-title">@Model.Title</h1>
+        <article class="lead-text">
+            @Model.Abstract.ToString()
+        </article>
+    </div>
+</div>
+<div class="mx-auto content-panel">
+    <div class="form-container">
+        <article>
+            @Html.Raw(Model.PageContent)
+        </article>
+        @Html.Partial("~/Views/SurfaceViews/MemberForm.cshtml", Model.MemberFormModel)
+    </div>
+</div>

@@ -1,0 +1,52 @@
+﻿/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+    body { font-size: 1em; }
+
+
+    .page-intro { font-size: 0.7em; }
+
+    .page-intro-container img { height: 175px; }
+
+    div.private-sponsors { font-size: 0.9em; }
+
+
+
+    .event-location { font-size: 1.5em; }
+
+    .documents-container { font-size: 1em; }
+
+    h3.event-list-title { text-align: left; }
+
+    div.event-list {
+        border-radius: 20px;
+        text-align: left;
+    }
+
+
+
+    div.content-panel {
+        width: 80%;
+    }
+
+    .latest-news {
+        font-size: 0.8em;
+        width: 50%;
+    }
+
+    .hide-sm { display: none; }
+
+    .sponsor-board {
+        font-size: 1.2em;
+    }
+
+
+    .member-board-row div {
+        font-size: 1em;
+    }
+
+    .sponsor-link img {
+        object-fit: cover;
+        max-width: 250px;
+       
+    }
+}

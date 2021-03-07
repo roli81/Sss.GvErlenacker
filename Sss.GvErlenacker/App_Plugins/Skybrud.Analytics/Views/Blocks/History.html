@@ -1,0 +1,22 @@
+﻿<div class="sky-analytics-history" ng-controller="Skybrud.Analytics.History as vm" ng-class="{loading: vm.loading}">
+    <div class="umb-box">
+        <div class="umb-box-header">
+            <div class="umb-box-header-title">{{vm.block.title}}</div>
+            <div class="sky-analytics-periods">
+                <a ng-repeat="period in vm.block.periods" href="#" prevent-default ng-click="vm.load(period.alias)" ng-class="{'active': vm.period == period.alias}">{{period.name}}</a>
+            </div>
+        </div>
+        <div class="umb-box-content">
+            <umb-empty-state position="center" ng-show="vm.data && !vm.data.history.chart">
+                <strong>No data</strong><br />
+                Oh noes. Google Analytics have no data for the selected period.
+            </umb-empty-state>
+            <umb-empty-state position="center" ng-show="vm.error">
+                <strong>{{vm.error.title || 'Error'}}</strong><br />
+                {{vm.error.message}}
+            </umb-empty-state>
+            <dashboard-chart ng-if="vm.data.history.chart" items="vm.data.history.items" />
+        </div>
+    </div>
+    <umb-load-indicator ng-if="vm.loading"></umb-load-indicator>
+</div>

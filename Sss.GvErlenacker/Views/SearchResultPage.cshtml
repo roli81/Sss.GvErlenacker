@@ -1,0 +1,97 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<Sss.GvErlenacker.Models.PageModels.SearchResultsModel>
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+    Layout = "basePage.cshtml";
+}
+<div class="mx-auto content-panel">
+    @if (Model.PageSearchResults.Any())
+    {
+        <h1>Zu Ihrer Suche nach "@Model.SearchTerm" wurden @Model.PageSearchResults.Count() Seiten gefunden:</h1>
+        <div class="row">
+            @foreach (var node in Model.PageSearchResults)
+            {
+                <div class="col col-12 col-xl-6">
+                    <a href="@(string.IsNullOrEmpty(node.RedirectUrl) ? node.Url : node.RedirectUrl)" @(!string.IsNullOrEmpty(node.RedirectUrl) ? "target=\"_blank\"" : string.Empty) class="tile-link">
+                        <div class="card tile">
+                            <div class="card-body tile-container">
+                                @if (node.EmotionImage != null)
+                                {
+                                    <img class="rounded mx-auto d-block tile-image" src="@node.EmotionImage.LargeUrl" alt="@node.EmotionImage.Alt" />
+                                }
+                                <div class="tile-inner">
+                                    <h5 class="card-title">
+                                        @node.Title
+                                    </h5>
+                                    @if (!string.IsNullOrEmpty(node.Abstract))
+                                    {
+                                        <p>
+                                            @Html.Raw(node.Abstract)
+                                        </p>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+    }
+    <br />
+    <br />
+    @if (Model.SponsorSearchResults.Any())
+    {
+        <h2>Zu Ihrer Suche nach "@Model.SearchTerm" wurden folgende Gönnerrinnen und Gönner gefunden:</h2>
+        <div class="row">
+            @foreach (var node in Model.SponsorSearchResults)
+            {
+                <div class="col col-12 col-xl-6">
+                    @if (node.SponsorUrl != null)
+                    {
+                        <div class="card search-result-tile">
+                         
+                                <a href="@node.SponsorUrl" target="_blank">
+                           
+                                        @if (node.EmotionImage != null)
+                                        {
+                                            <img src="@node.EmotionImage.LargeUrl" class="rounded mx-auto  d-block" alt="@node.EmotionImage.Alt" />
+                                        }
+                                        @Html.Raw(node.Abstract)
+                           
+                                </a>
+                          
+               
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="card search-result-tile">
+                    
+                  
+                                    @if (node.EmotionImage != null)
+                                    {
+                                        <img src="@node.EmotionImage.LargeUrl" class="rounded mx-auto  d-block" alt="@node.EmotionImage.Alt" />
+                                    }
+                                    @Html.Raw(node.Abstract)
+
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    }
+    
+    
+    @if (!Model.SponsorSearchResults.Any() && !Model.PageSearchResults.Any())
+    {
+        <article>
+            Zu Ihrer Suche nach '@Model.SearchTerm' wurden keine Resultate gefunden.
+        </article>
+    }
+</div>
+
+
+
+
+
+
+

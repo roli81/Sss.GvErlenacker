@@ -1,0 +1,42 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<Sss.GvErlenacker.Models.PageModels.MemberBoardPage>
+
+@using ClientDependency.Core.Mvc
+@using Sss.GvErlenacker.Models.Poco
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+    Layout = "basePage.cshtml";
+    Html.RequiresJs("~/Scripts/gvea-member-board.js");
+    
+}
+
+
+<div class="page-intro-container">
+    @if (Model.EmotionImage != null)
+    {
+        <img src="@Model.EmotionImage.SmallUrl" alt="@Model.EmotionImage.Alt" />
+    }
+    <div class="page-intro">
+        <h1 class="page-title">@Model.Title</h1>
+        <article class="lead-text">
+            @Model.Abstract.ToString()
+        </article>
+    </div>
+</div>
+
+
+<div class="mx-auto content-panel">
+    @foreach (var member in Model.Members)
+    {
+        @Html.Partial("~/Views/Partials/BoardMember.cshtml", member)
+    }
+</div>
+
+
+<div id="contact-popup" class="white-popup mfp-hide card">
+    <div class="card-body">
+        @Html.Partial("~/Views/SurfaceViews/ContactForm.cshtml", new ContactFormViewModel());
+    </div>
+   
+</div>
+
+

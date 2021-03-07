@@ -1,0 +1,52 @@
+﻿
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<Sss.GvErlenacker.Models.ConfigModels.HeaderConfig>
+
+@{
+    var i = 0;
+}
+<header>
+    <div class="header-wrapper">
+        <div class="logo">
+            <img src="@Model.Logo.LargeUrl" alt="@Model.Logo.Alt" />
+            <span>...ein Volltreffer für den Schützennachwuchs!</span>
+        </div>
+        @if (Model.HeaderCarousel != null && Model.HeaderCarousel.Any())
+        {
+            <div class="w-100 carousel-wrapper">
+                <div id="test" class="carousel slide carousel-fade" data-intervall="10000" data-ride="carousel">
+                    <div class="carousel-inner">
+                        @{
+                            var rnd = (new Random()).Next(Model.HeaderCarousel.Count() - 1);
+                        }
+                        @foreach (var image in Model.HeaderCarousel)
+                        {
+                            <div class="carousel-item header-carousel-item@( i != rnd ? string.Empty : " active")">
+                                <img src="@image.SmallUrl" class="d-block w-100" alt="@image.Alt">
+                            </div>
+                            i++;
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+
+
+
+
+
+    
+</header>
+
+
+<div class="tool-bar">
+    @Html.Action("Index", "Navigation")
+</div>
+
+
+
+
+
+
+

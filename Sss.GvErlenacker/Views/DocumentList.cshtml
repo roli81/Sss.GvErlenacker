@@ -1,0 +1,39 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<Sss.GvErlenacker.Models.PageModels.DocumentListPage>
+
+@{
+    Layout = "basePage.cshtml";
+}
+
+<div class="page-intro-container">
+    @if (Model.EmotionImage != null)
+    {
+        <img src="@Model.EmotionImage.SmallUrl" alt="@Model.EmotionImage.Alt" />
+    }
+    <div class="page-intro">
+        <h1 class="page-title">@Model.Title</h1>
+        <article class="lead-text">
+            @Model.Abstract.ToString()
+        </article>
+    </div>
+</div>
+<div class="mx-auto content-panel">
+    
+    @if (Model.DocumentLists.Any())
+    {
+        foreach (var list in Model.DocumentLists)
+        {
+            if (list.Documents.Any())
+            {
+                <div class="doc-list-container">
+                    <small>@list.ReleaseDate.Year</small>
+                    @Html.Partial("~/Views/Partials/DocumentList.cshtml", list.Documents)
+                </div>
+            }
+        }
+    }
+    else
+    {
+        <p>Zurzeit sind keine Dokumente vorhanden.</p>
+    }
+
+</div>

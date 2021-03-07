@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Sss.GvErlenacker.Models.Poco.Tile>
+<nav>
+    <div class="row">
+        @foreach (var tile in Model)
+        {
+            <div class="col col-12 col-sm-6 col-md-6 col-lg-4">
+                <a href="@tile.Link.Href" class="tile-link">
+                    <div class="card tile">
+                        <div class="card-body tile-container">
+                            @if (tile.Image != null)
+                            {
+                                <img class="rounded mx-auto d-block tile-image" src="@tile.Image.LargeUrl" alt="@tile.Image.Alt" />
+
+                            }
+                            <div class="tile-inner">
+                                <h2 class="card-title">@tile.Link.Text</h2>
+                                @if (!string.IsNullOrEmpty(tile.Abstract))
+                                {
+                                    <p>@tile.Abstract</p>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        }
+    </div>
+
+</nav>

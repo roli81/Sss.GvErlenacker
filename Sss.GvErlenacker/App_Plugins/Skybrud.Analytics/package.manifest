@@ -1,0 +1,44 @@
+﻿{
+  "contentApps": [
+    {
+      "name": "Analytics",
+      "alias": "skybrud-analytics",
+      "weight": -99,
+      "icon": "icon-chart-curve",
+      "view": "~/App_Plugins/Skybrud.Analytics/Views/ContentApp.html",
+      "show": [
+        "+content/*"
+      ]
+    }
+  ],
+  "propertyEditors": [
+    {
+      "alias": "Skybrud.Umbraco.Analytics.Profile",
+      "name": "Skybrud.Analytics - Profile Selector",
+      "icon": "icon-user",
+      "group": "Skybrud.Analytics",
+      "editor": {
+        "valueType": "JSON",
+        "view": "~/App_Plugins/Skybrud.Analytics/Views/PropertyEditors/Profile.html"
+      }
+    }
+  ],
+  "javascript": [
+    "~/App_Plugins/Skybrud.Analytics/Scripts/Plugins/Chart.js",
+    "~/App_Plugins/Skybrud.Analytics/Scripts/Directives/Chart.js",
+    "~/App_Plugins/Skybrud.Analytics/Scripts/Directives/Clients.js",
+    "~/App_Plugins/Skybrud.Analytics/Scripts/Directives/Users.js",
+    "~/App_Plugins/Skybrud.Analytics/Scripts/Directives/Pie.js",
+    "~/App_Plugins/Skybrud.Analytics/Scripts/Controllers/ContentApp.js",
+    "~/App_Plugins/Skybrud.Analytics/Scripts/Controllers/History.js",
+    "~/App_Plugins/Skybrud.Analytics/Scripts/Controllers/Overview.js",
+    "~/App_Plugins/Skybrud.Analytics/Scripts/Controllers/Overlays/OAuth.js",
+    "~/App_Plugins/Skybrud.Analytics/Scripts/Controllers/Overlays/Profile.js",
+    "~/App_Plugins/Skybrud.Analytics/Scripts/Controllers/Overlays/Properties.js",
+    "~/App_Plugins/Skybrud.Analytics/Scripts/Controllers/PropertyEditors/Profile.js",
+    "~/App_Plugins/Skybrud.Analytics/Scripts/App.js"
+  ],
+  "css": [
+    "~/App_Plugins/Skybrud.Analytics/Styles/Default.css"
+  ]
+}

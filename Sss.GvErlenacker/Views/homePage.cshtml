@@ -1,0 +1,52 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<Sss.GvErlenacker.Models.PageModels.HomePage>
+
+@using Sss.GvErlenacker.Extensions
+
+@{
+    Layout = "BasePage.cshtml";
+}
+<div class="homepage-container mx-auto">
+
+    <div class="row">
+        <div class="col">
+            @Html.Action("Index", "LatestNews")
+        </div>
+
+    </div>
+    
+
+
+    <h1>@Model.Title</h1>
+
+    <article>
+        Wir können auf die Unterstüzung von @Html.PrivateMembersCount() privaten und @Html.BusinessMembersCount() gewerblichen Gönnern zählen. Herzlichen Dank!
+    </article>
+
+    <br/>
+
+    @if (Model.EmotionImage != null && !string.IsNullOrEmpty(Model.EmotionImage.LargeUrl))
+    {
+        <img class="rounded mx-auto d-block stage-image" src="@Model.EmotionImage.LargeUrl" alt="@Model.EmotionImage.Alt"/>
+        <br/>
+        <br/>
+    }
+
+    @if (!string.IsNullOrEmpty(Model.HomePageContent))
+    {
+        <article>
+            @Html.Raw(Model.HomePageContent)
+        </article>
+    }
+
+
+    <br/>
+    <div>
+        @Html.Action("Index", "Tile")
+    </div>
+
+
+
+
+
+</div>
+

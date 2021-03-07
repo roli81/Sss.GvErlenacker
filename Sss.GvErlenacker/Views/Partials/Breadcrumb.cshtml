@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Sss.GvErlenacker.Models.Poco.Link>
+
+<nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            @foreach (var link in Model)
+            {
+
+
+                if (link.Active)
+                {
+                    <li class="breadcrumb-item active" aria-current="page">
+       
+                            @link.Text
+     
+                    </li>
+                }
+                else
+                {
+                    <li class="breadcrumb-item active" aria-current="page">
+                        <a href="@link.Href">
+                            @link.Text
+                        </a>
+                    </li>
+                }
+            }
+        </ol>
+
+
+    </nav>

@@ -1,0 +1,59 @@
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    body {
+    }
+
+
+
+    .page-intro {
+        font-size: 1em;
+    }
+
+    .page-intro-container img {
+        height: 225px;
+    }
+
+
+
+
+    a.sponsor-link, a.sponsor-link:link, a.sponsor-link:visited, a.sponsor-link:hover {
+        font-size: 1.2em;
+    }
+
+    div.private-sponsors {
+        font-size: 1.1em;
+    }
+
+
+
+    .premium-sponsor img {
+        width: 300px;
+    }
+
+
+
+
+
+
+
+    .latest-news {
+        width: 33%;
+    }
+
+
+    .sponsor-text {
+        font-size: 0.6em;
+    }
+
+
+
+    div.content-panel {
+        width: 60%;
+    }
+
+
+    .sponsor-link img {
+        object-fit: cover;
+        max-width: 300px;
+    }
+}

@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: 
+Disallow: /umbraco/
+Sitemap: https://gv-erlenacker.ch/sitemap

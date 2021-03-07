@@ -1,0 +1,42 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<Sss.GvErlenacker.Models.PageModels.NewsPage>
+
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+    Layout = "basePage.cshtml";
+}
+
+<div class="page-intro-container">
+    @if (Model.EmotionImage != null)
+    {
+        <img src="@Model.EmotionImage.SmallUrl" alt="@Model.EmotionImage.Alt" />
+    }
+    <div class="page-intro">
+        <h1 class="page-title">@Model.Title</h1>
+        <article class="lead-text">
+            @Model.Abstract.ToString()
+        </article>
+    </div>
+</div>
+<div class="mx-auto content-panel">
+    <article class="event-content">
+        @Html.Raw(Model.PageContent)
+    </article>
+    <div class="row">
+        <div class="col-xs-12 col-md-5">
+            @if (Model.Images != null && Model.Images.Any())
+            {
+                @Html.Action("Index", "Carousel")
+            }
+        </div>
+        <div class="col-xs-12 col-md-7">
+            @if (Model.Documents != null && Model.Documents.Any())
+            {
+                <h3 class="document-list-title">Dokumente</h3>
+                
+                @Html.Partial("~/Views/Partials/DocumentList.cshtml", Model.Documents)
+            }
+        </div>
+    </div>
+</div>
+
+

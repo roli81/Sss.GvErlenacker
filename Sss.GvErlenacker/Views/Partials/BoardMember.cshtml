@@ -1,0 +1,22 @@
+﻿@model Sss.GvErlenacker.Models.DataModels.BoardMember
+
+
+    <div class="row member-board-row">
+        <div class="col-12">
+            @if (Model.Image != null)
+            {
+                <img src="@Model.Image.LargeUrl" class="member-image"  alt="@Model.Image.Alt"/>
+            }
+            else
+            {
+                <div class="member-fake-image"></div>
+            }
+            <address>
+                @Model.Function<br />
+                @Model.FirstName&nbsp;@Model.Name<br />
+                <a href="#contact-popup" class="open-contact-popup" data-key="@Model.Key">EMail</a>
+            </address>
+        </div>
+    </div>
+
+

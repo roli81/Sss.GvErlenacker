@@ -1,0 +1,37 @@
+﻿@model Sss.GvErlenacker.Models.Poco.SearchFormModel
+@using Sss.GvErlenacker.Controllers.SurfaceControllers
+@using Sss.GvErlenacker.Models.Poco
+@{
+    var searchTerm = string.Empty;
+    searchTerm = string.IsNullOrEmpty(Request["query"])
+        ? string.Empty
+        : Request.Form["query"];
+
+}
+<div id="test-popup" class="white-popup mfp-hide card">
+    <div class="card-body">
+        @using (Html.BeginUmbracoForm("Search", "SearchForm", FormMethod.Post))
+        {
+            <div class="form-group">
+                @Html.TextBoxFor(m => m.SearchQuery, new { placeholder = "Suchen",  @class = "form-control" })
+            </div>
+            <div class="form-group">
+            <div class="row">
+                <div class="col-xs-12 col-sm-8">
+                    Bitte geben Sie einen Suchbegriff ein
+                </div>
+                <div class="col-xs-12 col-sm-4 right">
+                    <input type="submit" name="Search" class="button" value="Suchen"/>
+                </div>
+            </div>
+                
+              
+            </div>
+
+        }
+        <div>
+
+        </div>
+    </div>
+
+</div>

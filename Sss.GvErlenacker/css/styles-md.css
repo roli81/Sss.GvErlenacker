@@ -1,0 +1,110 @@
+﻿/* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
+@media (min-width: 768px) {
+
+
+    header {
+        height: 200px;
+    }
+
+
+
+    .page-intro {
+        font-size: 0.8em;
+    }
+
+    .page-intro-container img {
+        height: 200px;
+        margin-bottom: 2em;
+    }
+
+
+    .header-carousel-item img {
+        height: 200px;
+        display: block;
+        width: 100%;
+        object-fit: cover;
+        overflow: hidden;
+    }
+
+    .logo span {
+        font-size: 1em;
+    }
+
+    main {
+        padding-top: 300px;
+    }
+
+
+    div.private-sponsors {
+        font-size: 1em;
+    }
+
+    .member-image {
+        width: 25%;
+        border-radius: 10em;
+    }
+
+    .member-fake-image {
+        margin: 1em;
+        width: 25%;
+    }
+
+  
+
+    .member-board-row div {
+        font-size: 1.5em;
+    }
+
+
+
+    .tool-bar {
+        top: 200px;
+    }
+
+    .tile-inner {
+        font-size: 0.7em;
+    }
+
+    .sponsor-link img {
+
+      
+    }
+    div.content-panel {
+        width: 70%;
+    }
+
+    .latest-news {
+
+        width: 50%;
+    }
+
+
+    footer div.row div {
+        margin-bottom: 0;
+        text-align: left;
+    }
+
+
+    footer div.row div {
+        margin-bottom: 1em;
+ 
+    }
+
+    footer div.row img {
+        margin: 0;
+    }
+
+    .sss-hint {
+        text-align: right;
+    }
+
+    .sponsor-link img {
+        object-fit: cover;
+      
+    }
+
+    .stage-image {
+        max-width: none;
+        object-fit: scale-down;
+    }
+}

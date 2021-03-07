@@ -1,0 +1,35 @@
+﻿@using Sss.GvErlenacker.Extensions
+@model IEnumerable<Sss.GvErlenacker.Models.PageModels.Event>
+
+
+<div class="mx-auto event-list">
+@foreach (var ev in Model)
+{
+    <a href="@ev.Url">
+  
+        <div class="row">
+            <div class="col-xs-12 col-sm-3">
+
+
+
+                @if (ev.UnknownDate)
+                {
+                    @Html.UnknownDate()
+                }
+                else
+                {
+
+                    <br />
+                    @Html.CalendarSheet(ev.DateFrom)
+                }
+
+
+            </div>
+            <div class="col-xs-12 col-sm-9">
+                <h3 class="event-list-title">@ev.Title</h3>
+                <p>@ev.Abstract</p>
+            </div>
+        </div>
+    </a>
+}
+</div>

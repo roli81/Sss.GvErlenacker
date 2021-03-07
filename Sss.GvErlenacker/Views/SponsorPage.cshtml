@@ -1,0 +1,153 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<Sss.GvErlenacker.Models.PageModels.SponsorPage>
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+    Layout = "~/Views/basePage.cshtml";
+}
+
+
+
+<div class="page-intro-container">
+    @if (Model.EmotionImage != null)
+    {
+        <img src="@Model.EmotionImage.SmallUrl"  alt="@Model.EmotionImage.Alt" />
+    }
+    <div class="page-intro">
+        <h1 class="page-title">@Model.Title</h1>
+        <article class="lead-text">
+            @Model.Abstract.ToString()
+        </article>
+    </div>
+</div>
+
+    <div class="row">
+        <div class="col-12">
+            <h2>
+                Mit freundlicher Unterstützung unseres Hauptsponsors
+            </h2>
+        </div>
+    </div>
+    <div class="sponsor-board business-sponsor premium-sponsor">
+        <a href="@Model.PremiumSponsor.Website" target="_blank" class="sponsor-link">
+            <div class="row">
+                <div class="col-xl-6 col-lg-12">
+                    <img src="@Model.PremiumSponsor.Logo.SmallUrl" alt="@Model.PremiumSponsor.Logo.Alt" />
+                </div>
+                <div class="col-xl-6 col-lg-12">
+                    <div class="sponsor-text-container">
+                        <div class="sponsor-text">
+                            @Model.PremiumSponsor.FactoryName,<br />
+                            <small>
+                                @Model.PremiumSponsor.ZipCode&nbsp;@Model.PremiumSponsor.City
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+
+
+
+<div class="row">
+    <div class="col-12">
+        <h2>
+            und den weiteren Gönnern
+        </h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-5">
+        <div class="sponsor-board">
+            <h3>Gewerblich</h3>
+            @foreach (var sponsor in Model.BusinessSponsors)
+            {
+                <div class="row align-items-center business-sponsor">
+                    @if (!string.IsNullOrEmpty(sponsor.Website))
+                    {
+
+                        <a href="@sponsor.Website" target="_blank" class="sponsor-link">
+                            <div class="row">
+                                <div class="col-12 align-self-center sponsor-cell">
+                                    @if (@sponsor.Logo != null && !string.IsNullOrEmpty(sponsor.Logo.LargeUrl))
+                                    {
+                                        <div class="h-100 business-sponsor-img">
+                                            <img src="@sponsor.Logo.LargeUrl" alt="@sponsor.Logo.Alt"/>
+                                        </div>
+                                    }
+
+                                </div>
+                                <div class="col-12 align-self-center">
+                                    <div class="sponsor-text h-100">
+                                        <div class="h-100">
+                                            @sponsor.FactoryName,<br />
+                                            <small>
+                                                @sponsor.ZipCode&nbsp;@sponsor.City
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </a>
+
+                    }
+                    else
+                    {
+                        <div class="sponsor-link sponsor-linkless">
+
+                            <div class="row">
+                                <div class="col-12  align-self-center sponsor-cell">
+                                    <div class="h-100 business-sponsor-img">
+                                        @if (@sponsor.Logo != null && !string.IsNullOrEmpty(sponsor.Logo.LargeUrl))
+                                        {
+                                            <img src="@sponsor.Logo.LargeUrl" alt="@sponsor.Logo.Alt"/>
+                                        }
+                                    </div>
+                                </div>
+                                <div class="col-12 align-self-center">
+                                    <div class="sponsor-text h-100">
+                                        <div class="h-100">
+                                            @sponsor.FactoryName,<br />
+                                            <small>
+                                                @sponsor.ZipCode&nbsp;@sponsor.City
+                                            </small>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    }
+                </div>
+            }
+        </div>
+    </div>
+    <div class="col-lg-7">
+        <div class="sponsor-board">
+            <div>
+                <h3>Privat</h3>
+
+                @foreach (var sponsor in Model.Sponsors)
+                {
+                    <div class="row">
+                        <div class="col-12">
+                            @sponsor.Surname&nbsp;@sponsor.Firstname,&nbsp;@sponsor.ZipCode&nbsp;@sponsor.City
+                        </div>
+                    </div>
+                }
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+
+

@@ -1,0 +1,52 @@
+﻿
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<Sss.GvErlenacker.Models.ConfigModels.FooterConfig>
+
+<footer>
+
+    <div class="row">
+        <div class="col-xs-12 col-md-4 premium-sponsor-footer">
+            <a href="@Model.PremiumSponsor.Website">
+                <h6>@Model.PremiumSponsorTitle</h6>
+                <img src="@Model.PremiumSponsor.Logo.SmallUrl" alt="@Model.PremiumSponsor.Logo.Alt" />
+                <small>@Model.PremiumSponsor.FactoryName, @Model.PremiumSponsor.ZipCode @Model.PremiumSponsor.City</small>
+            </a>
+        </div>
+        <div class="col-xs-12 col-md-4">
+
+
+            <div class="fb-like" data-href="https://gv-erlenacker.ch" data-colorscheme="light" data-width="100" data-layout="standard" data-action="like" data-size="large" data-share="true"></div>
+
+            
+        </div>
+        <div class="col-xs-12 col-md-4">
+            <ul>
+                @foreach (var link in Model.LinkList)
+                {
+                    <li>
+                        <a href="@link.Href">@link.Text</a>
+                    </li>
+
+                }
+            </ul>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-xs-12 col-md-8">
+            &copy; @DateTime.Today.Year Gönnervereinigung Nachwuchs Erlenacker
+        </div>
+        <div class="col-xs-12 col-md-4 sss-hint">
+            <a href="http://www.schenk-smart-solutions.ch" target="_blank">
+                <small>Designed & Developed by Schenk Smart Solutions</small>
+            </a>
+        </div>
+    </div>
+</footer>
+
+
+
+
+
+
+
+
