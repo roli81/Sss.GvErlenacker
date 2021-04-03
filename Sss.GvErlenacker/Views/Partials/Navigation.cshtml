@@ -42,9 +42,17 @@
                     if (page.Children.Any())
                     {
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="@page.Link.Href" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                @page.Link.Text
-                            </a>
+                            <div class="gveanav-head">
+                                <a class="nav-link" href="@page.Link.Href" id="navbarDropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                    @page.Link.Text
+                                </a>
+                                
+                                
+
+                                <a class="dropdown-toggle gvea-toggler" data-toggle="dropdown">
+
+                                </a>
+                            </div>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 @foreach (var child in page.Children)
                                 {
@@ -59,9 +67,11 @@
                     else
                     {
                         <li>
-                            <a class="nav-link" href="@page.Link.Href">
-                                @page.Link.Text
-                            </a>
+
+                                <a class="nav-link" href="@page.Link.Href">
+                                    @page.Link.Text
+                                </a>
+
                         </li>
 
                     }

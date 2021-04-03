@@ -427,9 +427,19 @@ a.tile-link, a.tile-link:link, a.tile-link:visited, a.tile-link:hover {
         margin-bottom: 1em;
     }
 
-.card {
-    margin-top: 1em;
+
+.latest-news-list ul li a {
+
 }
+
+.latest-news-list ul li a:hover h3
+{
+    color: whitesmoke;
+}
+
+.card {
+        margin-top: 1em;
+    }
 
 
 .homepage-container {
@@ -997,12 +1007,40 @@ a.latest-event {
     display: block;
 }
 
+.dropdown-toggle::after {
+    vertical-align: 0;
+}
+.dropdown {
+    z-index: 11;
+}
+
+.dropdown-menu {
+    margin-top: -0.5em;
+    z-index: 10;
+}
+
+.gveanav-head {
+    margin-top: -0.5em;
+    min-width: 220px;
+}
+.gveanav-head a {
+    display: inline;
+    
+}
+
+a.gvea-toggler, a.gvea-toggler:link, a.gvea-toggler:hover {
+    width: 20px;
+    height: 20px;
+    padding-right: 0;
+    margin-right: 0;
+    margin-left: 0;
+}
+
 .navbar-toggler {
     color: #ffffff !important;
     font-size: 2em;
     margin: 0;
     margin-bottom: 10px;
-
 }
 
 .stage-image {
