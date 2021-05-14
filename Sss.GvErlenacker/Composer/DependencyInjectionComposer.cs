@@ -27,6 +27,7 @@ namespace Sss.GvErlenacker.Composer
             composition.Register(typeof(IEventService), typeof(EventService), Lifetime.Scope);
             composition.Register(typeof(IDocumentService), typeof(DocumentService), Lifetime.Scope);
             composition.Register(typeof(IMemberBoardService), typeof(MemberBoardService), Lifetime.Scope);
+            composition.Register(typeof(INewsLetterService), typeof(NewsletterService), Lifetime.Scope);
         }
     }
 }

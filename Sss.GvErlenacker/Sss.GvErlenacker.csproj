@@ -555,6 +555,7 @@
     <Compile Include="Controllers\SurfaceControllers\LatestNewsController.cs" />
     <Compile Include="Controllers\SurfaceControllers\MemberFormController.cs" />
     <Compile Include="Controllers\SurfaceControllers\NavigationController.cs" />
+    <Compile Include="Controllers\SurfaceControllers\NewsletterFormController.cs" />
     <Compile Include="Controllers\SurfaceControllers\SearchFormController.cs" />
     <Compile Include="Controllers\SurfaceControllers\SeoController.cs" />
     <Compile Include="Controllers\SurfaceControllers\SponsorBoardController.cs" />
@@ -620,6 +621,7 @@
     <Content Include="Views\Partials\Grid\Bootstrap3.cshtml" />
     <Content Include="Views\Partials\Grid\Bootstrap3-Fluid.cshtml" />
     <Content Include="Views\Partials\BlockList\Default.cshtml" />
+    <Content Include="Views\SurfaceViews\NewsletterForm.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -629,10 +631,13 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Dashboards\" />
+    <Folder Include="Mutobo\" />
     <Folder Include="Views\Blog\" />
     <Folder Include="Views\CookieBanner\" />
     <Folder Include="Views\Event\" />
     <Folder Include="Views\MemberBoard\" />
+    <Folder Include="Views\NewsletterForm\" />
+    <Folder Include="Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Sss.GvErlenacker.Models\Sss.GvErlenacker.Models.csproj">

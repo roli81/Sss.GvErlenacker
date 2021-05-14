@@ -251,7 +251,9 @@
     <Compile Include="IMailService.cs" />
     <Compile Include="IMemberBoardService.cs" />
     <Compile Include="IMemberService.cs" />
+    <Compile Include="IMutoboContentService.cs" />
     <Compile Include="INavigationService.cs" />
+    <Compile Include="INewsLetterService.cs" />
     <Compile Include="INewsService.cs" />
     <Compile Include="ISearchService.cs" />
     <Compile Include="ISectionService.cs" />

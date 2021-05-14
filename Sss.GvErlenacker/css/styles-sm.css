@@ -22,7 +22,9 @@
         text-align: left;
     }
 
-
+    .navbar-light .navbar-nav .nav-link {
+        font-size: 1em;
+    }
 
     div.content-panel {
         width: 80%;
