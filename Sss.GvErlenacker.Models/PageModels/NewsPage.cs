@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Sss.Mutobo.Modules;
 using Umbraco.Core;
 using Umbraco.Core.Models.PublishedContent;
 using Umbraco.Web;
@@ -21,8 +22,7 @@ namespace Sss.GvErlenacker.Models.PageModels
         public IEnumerable<Image> Images { get; set; }
         public IEnumerable<Document> Documents { get; set; }
 
-
-
+        public IEnumerable<MutoboContentModule> Modules { get;set; }
 
 
 

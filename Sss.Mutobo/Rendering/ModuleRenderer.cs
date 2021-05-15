@@ -1,17 +1,13 @@
-﻿using System.Text;
+﻿using System.Collections.Generic;
+using System.Text;
 using System.Web.Mvc;
+using Sss.Mutobo.Modules;
 
 namespace Sss.Mutobo.Rendering
 {
     public static class ModuleRenderer
     {
-        public static MvcHtmlString RenderModules(this HtmlHelper helper)
-        {
-            var bld = new StringBuilder();
 
-
-            return new MvcHtmlString(bld.ToString());
-        }
 
     }
 }

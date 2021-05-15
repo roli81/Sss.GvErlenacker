@@ -1,5 +1,6 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<Sss.GvErlenacker.Models.PageModels.NewsPage>
 
+@using System.Data
 @using ContentModels = Umbraco.Web.PublishedModels;
 @{
     Layout = "basePage.cshtml";
@@ -37,6 +38,16 @@
             }
         </div>
     </div>
+    @if (Model.Modules != null && Model.Modules.Any())
+    {
+
+        foreach (var module in Model.Modules)
+        {
+
+            @module.RenderModule(Html)
+        }
+    }
+
 </div>
 
 

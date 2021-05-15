@@ -4,6 +4,9 @@ using System.Linq;
 using System.Web;
 using Sss.GvErlenacker.Services;
 using Sss.GvErlenacker.Services.Impl;
+using Sss.Mutobo.Interfaces;
+using Sss.Mutobo.Interfaces.Services;
+using Sss.Mutobo.Services;
 using Umbraco.Core.Composing;
 
 namespace Sss.GvErlenacker.Composer
@@ -28,6 +31,8 @@ namespace Sss.GvErlenacker.Composer
             composition.Register(typeof(IDocumentService), typeof(DocumentService), Lifetime.Scope);
             composition.Register(typeof(IMemberBoardService), typeof(MemberBoardService), Lifetime.Scope);
             composition.Register(typeof(INewsLetterService), typeof(NewsletterService), Lifetime.Scope);
+            composition.Register(typeof(IMutoboContentService), typeof(MutoboContentService), Lifetime.Scope);
+
         }
     }
 }

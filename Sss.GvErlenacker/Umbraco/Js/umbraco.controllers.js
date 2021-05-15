@@ -470,6 +470,9 @@
                 var queryParams = {};
                 if ($scope.selectedLanguage && $scope.selectedLanguage.culture) {
                     queryParams['culture'] = $scope.selectedLanguage.culture;
+                    if (!mainCulture) {
+                        $location.search('mculture', $scope.selectedLanguage.culture);
+                    }
                 }
                 var queryString = $.param(queryParams);    //create the query string from the params object
             }
@@ -1009,6 +1012,7 @@
     angular.module('umbraco').controller('Umbraco.Editors.BlockPickerController', function ($scope, localizationService) {
         var vm = this;
         vm.navigation = [];
+        vm.filter = { searchTerm: '' };
         localizationService.localizeMany([
             'blockEditor_tabCreateEmpty',
             'blockEditor_tabClipboard'
@@ -1619,7 +1623,10 @@
                 preview: '',
                 success: false,
                 info: '',
-                supportsDimensions: false
+                a11yInfo: '',
+                supportsDimensions: false,
+                originalWidth: 360,
+                originalHeight: 240
             };
             if ($scope.model.modify) {
                 Utilities.extend($scope.model.embed, $scope.model.modify);
@@ -1641,6 +1648,7 @@
                 if ($scope.model.embed.url) {
                     $scope.model.embed.show = true;
                     $scope.model.embed.info = '';
+                    $scope.model.embed.a11yInfo = '';
                     $scope.model.embed.success = false;
                     vm.loading = true;
                     $http({
@@ -1658,6 +1666,7 @@
                             //not supported
                             $scope.model.embed.preview = '';
                             $scope.model.embed.info = 'Not supported';
+                            $scope.model.embed.a11yInfo = $scope.model.embed.info;
                             $scope.model.embed.success = false;
                             $scope.model.embed.supportsDimensions = false;
                             vm.trustedPreview = null;
@@ -1666,6 +1675,7 @@
                             //error
                             $scope.model.embed.preview = '';
                             $scope.model.embed.info = 'Could not embed media - please ensure the URL is valid';
+                            $scope.model.embed.a11yInfo = $scope.model.embed.info;
                             $scope.model.embed.success = false;
                             $scope.model.embed.supportsDimensions = false;
                             vm.trustedPreview = null;
@@ -1674,6 +1684,8 @@
                             $scope.model.embed.success = true;
                             $scope.model.embed.supportsDimensions = response.data.SupportsDimensions;
                             $scope.model.embed.preview = response.data.Markup;
+                            $scope.model.embed.info = '';
+                            $scope.model.embed.a11yInfo = 'Retrieved URL';
                             vm.trustedPreview = $sce.trustAsHtml(response.data.Markup);
                             break;
                         }
@@ -1683,20 +1695,24 @@
                         $scope.model.embed.supportsDimensions = false;
                         $scope.model.embed.preview = '';
                         $scope.model.embed.info = 'Could not embed media - please ensure the URL is valid';
+                        $scope.model.embed.a11yInfo = $scope.model.embed.info;
                         vm.loading = false;
                     });
                 } else {
                     $scope.model.embed.supportsDimensions = false;
                     $scope.model.embed.preview = '';
                     $scope.model.embed.info = 'Please enter a URL';
+                    $scope.model.embed.a11yInfo = $scope.model.embed.info;
                 }
             }
             function changeSize(type) {
-                var width, height;
+                var width = parseInt($scope.model.embed.width, 10);
+                var height = parseInt($scope.model.embed.height, 10);
+                var originalWidth = parseInt($scope.model.embed.originalWidth, 10);
+                var originalHeight = parseInt($scope.model.embed.originalHeight, 10);
+                var resize = originalWidth !== width || originalHeight !== height;
                 if ($scope.model.embed.constrain) {
-                    width = parseInt($scope.model.embed.width, 10);
-                    height = parseInt($scope.model.embed.height, 10);
-                    if (type == 'width') {
+                    if (type === 'width') {
                         origHeight = Math.round(width / origWidth * height);
                         $scope.model.embed.height = origHeight;
                     } else {
@@ -1704,7 +1720,9 @@
                         $scope.model.embed.width = origWidth;
                     }
                 }
-                if ($scope.model.embed.url !== '') {
+                $scope.model.embed.originalWidth = $scope.model.embed.width;
+                $scope.model.embed.originalHeight = $scope.model.embed.height;
+                if ($scope.model.embed.url !== '' && resize) {
                     showPreview();
                 }
             }
@@ -1736,6 +1754,7 @@
  */
     function IconPickerController($scope, localizationService, iconHelper) {
         var vm = this;
+        vm.filter = { searchTerm: '' };
         vm.selectIcon = selectIcon;
         vm.selectColor = selectColor;
         vm.submit = submit;
@@ -2838,12 +2857,12 @@
             gotoFolder($scope.currentFolder).then(function () {
                 $timeout(function () {
                     if ($scope.multiPicker) {
-                        var images = _.rest($scope.images, $scope.images.length - files.length);
+                        var images = _.rest(_.sortBy($scope.images, 'id'), $scope.images.length - files.length);
                         images.forEach(function (image) {
                             return selectMedia(image);
                         });
                     } else {
-                        var image = $scope.images[$scope.images.length - 1];
+                        var image = _.sortBy($scope.images, 'id')[$scope.images.length - 1];
                         clickHandler(image);
                     }
                 });
@@ -2890,12 +2909,11 @@
         }
         function openDetailsDialog() {
             var dialog = {
-                view: 'views/common/infiniteeditors/mediapicker/overlays/mediacropdetails.html',
                 size: 'small',
                 cropSize: $scope.cropSize,
                 target: $scope.target,
                 disableFocalPoint: $scope.disableFocalPoint,
-                submit: function submit(model) {
+                submit: function submit() {
                     $scope.model.selection.push($scope.target);
                     $scope.model.submit($scope.model);
                     editorService.close();
@@ -2906,7 +2924,7 @@
             };
             localizationService.localize('defaultdialogs_editSelectedMedia').then(function (value) {
                 dialog.title = value;
-                editorService.open(dialog);
+                editorService.mediaCropDetails(dialog);
             });
         }
         ;
@@ -3065,6 +3083,7 @@
         vm.submit = submit;
         vm.close = close;
         vm.hasCrops = cropSet() === true;
+        vm.focalPointChanged = focalPointChanged;
         vm.disableFocalPoint = false;
         if (typeof $scope.model.disableFocalPoint === 'boolean') {
             vm.disableFocalPoint = $scope.model.disableFocalPoint;
@@ -3077,22 +3096,13 @@
                 top: 0.5
             };
         }
-        vm.shouldShowUrl = shouldShowUrl;
-        vm.focalPointChanged = focalPointChanged;
         if (!$scope.model.target.image) {
             $scope.model.target.image = $scope.model.target.url;
         }
-        function shouldShowUrl() {
-            if (!$scope.model.target) {
-                return false;
-            }
-            if ($scope.model.target.id) {
-                return false;
-            }
-            if ($scope.model.target.url && $scope.model.target.url.toLower().indexOf('blob:') === 0) {
-                return false;
-            }
-            return true;
+        if (!$scope.model.target || $scope.model.target.id || $scope.model.target.url && $scope.model.target.url.toLowerCase().startsWith('blob:')) {
+            vm.shouldShowUrl = false;
+        } else {
+            vm.shouldShowUrl = true;
         }
         /**
    * Called when the umbImageGravity component updates the focal point value
@@ -4141,7 +4151,7 @@
                 $scope.model.filterExclude = false;
                 $scope.model.filterAdvanced = false;
                 //used advanced filtering
-                if (angular.isFunction($scope.model.filter)) {
+                if (Utilities.isFunction($scope.model.filter)) {
                     $scope.model.filterAdvanced = true;
                 } else if (Utilities.isObject($scope.model.filter)) {
                     $scope.model.filterAdvanced = true;
@@ -4153,8 +4163,8 @@
                     //used advanced filtering
                     if ($scope.model.filter.startsWith('{')) {
                         $scope.model.filterAdvanced = true;
-                        if ($scope.model.filterByMetadata && !angular.isFunction($scope.model.filter)) {
-                            var filter = angular.fromJson($scope.model.filter);
+                        if ($scope.model.filterByMetadata && !Utilities.isFunction($scope.model.filter)) {
+                            var filter = Utilities.fromJson($scope.model.filter);
                             $scope.model.filter = function (node) {
                                 return _.isMatch(node.metaData, filter);
                             };
@@ -4373,7 +4383,7 @@
             });
             if ($scope.model.filterAdvanced) {
                 //filter either based on a method or an object
-                var filtered = angular.isFunction($scope.model.filter) ? _.filter(nodes, $scope.model.filter) : _.where(nodes, $scope.model.filter);
+                var filtered = Utilities.isFunction($scope.model.filter) ? _.filter(nodes, $scope.model.filter) : _.where(nodes, $scope.model.filter);
                 filtered.forEach(function (value) {
                     value.filtered = true;
                     if ($scope.model.filterCssClass) {
@@ -4625,7 +4635,7 @@
     'use strict';
     (function () {
         'use strict';
-        function UserPickerController($scope, usersResource, localizationService, eventsService) {
+        function UserPickerController($scope, entityResource, localizationService, eventsService) {
             var vm = this;
             vm.users = [];
             vm.loading = false;
@@ -4704,12 +4714,8 @@
             function getUsers() {
                 vm.loading = true;
                 // Get users
-                usersResource.getPagedResults(vm.usersOptions).then(function (users) {
-                    vm.users = users.items;
-                    vm.usersOptions.pageNumber = users.pageNumber;
-                    vm.usersOptions.pageSize = users.pageSize;
-                    vm.usersOptions.totalItems = users.totalItems;
-                    vm.usersOptions.totalPages = users.totalPages;
+                entityResource.getAll('User').then(function (data) {
+                    vm.users = data;
                     preSelect($scope.model.selection, vm.users);
                     vm.loading = false;
                 });
@@ -6676,7 +6682,7 @@
     'use strict';
     (function () {
         'use strict';
-        function PublishController($scope, localizationService) {
+        function PublishController($scope, localizationService, contentEditingHelper) {
             var vm = this;
             vm.loading = true;
             vm.isNew = true;
@@ -6788,25 +6794,7 @@
                     }
                 });
                 if (vm.availableVariants.length !== 0) {
-                    vm.availableVariants.sort(function (a, b) {
-                        if (a.language && b.language) {
-                            if (a.language.name < b.language.name) {
-                                return -1;
-                            }
-                            if (a.language.name > b.language.name) {
-                                return 1;
-                            }
-                        }
-                        if (a.segment && b.segment) {
-                            if (a.segment < b.segment) {
-                                return -1;
-                            }
-                            if (a.segment > b.segment) {
-                                return 1;
-                            }
-                        }
-                        return 0;
-                    });
+                    vm.availableVariants = contentEditingHelper.getSortedVariantsAndSegments(vm.availableVariants);
                 }
                 $scope.model.disableSubmitButton = !canPublish();
                 var localizeKey = vm.missingMandatoryVariants.length > 0 ? 'content_notReadyToPublish' : !$scope.model.title ? 'content_readyToPublish' : '';
@@ -6832,7 +6820,7 @@
     'use strict';
     (function () {
         'use strict';
-        function PublishDescendantsController($scope, localizationService) {
+        function PublishDescendantsController($scope, localizationService, contentEditingHelper) {
             var vm = this;
             vm.includeUnpublished = $scope.model.includeUnpublished || false;
             vm.changeSelection = changeSelection;
@@ -6862,25 +6850,7 @@
                     variant.isMandatory = isMandatoryFilter(variant);
                 });
                 if (vm.variants.length > 1) {
-                    vm.displayVariants.sort(function (a, b) {
-                        if (a.language && b.language) {
-                            if (a.language.name < b.language.name) {
-                                return -1;
-                            }
-                            if (a.language.name > b.language.name) {
-                                return 1;
-                            }
-                        }
-                        if (a.segment && b.segment) {
-                            if (a.segment < b.segment) {
-                                return -1;
-                            }
-                            if (a.segment > b.segment) {
-                                return 1;
-                            }
-                        }
-                        return 0;
-                    });
+                    vm.displayVariants = contentEditingHelper.getSortedVariantsAndSegments(vm.displayVariants);
                     var active = vm.variants.find(function (v) {
                         return v.active;
                     });
@@ -7014,25 +6984,7 @@
                     if (active) {
                         active.save = true;
                     }
-                    vm.availableVariants.sort(function (a, b) {
-                        if (a.language && b.language) {
-                            if (a.language.name < b.language.name) {
-                                return -1;
-                            }
-                            if (a.language.name > b.language.name) {
-                                return 1;
-                            }
-                        }
-                        if (a.segment && b.segment) {
-                            if (a.segment < b.segment) {
-                                return -1;
-                            }
-                            if (a.segment > b.segment) {
-                                return 1;
-                            }
-                        }
-                        return 0;
-                    });
+                    vm.availableVariants = contentEditingHelper.getSortedVariantsAndSegments(vm.availableVariants);
                 } else {
                     //disable save button if we have nothing to save
                     $scope.model.disableSubmitButton = true;
@@ -7052,7 +7004,7 @@
     'use strict';
     (function () {
         'use strict';
-        function ScheduleContentController($scope, $timeout, localizationService, dateHelper, userService) {
+        function ScheduleContentController($scope, $timeout, localizationService, dateHelper, userService, contentEditingHelper) {
             var vm = this;
             vm.datePickerSetup = datePickerSetup;
             vm.datePickerChange = datePickerChange;
@@ -7085,25 +7037,7 @@
                 // Check for variants: if a node is invariant it will still have the default language in variants
                 // so we have to check for length > 1
                 if (vm.variants.length > 1) {
-                    vm.displayVariants.sort(function (a, b) {
-                        if (a.language && b.language) {
-                            if (a.language.name < b.language.name) {
-                                return -1;
-                            }
-                            if (a.language.name > b.language.name) {
-                                return 1;
-                            }
-                        }
-                        if (a.segment && b.segment) {
-                            if (a.segment < b.segment) {
-                                return -1;
-                            }
-                            if (a.segment > b.segment) {
-                                return 1;
-                            }
-                        }
-                        return 0;
-                    });
+                    vm.displayVariants = contentEditingHelper.getSortedVariantsAndSegments(vm.displayVariants);
                     vm.variants.forEach(function (v) {
                         if (v.active) {
                             v.save = true;
@@ -7361,7 +7295,7 @@
     'use strict';
     (function () {
         'use strict';
-        function SendToPublishController($scope, localizationService) {
+        function SendToPublishController($scope, localizationService, contentEditingHelper) {
             var vm = this;
             vm.loading = true;
             vm.changeSelection = changeSelection;
@@ -7378,25 +7312,7 @@
                 });
                 vm.availableVariants = vm.variants.filter(publishableVariantFilter);
                 if (vm.availableVariants.length !== 0) {
-                    vm.availableVariants.sort(function (a, b) {
-                        if (a.language && b.language) {
-                            if (a.language.name < b.language.name) {
-                                return -1;
-                            }
-                            if (a.language.name > b.language.name) {
-                                return 1;
-                            }
-                        }
-                        if (a.segment && b.segment) {
-                            if (a.segment < b.segment) {
-                                return -1;
-                            }
-                            if (a.segment > b.segment) {
-                                return 1;
-                            }
-                        }
-                        return 0;
-                    });
+                    vm.availableVariants = contentEditingHelper.getSortedVariantsAndSegments(vm.availableVariants);
                     vm.availableVariants.forEach(function (v) {
                         if (v.active) {
                             v.save = true;
@@ -7441,7 +7357,7 @@
     'use strict';
     (function () {
         'use strict';
-        function UnpublishController($scope, localizationService) {
+        function UnpublishController($scope, localizationService, contentEditingHelper) {
             var vm = this;
             var autoSelectedVariants = [];
             vm.changeSelection = changeSelection;
@@ -7459,25 +7375,7 @@
                 });
                 // node has variants
                 if (vm.variants.length !== 1) {
-                    vm.unpublishableVariants.sort(function (a, b) {
-                        if (a.language && b.language) {
-                            if (a.language.name < b.language.name) {
-                                return -1;
-                            }
-                            if (a.language.name > b.language.name) {
-                                return 1;
-                            }
-                        }
-                        if (a.segment && b.segment) {
-                            if (a.segment < b.segment) {
-                                return -1;
-                            }
-                            if (a.segment > b.segment) {
-                                return 1;
-                            }
-                        }
-                        return 0;
-                    });
+                    vm.unpublishableVariants = contentEditingHelper.getSortedVariantsAndSegments(vm.unpublishableVariants);
                     var active = vm.variants.find(function (v) {
                         return v.active;
                     });
@@ -9298,19 +9196,13 @@
         $scope.model = {
             allowCreateFolder: $scope.currentNode.parentId === null || $scope.currentNode.nodeType === 'container',
             folderName: '',
-            creatingFolder: false,
-            creatingDoctypeCollection: false
+            creatingFolder: false
         };
         var disableTemplates = Umbraco.Sys.ServerVariables.features.disabledFeatures.disableTemplates;
         $scope.model.disableTemplates = disableTemplates;
         var node = $scope.currentNode;
         $scope.showCreateFolder = function () {
             $scope.model.creatingFolder = true;
-        };
-        $scope.showCreateDocTypeCollection = function () {
-            $scope.model.creatingDoctypeCollection = true;
-            $scope.model.collectionCreateTemplate = !$scope.model.disableTemplates;
-            $scope.model.collectionItemCreateTemplate = !$scope.model.disableTemplates;
         };
         $scope.createContainer = function () {
             if (formHelper.submitForm({
@@ -9341,51 +9233,6 @@
                 });
             }
         };
-        $scope.createCollection = function () {
-            if (formHelper.submitForm({
-                    scope: $scope,
-                    formCtrl: this.createDoctypeCollectionForm,
-                    statusMessage: 'Creating Doctype Collection...'
-                })) {
-                // see if we can find matching icons
-                var collectionIcon = 'icon-folders', collectionItemIcon = 'icon-document';
-                iconHelper.getIcons().then(function (icons) {
-                    for (var i = 0; i < icons.length; i++) {
-                        // for matching we'll require a full match for collection, partial match for item
-                        if (icons[i].substring(5) == $scope.model.collectionName.toLowerCase()) {
-                            collectionIcon = icons[i];
-                        } else if (icons[i].substring(5).indexOf($scope.model.collectionItemName.toLowerCase()) > -1) {
-                            collectionItemIcon = icons[i];
-                        }
-                    }
-                    contentTypeResource.createCollection(node.id, $scope.model.collectionName, $scope.model.collectionCreateTemplate, $scope.model.collectionItemName, $scope.model.collectionItemCreateTemplate, collectionIcon, collectionItemIcon).then(function (collectionData) {
-                        navigationService.hideMenu();
-                        $location.search('create', null);
-                        $location.search('notemplate', null);
-                        formHelper.resetForm({
-                            scope: $scope,
-                            formCtrl: this.createDoctypeCollectionForm
-                        });
-                        var section = appState.getSectionState('currentSection');
-                        // redirect to the item id
-                        $location.path('/' + section + '/documenttypes/edit/' + collectionData.containerId);
-                    }, function (err) {
-                        formHelper.resetForm({
-                            scope: $scope,
-                            formCtrl: this.createDoctypeCollectionForm,
-                            hasErrors: true
-                        });
-                        $scope.error = err;
-                        //show any notifications
-                        if (Utilities.isArray(err.data.notifications)) {
-                            for (var i = 0; i < err.data.notifications.length; i++) {
-                                notificationsService.showNotification(err.data.notifications[i]);
-                            }
-                        }
-                    });
-                });
-            }
-        };
         // Disabling logic for creating document type with template if disableTemplates is set to true
         if (!disableTemplates) {
             $scope.createDocType = function () {
@@ -9399,6 +9246,20 @@
             $location.search('create', null);
             $location.search('notemplate', null);
             $location.path('/settings/documenttypes/edit/' + node.id).search('create', 'true').search('notemplate', 'true');
+            navigationService.hideMenu();
+        };
+        $scope.createComposition = function () {
+            $location.search('create', null);
+            $location.search('notemplate', null);
+            $location.search('iscomposition', null);
+            $location.path('/settings/documenttypes/edit/' + node.id).search('create', 'true').search('notemplate', 'true').search('iscomposition', 'true');
+            navigationService.hideMenu();
+        };
+        $scope.createElement = function () {
+            $location.search('create', null);
+            $location.search('notemplate', null);
+            $location.search('iselement', null);
+            $location.path('/settings/documenttypes/edit/' + node.id).search('create', 'true').search('notemplate', 'true').search('iselement', 'true');
             navigationService.hideMenu();
         };
         $scope.close = function () {
@@ -12319,6 +12180,8 @@
             vm.saveButtonState = 'init';
             vm.sortOrder = {};
             vm.sortableOptions = {
+                axis: 'y',
+                containment: 'parent',
                 distance: 10,
                 tolerance: 'pointer',
                 opacity: 0.7,
@@ -13585,6 +13448,64 @@
         });
     }
     angular.module('umbraco').controller('Umbraco.Editors.MemberGroups.EditController', MemberGroupsEditController);
+    'use strict';
+    angular.module('umbraco').controller('Umbraco.Editors.MemberTypes.CopyController', function ($scope, memberTypeResource, treeService, navigationService, notificationsService, appState, eventsService) {
+        $scope.dialogTreeApi = {};
+        $scope.source = _.clone($scope.currentNode);
+        function nodeSelectHandler(args) {
+            args.event.preventDefault();
+            args.event.stopPropagation();
+            if ($scope.target) {
+                //un-select if there's a current one selected
+                $scope.target.selected = false;
+            }
+            $scope.target = args.node;
+            $scope.target.selected = true;
+        }
+        $scope.copy = function () {
+            $scope.busy = true;
+            $scope.error = false;
+            memberTypeResource.copy({
+                parentId: $scope.target.id,
+                id: $scope.source.id
+            }).then(function (path) {
+                $scope.error = false;
+                $scope.success = true;
+                $scope.busy = false;
+                //get the currently edited node (if any)
+                var activeNode = appState.getTreeState('selectedNode');
+                //we need to do a double sync here: first sync to the copied content - but don't activate the node,
+                //then sync to the currenlty edited content (note: this might not be the content that was copied!!)
+                navigationService.syncTree({
+                    tree: 'memberTypes',
+                    path: path,
+                    forceReload: true,
+                    activate: false
+                }).then(function (args) {
+                    if (activeNode) {
+                        var activeNodePath = treeService.getPath(activeNode).join();
+                        //sync to this node now - depending on what was copied this might already be synced but might not be
+                        navigationService.syncTree({
+                            tree: 'memberTypes',
+                            path: activeNodePath,
+                            forceReload: false,
+                            activate: true
+                        });
+                    }
+                });
+            }, function (err) {
+                $scope.success = false;
+                $scope.error = err;
+                $scope.busy = false;
+            });
+        };
+        $scope.onTreeInit = function () {
+            $scope.dialogTreeApi.callbacks.treeNodeSelect(nodeSelectHandler);
+        };
+        $scope.close = function () {
+            navigationService.hideDialog();
+        };
+    });
     'use strict';
     /**
  * @ngdoc controller
@@ -16520,7 +16441,8 @@
             $scope.model.value = _.pluck(vm.itemTypes, 'alias').join();
             angularHelper.getCurrentForm($scope).$setDirty();
         }
-        eventsService.on('treeSourceChanged', function (e, args) {
+        var evts = [];
+        evts.push(eventsService.on('treeSourceChanged', function (e, args) {
             // reset the model value if we changed node type (but not on the initial load)
             if (!!currentItemType && currentItemType !== args.value) {
                 vm.itemTypes = [];
@@ -16528,6 +16450,11 @@
             }
             currentItemType = args.value;
             init();
+        }));
+        $scope.$on('$destroy', function () {
+            for (var e in evts) {
+                eventsService.unsubscribe(evts[e]);
+            }
         });
     }
     angular.module('umbraco').controller('Umbraco.PrevalueEditors.TreeSourceTypePickerController', TreeSourceTypePickerController);
@@ -17147,6 +17074,9 @@
             if (!$scope.model.config || $scope.model.config.minPasswordLength === undefined) {
                 $scope.model.config.minPasswordLength = 0;
             }
+            if (!$scope.model.config || $scope.model.config.minNonAlphaNumericChars === undefined) {
+                $scope.model.config.minNonAlphaNumericChars = 0;
+            }
             //set the model defaults
             if (!Utilities.isObject($scope.model.value)) {
                 //if it's not an object then just create a new one
@@ -17253,14 +17183,14 @@
     'use strict';
     function ColorPickerController($scope, $timeout) {
         var vm = this;
-        //setup the default config
+        // setup the default config
         var config = {
             items: [],
             multiple: false
         };
-        //map the user config
-        angular.extend(config, $scope.model.config);
-        //map back to the model
+        // map the user config
+        Utilities.extend(config, $scope.model.config);
+        // map back to the model
         $scope.model.config = config;
         $scope.isConfigured = $scope.model.config && $scope.model.config.items && _.keys($scope.model.config.items).length > 0;
         if ($scope.isConfigured) {
@@ -17415,8 +17345,14 @@
                 }
             });
         }
-        eventsService.on('toggleValue', function (e, args) {
+        var evts = [];
+        evts.push(eventsService.on('toggleValue', function (e, args) {
             vm.labelEnabled = args.value;
+        }));
+        $scope.$on('$destroy', function () {
+            for (var e in evts) {
+                eventsService.unsubscribe(evts[e]);
+            }
         });
         if (!Utilities.isArray($scope.model.value)) {
             //make an array from the dictionary
@@ -18311,6 +18247,39 @@
     }
     angular.module('umbraco').controller('Umbraco.PropertyEditors.EntityPickerController', entityPicker);
     'use strict';
+    function EyeDropperColorPickerController($scope, angularHelper) {
+        var vm = this;
+        //setup the default config
+        var config = {
+            showAlpha: true,
+            showPalette: true,
+            allowEmpty: true
+        };
+        // map the user config
+        Utilities.extend(config, $scope.model.config);
+        // map back to the model
+        $scope.model.config = config;
+        vm.options = $scope.model.config;
+        vm.color = $scope.model.value || null;
+        vm.selectColor = function (color) {
+            angularHelper.safeApply($scope, function () {
+                vm.color = color ? color.toString() : null;
+                $scope.model.value = vm.color;
+                $scope.propertyForm.selectedColor.$setViewValue(vm.color);
+            });
+        };
+        // Method required by the valPropertyValidator directive (returns true if the property editor has at least one color selected)
+        $scope.validateMandatory = function () {
+            var isValid = !$scope.model.validation.mandatory || $scope.model.value != null && $scope.model.value != '';
+            return {
+                isValid: isValid,
+                errorMsg: $scope.model.validation.mandatoryMessage || 'Value cannot be empty',
+                errorKey: 'required'
+            };
+        };
+    }
+    angular.module('umbraco').controller('Umbraco.PropertyEditors.EyeDropperColorPickerController', EyeDropperColorPickerController);
+    'use strict';
     (function () {
         'use strict';
         /**
@@ -18407,6 +18376,16 @@
             if ($scope.model.close) {
                 $scope.model.close();
             }
+        }
+        vm.showEmptyState = false;
+        vm.showConfig = false;
+        vm.showStyles = false;
+        $scope.$watchCollection('model.config', onWatch);
+        $scope.$watchCollection('model.styles', onWatch);
+        function onWatch() {
+            vm.showConfig = $scope.model.config && ($scope.model.config.length > 0 || Object.keys($scope.model.config).length > 0);
+            vm.showStyles = $scope.model.styles && ($scope.model.styles.length > 0 || Object.keys($scope.model.styles).length > 0);
+            vm.showEmptyState = vm.showConfig === false && vm.showStyles === false;
         }
     }
     angular.module('umbraco').controller('Umbraco.PropertyEditors.GridPrevalueEditor.ConfigController', ConfigController);
@@ -18772,7 +18751,7 @@
         }, 200);
     });
     'use strict';
-    angular.module('umbraco').controller('Umbraco.PropertyEditors.Grid.MediaController', function ($scope, $timeout, userService, editorService) {
+    angular.module('umbraco').controller('Umbraco.PropertyEditors.Grid.MediaController', function ($scope, userService, editorService, localizationService) {
         $scope.thumbnailUrl = getThumbnailUrl();
         if (!$scope.model.config.startNodeId) {
             if ($scope.model.config.ignoreUserStartNodes === true) {
@@ -18786,49 +18765,45 @@
             }
         }
         $scope.setImage = function () {
-            var startNodeId = $scope.model.config && $scope.model.config.startNodeId ? $scope.model.config.startNodeId : undefined;
-            var startNodeIsVirtual = startNodeId ? $scope.model.config.startNodeIsVirtual : undefined;
-            var value = $scope.control.value;
-            var target = value ? {
-                udi: value.udi,
-                url: value.image,
-                image: value.image,
-                focalPoint: value.focalPoint,
-                coordinates: value.coordinates
-            } : null;
+            var startNodeId = $scope.model.config && $scope.model.config.startNodeId ? $scope.model.config.startNodeId : null;
             var mediaPicker = {
                 startNodeId: startNodeId,
-                startNodeIsVirtual: startNodeIsVirtual,
-                cropSize: $scope.control.editor.config && $scope.control.editor.config.size ? $scope.control.editor.config.size : undefined,
+                startNodeIsVirtual: startNodeId ? $scope.model.config.startNodeIsVirtual : null,
+                cropSize: $scope.control.editor.config && $scope.control.editor.config.size ? $scope.control.editor.config.size : null,
                 showDetails: true,
                 disableFolderSelect: true,
                 onlyImages: true,
                 dataTypeKey: $scope.model.dataTypeKey,
-                currentTarget: target,
                 submit: function submit(model) {
-                    var selectedImage = model.selection[0];
-                    $scope.control.value = {
-                        focalPoint: selectedImage.focalPoint,
-                        coordinates: selectedImage.coordinates,
-                        id: selectedImage.id,
-                        udi: selectedImage.udi,
-                        image: selectedImage.image,
-                        caption: selectedImage.altText
-                    };
+                    updateControlValue(model.selection[0]);
                     editorService.close();
                 },
                 close: function close() {
-                    editorService.close();
+                    return editorService.close();
                 }
             };
             editorService.mediaPicker(mediaPicker);
         };
-        $scope.$watch('control.value', function (newValue, oldValue) {
-            if (angular.equals(newValue, oldValue)) {
-                return;    // simply skip that
-            }
-            $scope.thumbnailUrl = getThumbnailUrl();
-        }, true);
+        $scope.editImage = function () {
+            var mediaCropDetailsConfig = {
+                size: 'small',
+                target: $scope.control.value,
+                submit: function submit(model) {
+                    updateControlValue(model.target);
+                    editorService.close();
+                },
+                close: function close() {
+                    return editorService.close();
+                }
+            };
+            localizationService.localize('defaultdialogs_editSelectedMedia').then(function (value) {
+                mediaCropDetailsConfig.title = value;
+                editorService.mediaCropDetails(mediaCropDetailsConfig);
+            });
+        };
+        /**
+   *
+   */
         function getThumbnailUrl() {
             if ($scope.control.value && $scope.control.value.image) {
                 var url = $scope.control.value.image;
@@ -18836,12 +18811,12 @@
                     if ($scope.control.value.coordinates) {
                         // New way, crop by percent must come before width/height.
                         var coords = $scope.control.value.coordinates;
-                        url += '?crop=' + coords.x1 + ',' + coords.y1 + ',' + coords.x2 + ',' + coords.y2 + '&cropmode=percentage';
+                        url += '?crop='.concat(coords.x1, ',').concat(coords.y1, ',').concat(coords.x2, ',').concat(coords.y2, '&cropmode=percentage');
                     } else {
                         // Here in order not to break existing content where focalPoint were used.
                         // For some reason width/height have to come first when mode=crop.
                         if ($scope.control.value.focalPoint) {
-                            url += '?center=' + $scope.control.value.focalPoint.top + ',' + $scope.control.value.focalPoint.left;
+                            url += '?center='.concat($scope.control.value.focalPoint.top, ',').concat($scope.control.value.focalPoint.left);
                             url += '&mode=crop';
                         } else {
                             // Prevent black padding and no crop when focal point not set / changed from default
@@ -18853,14 +18828,31 @@
                     url += '&animationprocessmode=first';
                 }
                 // set default size if no crop present (moved from the view)
-                if (url.indexOf('?') == -1) {
+                if (url.includes('?') === false) {
                     url += '?width=800&upscale=false&animationprocessmode=false';
                 }
                 return url;
             }
             return null;
         }
-        ;
+        /**
+   *
+   * @param {object} selectedImage
+   */
+        function updateControlValue(selectedImage) {
+            // we could apply selectedImage directly to $scope.control.value,
+            // but this allows excluding fields in future if needed
+            $scope.control.value = {
+                focalPoint: selectedImage.focalPoint,
+                coordinates: selectedImage.coordinates,
+                id: selectedImage.id,
+                udi: selectedImage.udi,
+                image: selectedImage.image,
+                caption: selectedImage.caption,
+                altText: selectedImage.altText
+            };
+            $scope.thumbnailUrl = getThumbnailUrl();
+        }
     });
     'use strict';
     (function () {
@@ -18987,8 +18979,10 @@
             },
             over: function over(event, ui) {
                 var area = event.target.getScope_HackForSortable().area;
-                var allowedEditors = area.allowed;
-                if ($.inArray(ui.item[0].getScope_HackForSortable().control.editor.alias, allowedEditors) < 0 && allowedEditors || startingArea != area && area.maxItems != '' && area.maxItems > 0 && area.maxItems < area.controls.length + 1) {
+                var allowedEditors = area.$allowedEditors.map(function (e) {
+                    return e.alias;
+                });
+                if ($.inArray(ui.item[0].getScope_HackForSortable().control.editor.alias, allowedEditors) < 0 || startingArea != area && area.maxItems != '' && area.maxItems > 0 && area.maxItems < area.controls.length + 1) {
                     $scope.$apply(function () {
                         area.dropNotAllowed = true;
                     });
@@ -20603,7 +20597,7 @@
                 listViewHelper.selectHandler(folder, $index, $scope.folders, $scope.selection, $event);
             }
             function goToItem(item, $event, $index) {
-                listViewHelper.editItem(item);
+                listViewHelper.editItem(item, $scope);
             }
             activate();
         }
@@ -20654,7 +20648,7 @@
                 listViewHelper.selectHandler(selectedItem, $index, $scope.items, $scope.selection, $event);
             }
             function clickItem(item) {
-                listViewHelper.editItem(item);
+                listViewHelper.editItem(item, $scope);
             }
             function isSortDirection(col, direction) {
                 return listViewHelper.setSortingDirection(col, direction, $scope.options);
@@ -20824,6 +20818,7 @@
         }
         var listParamsForCurrent = $routeParams.id == $routeParams.list;
         $scope.options = {
+            useInfiniteEditor: $scope.model.config.useInfiniteEditor === true,
             pageSize: $scope.model.config.pageSize ? $scope.model.config.pageSize : 10,
             pageNumber: listParamsForCurrent && $routeParams.page && Number($routeParams.page) != NaN && Number($routeParams.page) > 0 ? $routeParams.page : 1,
             filter: (listParamsForCurrent && $routeParams.filter ? $routeParams.filter : '').trim(),
@@ -21302,7 +21297,7 @@
                 }
                 if (e.nameExp) {
                     var newValue = e.nameExp({ value: value });
-                    if (newValue && (newValue = $.trim(newValue))) {
+                    if (newValue && (newValue = newValue.trim())) {
                         value = newValue;
                     }
                 }
@@ -21392,6 +21387,34 @@
             }
         }
         function createBlank(entityType, docTypeAlias) {
+            if ($scope.options.useInfiniteEditor) {
+                var editorModel = {
+                    create: true,
+                    submit: function submit(model) {
+                        editorService.close();
+                        $scope.reloadView($scope.contentId);
+                    },
+                    close: function close() {
+                        editorService.close();
+                        $scope.reloadView($scope.contentId);
+                    }
+                };
+                if (entityType == 'content') {
+                    editorModel.parentId = $scope.contentId;
+                    editorModel.documentTypeAlias = docTypeAlias;
+                    editorService.contentEditor(editorModel);
+                    return;
+                }
+                if (entityType == 'media') {
+                    editorService.mediaEditor(editorModel);
+                    return;
+                }
+                if (entityType == 'member') {
+                    editorModel.doctype = docTypeAlias;
+                    editorService.memberEditor(editorModel);
+                    return;
+                }
+            }
             $location.path('/' + entityType + '/' + entityType + '/edit/' + $scope.contentId).search('doctype', docTypeAlias).search('create', 'true');
         }
         function createFromBlueprint(entityType, docTypeAlias, blueprintId) {
@@ -22461,19 +22484,6 @@
     }
     angular.module('umbraco').controller('Umbraco.PropertyEditors.MultiUrlPickerController', multiUrlPickerController);
     'use strict';
-    function _defineProperty(obj, key, value) {
-        if (key in obj) {
-            Object.defineProperty(obj, key, {
-                value: value,
-                enumerable: true,
-                configurable: true,
-                writable: true
-            });
-        } else {
-            obj[key] = value;
-        }
-        return obj;
-    }
     function _typeof(obj) {
         if (typeof Symbol === 'function' && typeof Symbol.iterator === 'symbol') {
             _typeof = function _typeof(obj) {
@@ -22528,7 +22538,7 @@
             }
         ]);
         angular.module('umbraco').component('nestedContentPropertyEditor', {
-            template: ' <div id="umb-nested-content--{{model.id}}" class="umb-nested-content" ng-class="{\'umb-nested-content--narrow\':!vm.wideMode, \'umb-nested-content--wide\':vm.wideMode}"> <umb-load-indicator class="mt2" ng-if="!vm.inited"></umb-load-indicator> <ng-form name="nestedContentForm" ng-show="vm.inited"> <div class="umb-nested-content__items" ng-hide="vm.nodes.length === 0" ui-sortable="vm.sortableOptions" ng-model="vm.nodes"> <div ng-repeat="node in vm.nodes"> <ng-form name="ncRowForm" val-server-match="{ \'contains\' : node.key }"> <div class="umb-nested-content__item" ng-class="{ \'umb-nested-content__item--active\' : vm.currentNode.key === node.key, \'umb-nested-content__item--single\' : vm.singleMode, \'--error\': ncRowForm.$invalid }"> <div class="umb-nested-content__header-bar" ng-click="vm.editNode($index)" ng-hide="vm.singleMode" umb-auto-focus="{{vm.currentNode.key === node.key ? \'true\' : \'false\'}}"> <div class="umb-nested-content__heading"><i ng-if="vm.showIcons" class="icon umb-nested-content__item-icon" ng-class="vm.getIcon($index)"></i><span class="umb-nested-content__item-name" ng-class="{\'--has-icon\': vm.showIcons}" ng-bind="vm.getName($index)"></span></div> <div class="umb-nested-content__icons"> <button type="button" class="umb-nested-content__icon umb-nested-content__icon--copy" title="{{vm.labels.copy_icon_title}}" ng-click="vm.clickCopy($event, node);" ng-if="vm.showCopy"> <i class="icon icon-documents" aria-hidden="true"></i> <span class="sr-only">{{vm.labels.copy_icon_title}}</span> </button> <button type="button" class="umb-nested-content__icon umb-nested-content__icon--delete" localize="title" title="general_delete" ng-class="{ \'umb-nested-content__icon--disabled\': !vm.canDeleteNode($index) }" ng-click="vm.requestDeleteNode($index); $event.stopPropagation();"> <i class="icon icon-trash" aria-hidden="true"></i> <span class="sr-only"> <localize key="general_delete">Delete</localize> </span> </button> </div> </div> <div class="umb-nested-content__content" ng-if="vm.currentNode.key === node.key && !vm.sorting"> <umb-nested-content-editor ng-model="node" tab-alias="ncTabAlias"> </umb-nested-content-editor></div> </div> </ng-form> </div> </div> <div ng-hide="vm.hasContentTypes"> <div class="umb-nested-content__help-text"> <localize key="content_nestedContentNoContentTypes">No content types are configured for this property.</localize> </div> </div> <div class="umb-nested-content__footer-bar" ng-hide="!vm.inited || vm.hasContentTypes === false || vm.singleMode === true"> <button type="button" class="btn-reset umb-nested-content__add-content umb-focus" ng-class="{ \'--disabled\': (!vm.scaffolds.length || vm.nodes.length >= vm.maxItems) }" ng-click="vm.openNodeTypePicker($event)" aria-disabled="{{!vm.scaffolds.length || vm.nodes.length >= vm.maxItems}}"> <localize key="grid_addElement">Add element</localize> </button> </div>  <input type="hidden" name="minCount" ng-model="vm.nodes"> <input type="hidden" name="maxCount" ng-model="vm.nodes"> <div ng-messages="nestedContentForm.minCount.$error" show-validation-on-submit> <div class="help text-error" ng-message="minCount"> <localize key="validation_entriesShort" tokens="[vm.minItems, vm.minItems - vm.nodes.length]" watch-tokens="true">Minimum %0% entries, needs <strong>%1%</strong> more.</localize> </div> </div> <div ng-if="nestedContentForm.minCount.$error === true || vm.nodes.length > vm.maxItems"> <div class="help text-error"> <localize key="validation_entriesExceed" tokens="[vm.maxItems, vm.nodes.length - vm.maxItems]" watch-tokens="true">Maximum %0% entries, <strong>%1%</strong> too many.</localize> </div> </div> </ng-form> </div> ',
+            template: ' <div id="umb-nested-content--{{model.id}}" class="umb-nested-content" ng-class="{\'umb-nested-content--narrow\':!vm.wideMode, \'umb-nested-content--wide\':vm.wideMode}"> <umb-load-indicator class="mt2" ng-if="!vm.inited"></umb-load-indicator> <ng-form name="nestedContentForm" ng-show="vm.inited"> <div class="umb-nested-content__items" ng-hide="vm.nodes.length === 0" ui-sortable="vm.sortableOptions" ng-model="vm.nodes"> <div ng-repeat="node in vm.nodes"> <ng-form name="ncRowForm" val-server-match="{ \'contains\' : node.key }"> <div class="umb-nested-content__item" ng-class="{ \'umb-nested-content__item--active\' : vm.currentNode.key === node.key, \'umb-nested-content__item--single\' : vm.singleMode, \'--error\': ncRowForm.$invalid }"> <div class="umb-nested-content__header-bar" ng-click="vm.editNode($index)" ng-hide="vm.singleMode" umb-auto-focus="{{vm.focusOnNode && vm.currentNode.key === node.key ? \'true\' : \'false\'}}"> <div class="umb-nested-content__heading"><i ng-if="vm.showIcons" class="icon umb-nested-content__item-icon" ng-class="vm.getIcon($index)"></i><span class="umb-nested-content__item-name" ng-class="{\'--has-icon\': vm.showIcons}" ng-bind="vm.getName($index)"></span></div> <div class="umb-nested-content__icons"> <button type="button" class="umb-nested-content__icon umb-nested-content__icon--copy" title="{{vm.labels.copy_icon_title}}" ng-click="vm.clickCopy($event, node);" ng-if="vm.showCopy"> <i class="icon icon-documents" aria-hidden="true"></i> <span class="sr-only">{{vm.labels.copy_icon_title}}</span> </button> <button type="button" class="umb-nested-content__icon umb-nested-content__icon--delete" localize="title" title="general_delete" ng-class="{ \'umb-nested-content__icon--disabled\': !vm.canDeleteNode($index) }" ng-click="vm.requestDeleteNode($index); $event.stopPropagation();"> <i class="icon icon-trash" aria-hidden="true"></i> <span class="sr-only"> <localize key="general_delete">Delete</localize> </span> </button> </div> </div> <div class="umb-nested-content__content" ng-if="vm.currentNode.key === node.key && !vm.sorting"> <umb-nested-content-editor ng-model="node" tab-alias="ncTabAlias"> </umb-nested-content-editor></div> </div> </ng-form> </div> </div> <div ng-hide="vm.hasContentTypes"> <div class="umb-nested-content__help-text"> <localize key="content_nestedContentNoContentTypes">No content types are configured for this property.</localize> </div> </div> <div class="umb-nested-content__footer-bar" ng-hide="!vm.inited || vm.hasContentTypes === false || vm.singleMode === true"> <button type="button" class="btn-reset umb-nested-content__add-content umb-focus" ng-class="{ \'--disabled\': (!vm.scaffolds.length || vm.nodes.length >= vm.maxItems) }" ng-click="vm.openNodeTypePicker($event)" aria-disabled="{{!vm.scaffolds.length || vm.nodes.length >= vm.maxItems}}"> <localize key="grid_addElement">Add element</localize> </button> </div>  <input type="hidden" name="minCount" ng-model="vm.nodes"> <input type="hidden" name="maxCount" ng-model="vm.nodes"> <div ng-messages="nestedContentForm.minCount.$error" show-validation-on-submit> <div class="help text-error" ng-message="minCount"> <localize key="validation_entriesShort" tokens="[vm.minItems, vm.minItems - vm.nodes.length]" watch-tokens="true">Minimum %0% entries, needs <strong>%1%</strong> more.</localize> </div> </div> <div ng-if="nestedContentForm.minCount.$error === true || vm.nodes.length > vm.maxItems"> <div class="help text-error"> <localize key="validation_entriesExceed" tokens="[vm.maxItems, vm.nodes.length - vm.maxItems]" watch-tokens="true">Maximum %0% entries, <strong>%1%</strong> too many.</localize> </div> </div> </ng-form> </div> ',
             controller: NestedContentController,
             controllerAs: 'vm',
             require: {
@@ -22574,9 +22584,10 @@
                 labels.content_createEmpty = data[1];
                 labels.copy_icon_title = data[2];
             });
-            function setCurrentNode(node) {
+            function setCurrentNode(node, focusNode) {
                 updateModel();
                 vm.currentNode = node;
+                vm.focusOnNode = focusNode;
             }
             var copyAllEntries = function copyAllEntries() {
                 syncCurrentNode();
@@ -22643,13 +22654,12 @@
             function addNode(alias) {
                 var scaffold = getScaffold(alias);
                 var newNode = createNode(scaffold, null);
-                setCurrentNode(newNode);
+                setCurrentNode(newNode, true);
                 setDirty();
                 validate();
             }
             ;
             vm.openNodeTypePicker = function ($event) {
-                var _dialog;
                 if (vm.nodes.length >= vm.maxItems) {
                     return;
                 }
@@ -22662,26 +22672,33 @@
                         tooltip: scaffold.documentType.description
                     });
                 });
-                var dialog = (_dialog = {
+                var dialog = {
+                    orderBy: '$index',
                     view: 'itempicker',
-                    orderBy: '$index'
-                }, _defineProperty(_dialog, 'view', 'itempicker'), _defineProperty(_dialog, 'event', $event), _defineProperty(_dialog, 'filter', availableItems.length > 12), _defineProperty(_dialog, 'size', availableItems.length > 6 ? 'medium' : 'small'), _defineProperty(_dialog, 'availableItems', availableItems), _defineProperty(_dialog, 'clickPasteItem', function clickPasteItem(item) {
-                    if (Array.isArray(item.data)) {
-                        _.each(item.data, function (entry) {
-                            pasteFromClipboard(entry);
-                        });
-                    } else {
-                        pasteFromClipboard(item.data);
+                    event: $event,
+                    filter: availableItems.length > 12,
+                    size: availableItems.length > 6 ? 'medium' : 'small',
+                    availableItems: availableItems,
+                    clickPasteItem: function clickPasteItem(item) {
+                        if (Array.isArray(item.data)) {
+                            _.each(item.data, function (entry) {
+                                pasteFromClipboard(entry);
+                            });
+                        } else {
+                            pasteFromClipboard(item.data);
+                        }
+                        overlayService.close();
+                    },
+                    submit: function submit(model) {
+                        if (model && model.selectedItem) {
+                            addNode(model.selectedItem.alias);
+                        }
+                        overlayService.close();
+                    },
+                    close: function close() {
+                        overlayService.close();
                     }
-                    overlayService.close();
-                }), _defineProperty(_dialog, 'submit', function submit(model) {
-                    if (model && model.selectedItem) {
-                        addNode(model.selectedItem.alias);
-                    }
-                    overlayService.close();
-                }), _defineProperty(_dialog, 'close', function close() {
-                    overlayService.close();
-                }), _dialog);
+                };
                 if (dialog.availableItems.length === 0) {
                     return;
                 }
@@ -22718,9 +22735,9 @@
             };
             vm.editNode = function (idx) {
                 if (vm.currentNode && vm.currentNode.key === vm.nodes[idx].key) {
-                    setCurrentNode(null);
+                    setCurrentNode(null, false);
                 } else {
-                    setCurrentNode(vm.nodes[idx]);
+                    setCurrentNode(vm.nodes[idx], true);
                 }
             };
             vm.canDeleteNode = function (idx) {
@@ -22783,7 +22800,7 @@
                             // Add a temporary index property
                             item['$index'] = idx + 1;
                             var newName = contentType.nameExp(item);
-                            if (newName && (newName = $.trim(newName))) {
+                            if (newName && (newName = newName.trim())) {
                                 name = newName;
                             }
                             // Delete the index property as we don't want to persist it
@@ -22903,12 +22920,15 @@
                 vm.nodes.push(newNode);
                 setDirty();
                 //updateModel();// done by setting current node...
-                setCurrentNode(newNode);
+                setCurrentNode(newNode, true);
             }
             function checkAbilityToPasteContent() {
                 vm.showPaste = clipboardService.hasEntriesOfType(clipboardService.TYPES.ELEMENT_TYPE, contentTypeAliases);
             }
-            eventsService.on('clipboardService.storageUpdate', checkAbilityToPasteContent);
+            var storageUpdate = eventsService.on('clipboardService.storageUpdate', checkAbilityToPasteContent);
+            $scope.$on('$destroy', function () {
+                storageUpdate();
+            });
             var notSupported = [
                 'Umbraco.Tags',
                 'Umbraco.UploadField',
@@ -22984,7 +23004,7 @@
                     }
                     // If there is only one item, set it as current node
                     if (vm.singleMode || vm.nodes.length === 1 && vm.maxItems === 1) {
-                        setCurrentNode(vm.nodes[0]);
+                        setCurrentNode(vm.nodes[0], false);
                     }
                     validate();
                     vm.inited = true;
@@ -23972,7 +23992,7 @@
         };
     });
     'use strict';
-    function userPickerController($scope, usersResource, iconHelper, editorService, overlayService) {
+    function userPickerController($scope, iconHelper, editorService, overlayService, entityResource) {
         function trim(str, chr) {
             var rgxtrim = !chr ? new RegExp('^\\s+|\\s+$', 'g') : new RegExp('^' + chr + '+|' + chr + '+$', 'g');
             return str.replace(rgxtrim, '');
@@ -24053,22 +24073,26 @@
         $scope.$on('$destroy', function () {
             unsubscribe();
         });
-        //load user data
-        var modelIds = $scope.model.value ? $scope.model.value.split(',') : [];
-        // entityResource.getByIds doesn't support "User" and we would like to show avatars in umb-user-preview as well.
-        usersResource.getUsers(modelIds).then(function (data) {
-            _.each(data, function (item, i) {
-                // set default icon if it's missing
-                item.icon = item.icon ? iconHelper.convertFromLegacyIcon(item.icon) : 'icon-user';
-                $scope.renderModel.push({
-                    name: item.name,
-                    id: item.id,
-                    udi: item.udi,
-                    icon: item.icon,
-                    avatars: item.avatars
+        //load user data - split to an array of ints (map)
+        var modelIds = $scope.model.value ? $scope.model.value.split(',').map(function (x) {
+            return +x;
+        }) : [];
+        if (modelIds.length !== 0) {
+            entityResource.getAll('User').then(function (users) {
+                var filteredUsers = users.filter(function (user) {
+                    return modelIds.indexOf(user.id) !== -1;
+                });
+                filteredUsers.forEach(function (item) {
+                    $scope.renderModel.push({
+                        name: item.name,
+                        id: item.id,
+                        udi: item.udi,
+                        icon: item.icon = item.icon ? iconHelper.convertFromLegacyIcon(item.icon) : 'icon-user',
+                        avatars: item.avatars
+                    });
                 });
             });
-        });
+        }
     }
     angular.module('umbraco').controller('Umbraco.PropertyEditors.UserPickerController', userPickerController);
     'use strict';
@@ -24213,10 +24237,13 @@
                 ];
             });
             // load references when the 'relations' tab is first activated/switched to
-            eventsService.on('app.tabChange', function (event, args) {
+            var appTabChange = eventsService.on('app.tabChange', function (event, args) {
                 if (args.alias === 'relations') {
                     loadRelations();
                 }
+            });
+            $scope.$on('$destroy', function () {
+                appTabChange();
             });
             // Inital page/overview API call of relation type
             relationTypeResource.getById($routeParams.id).then(function (data) {
