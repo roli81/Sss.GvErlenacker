@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Sss.Mutobo.Poco;
 using Umbraco.Core.Models.PublishedContent;
 using Umbraco.Web;
 

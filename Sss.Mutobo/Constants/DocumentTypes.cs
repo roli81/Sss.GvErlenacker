@@ -22,5 +22,17 @@ namespace Sss.Mutobo.Constants
 
         }
 
+        public static class CarouselModule
+        {
+            public const string Alias = "carouselModule";
+
+            public static class Fields
+            {
+                public const string Images = "images";
+            }
+
+
+        }
+
     }
 }

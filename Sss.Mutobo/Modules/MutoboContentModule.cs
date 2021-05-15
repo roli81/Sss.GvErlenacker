@@ -1,4 +1,5 @@
-﻿using System.Runtime.CompilerServices;
+﻿using System;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
@@ -9,21 +10,19 @@ using Umbraco.Core.Models.PublishedContent;
 
 namespace Sss.Mutobo.Modules
 {
-    public class MutoboContentModule : PublishedElementModel, IModule
+    public abstract class MutoboContentModule : PublishedElementModel
     {
 
         public string ViewName { get;  }
 
         public string Title { get; }
-        public IHtmlString RenderModule(HtmlHelper helper)
+        public virtual IHtmlString RenderModule(HtmlHelper helper)
         {
-            var html = new StringBuilder();
-            html.Append(helper.Partial($"~/Views/Modules/{ViewName}.cshtml", new NewsletterUser() { })); 
-            return new MvcHtmlString(html.ToString());
+            throw new NotImplementedException();
         }
 
 
-        public MutoboContentModule(IPublishedElement content, string viewName) : base(content)
+        protected MutoboContentModule(IPublishedElement content, string viewName) : base(content)
         {
             ViewName = viewName;
         }

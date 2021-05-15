@@ -25,6 +25,12 @@ namespace Sss.Mutobo.Modules
         {
         }
 
+        public override IHtmlString RenderModule(HtmlHelper helper)
+        {
+            var html = new StringBuilder();
+            html.Append(helper.Partial($"~/Views/Modules/{ViewName}.cshtml", new NewsletterUser() { }));
+            return new MvcHtmlString(html.ToString());
 
+        }
     }
 }

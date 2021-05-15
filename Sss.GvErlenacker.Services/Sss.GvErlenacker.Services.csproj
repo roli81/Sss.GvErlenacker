@@ -253,7 +253,6 @@
     <Compile Include="IEventService.cs" />
     <Compile Include="IFormService.cs" />
     <Compile Include="IHomePageService.cs" />
-    <Compile Include="IImageService.cs" />
     <Compile Include="IMailService.cs" />
     <Compile Include="IMemberBoardService.cs" />
     <Compile Include="IMemberService.cs" />
@@ -269,6 +268,10 @@
     <ProjectReference Include="..\Sss.GvErlenacker.Models\Sss.GvErlenacker.Models.csproj">
       <Project>{4755B53F-D389-4ECE-9585-AD1C1FD60DF7}</Project>
       <Name>Sss.GvErlenacker.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sss.Mutobo\Sss.Mutobo.csproj">
+      <Project>{a8794103-0c44-465e-a822-7d3878af4d70}</Project>
+      <Name>Sss.Mutobo</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -8,6 +8,8 @@ using Lucene.Net.Util;
 using NPoco.ArrayExtensions;
 using Sss.GvErlenacker.Models.ConfigModels;
 using Sss.GvErlenacker.Models.Poco;
+using Sss.Mutobo.Interfaces.Services;
+using Sss.Mutobo.Poco;
 using Umbraco.Core.Models.PublishedContent;
 using Umbraco.Web;
 

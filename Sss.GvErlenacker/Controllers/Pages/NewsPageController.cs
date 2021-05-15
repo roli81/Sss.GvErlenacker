@@ -27,5 +27,6 @@ namespace Sss.GvErlenacker.Controllers.Pages
             return base.Index(typedModel);
 
         }
+
     }
 }

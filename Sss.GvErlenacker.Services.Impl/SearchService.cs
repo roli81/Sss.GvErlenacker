@@ -10,6 +10,7 @@ using Examine.Search;
 using Lucene.Net.Index;
 using Sss.GvErlenacker.Models.DataModels;
 using Sss.GvErlenacker.Models.PageModels;
+using Sss.Mutobo.Interfaces.Services;
 using Umbraco.Core.Models.PublishedContent;
 using Umbraco.Examine;
 using Umbraco.Web;

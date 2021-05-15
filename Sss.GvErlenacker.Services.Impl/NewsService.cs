@@ -6,9 +6,11 @@ using System.Threading.Tasks;
 using System.Web.UI.WebControls;
 using Sss.GvErlenacker.Models.PageModels;
 using Sss.GvErlenacker.Models.Poco;
+using Sss.Mutobo.Interfaces.Services;
 using Umbraco.Core.Models.PublishedContent;
 using Umbraco.Web;
-using Image = Sss.GvErlenacker.Models.Poco.Image;
+using Image = Sss.Mutobo.Poco.Image;
+
 
 namespace Sss.GvErlenacker.Services.Impl
 {
@@ -90,7 +92,7 @@ namespace Sss.GvErlenacker.Services.Impl
                     : null,
                 Images = content.HasProperty("images") && content.HasValue("images")
                     ? _imageService.GetImages(content.Value<IEnumerable<IPublishedContent>>("images"))
-                    : new List<Image>(),
+                    : (IEnumerable<Image>) new List<Image>(),
                 Documents = content.HasProperty("documents") && content.HasValue("documents")
                             ? _documentService.GetDocuments(content.Value<IEnumerable<IPublishedContent>>("documents"))
                             : new List<Document>()

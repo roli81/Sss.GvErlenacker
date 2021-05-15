@@ -247,12 +247,16 @@
     <Compile Include="Enums\ESalutation.cs" />
     <Compile Include="Interfaces\IModule.cs" />
     <Compile Include="Interfaces\IMutoboContentService.cs" />
+    <Compile Include="Interfaces\Services\IImageService.cs" />
     <Compile Include="Interfaces\Services\INewsLetterService.cs" />
+    <Compile Include="Modules\CarouselModule.cs" />
     <Compile Include="Modules\MutoboContentModule.cs" />
     <Compile Include="Modules\NewsletterModule.cs" />
+    <Compile Include="Poco\Image.cs" />
     <Compile Include="Poco\NewsletterUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rendering\ModuleRenderer.cs" />
+    <Compile Include="Services\ImageService.cs" />
     <Compile Include="Services\MutoboContentService.cs" />
     <Compile Include="Services\NewsletterService.cs" />
     <Compile Include="SurfaceControllers\NewsletterFormController.cs" />

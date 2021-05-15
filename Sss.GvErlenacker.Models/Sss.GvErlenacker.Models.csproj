@@ -272,7 +272,6 @@
     <Compile Include="PageModels\SectionPage.cs" />
     <Compile Include="PageModels\SponsorPage.cs" />
     <Compile Include="Poco\Document.cs" />
-    <Compile Include="Poco\Image.cs" />
     <Compile Include="Poco\Link.cs" />
     <Compile Include="Poco\MemberFormModel.cs" />
     <Compile Include="Poco\NavItem.cs" />

@@ -284,7 +284,6 @@
     <Compile Include="EventService.cs" />
     <Compile Include="FormService.cs" />
     <Compile Include="HomePageService.cs" />
-    <Compile Include="ImageService.cs" />
     <Compile Include="MailService.cs" />
     <Compile Include="MemberService.cs" />
     <Compile Include="MemberBoardService.cs" />
@@ -305,6 +304,10 @@
     <ProjectReference Include="..\Sss.GvErlenacker.Services\Sss.GvErlenacker.Services.csproj">
       <Project>{CF752065-B74A-48EA-A469-98C72C2DF259}</Project>
       <Name>Sss.GvErlenacker.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Sss.Mutobo\Sss.Mutobo.csproj">
+      <Project>{a8794103-0c44-465e-a822-7d3878af4d70}</Project>
+      <Name>Sss.Mutobo</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

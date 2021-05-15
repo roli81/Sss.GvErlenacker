@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Sss.GvErlenacker.Models.Poco;
+using Sss.Mutobo.Poco;
 
 
 namespace Sss.GvErlenacker.Models.ConfigModels
