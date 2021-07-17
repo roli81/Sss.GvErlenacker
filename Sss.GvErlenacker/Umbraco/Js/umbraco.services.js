@@ -1451,15 +1451,15 @@
                     scaffoldKeys = scaffoldKeys.filter(function (value, index, self) {
                         return self.indexOf(value) === index;
                     });
-                    scaffoldKeys.forEach(function (contentTypeKey) {
-                        tasks.push(contentResource.getScaffoldByKey(-20, contentTypeKey).then(function (scaffold) {
+                    tasks.push(contentResource.getScaffoldByKeys(-20, scaffoldKeys).then(function (scaffolds) {
+                        Object.values(scaffolds).forEach(function (scaffold) {
                             // self.scaffolds might not exists anymore, this happens if this instance has been destroyed before the load is complete.
                             if (self.scaffolds) {
                                 self.scaffolds.push(formatScaffoldData(scaffold));
                             }
-                        }).catch(function () {
-                        }));
-                    });
+                        });
+                    }).catch(function () {
+                    }));
                     return $q.all(tasks);
                 },
                 /**
@@ -1882,6 +1882,7 @@
         TYPES.ELEMENT_TYPE = 'elementType';
         TYPES.BLOCK = 'block';
         TYPES.RAW = 'raw';
+        TYPES.MEDIA = 'media';
         var clearPropertyResolvers = {};
         var pastePropertyResolvers = {};
         var clipboardTypeResolvers = {};
@@ -1927,6 +1928,8 @@
             for (var p = 0; p < data.length; p++) {
                 propMethod(data[p], TYPES.RAW);
             }
+        };
+        clipboardTypeResolvers[TYPES.MEDIA] = function (data, propMethod) {
         };
         var STORAGE_KEY = 'umbClipboardService';
         var retriveStorage = function retriveStorage() {
@@ -1983,7 +1986,7 @@
             return cloneData;
         };
         var isEntryCompatible = function isEntryCompatible(entry, type, allowedAliases) {
-            return entry.type === type && (entry.alias && allowedAliases.filter(function (allowedAlias) {
+            return entry.type === type && (allowedAliases === null || entry.alias && allowedAliases.filter(function (allowedAlias) {
                 return allowedAlias === entry.alias;
             }).length > 0 || entry.aliases && entry.aliases.filter(function (entryAlias) {
                 return allowedAliases.filter(function (allowedAlias) {
@@ -2388,7 +2391,8 @@
             }
             return true;
         }
-        function showNotificationsForModelsState(ms) {
+        function showNotificationsForModelsState(ms, messageType) {
+            messageType = messageType || 2;
             for (var _i = 0, _Object$entries = Object.entries(ms); _i < _Object$entries.length; _i++) {
                 var _Object$entries$_i = _slicedToArray(_Object$entries[_i], 2), key = _Object$entries$_i[0], value = _Object$entries$_i[1];
                 var errorMsg = value[0];
@@ -2398,11 +2402,15 @@
                     var idsToErrors = serverValidationManager.parseComplexEditorError(errorMsg, '');
                     idsToErrors.forEach(function (x) {
                         if (x.modelState) {
-                            showNotificationsForModelsState(x.modelState);
+                            showNotificationsForModelsState(x.modelState, messageType);
                         }
                     });
                 } else if (value[0]) {
-                    notificationsService.error('Validation', value[0]);
+                    notificationsService.showNotification({
+                        type: messageType,
+                        header: 'Validation',
+                        message: value[0]
+                    });
                 }
             }
         }
@@ -2441,10 +2449,15 @@
                 var self = this;
                 //we will use the default one for content if not specified
                 var _rebindCallback = args.rebindCallback === undefined ? self.reBindChangedProperties : args.rebindCallback;
-                if (formHelper.submitForm({
-                        scope: args.scope,
-                        action: args.action
-                    })) {
+                var formSubmitOptions = {
+                    scope: args.scope,
+                    action: args.action
+                };
+                if (args.skipValidation === true) {
+                    formSubmitOptions.skipValidation = true;
+                    formSubmitOptions.keepServerValidation = true;
+                }
+                if (formHelper.submitForm(formSubmitOptions)) {
                     return args.saveMethod(args.content, args.create, fileManager.getFiles(), args.showNotifications).then(function (data) {
                         formHelper.resetForm({ scope: args.scope });
                         if (!args.infiniteMode) {
@@ -2472,6 +2485,7 @@
                             showNotifications: args.showNotifications,
                             softRedirect: args.softRedirect,
                             err: err,
+                            action: args.action,
                             rebindCallback: function rebindCallback() {
                                 // if the error contains data, we want to map that back as we want to continue editing this save. Especially important when the content is new as the returned data will contain ID etc.
                                 if (err.data) {
@@ -2925,9 +2939,14 @@
                     if (args.err.data && args.err.data.ModelState) {
                         //wire up the server validation errs
                         formHelper.handleServerValidation(args.err.data.ModelState);
+                        var messageType = 2;
+                        //error
+                        if (args.action === 'save') {
+                            messageType = 4;    //warning
+                        }
                         //add model state errors to notifications
                         if (args.showNotifications) {
-                            showNotificationsForModelsState(args.err.data.ModelState);
+                            showNotificationsForModelsState(args.err.data.ModelState, messageType);
                         }
                         if (!this.redirectToCreatedContent(args.err.data.id, args.softRedirect) || args.softRedirect) {
                             // If we are not redirecting it's because this is not newly created content, else in some cases we are
@@ -3051,11 +3070,11 @@
                     'NotCreated': 3
                 };
                 var compareDefault = function compareDefault(a, b) {
-                    return (!a.language.isDefault ? 1 : -1) - (!b.language.isDefault ? 1 : -1);
+                    return (a.language && a.language.isDefault ? -1 : 1) - (b.language && b.language.isDefault ? -1 : 1);
                 };
                 // Make sure mandatory variants goes on top, unless they are published, cause then they already goes to the top and then we want to mix them with other published variants.
                 var compareMandatory = function compareMandatory(a, b) {
-                    return a.state === 'PublishedPendingChanges' || a.state === 'Published' ? 0 : (!a.language.isMandatory ? 1 : -1) - (!b.language.isMandatory ? 1 : -1);
+                    return a.state === 'PublishedPendingChanges' || a.state === 'Published' ? 0 : (a.language && a.language.isMandatory ? -1 : 1) - (b.language && b.language.isMandatory ? -1 : 1);
                 };
                 var compareState = function compareState(a, b) {
                     return (statesOrder[a.state] || 99) - (statesOrder[b.state] || 99);
@@ -3082,21 +3101,22 @@
                 var sortedVariants = variantsAndSegments.filter(function (variant) {
                     return !variant.segment;
                 }).sort(this.sortVariants);
-                var segments = variantsAndSegments.filter(function (variant) {
+                var variantsWithSegments = variantsAndSegments.filter(function (variant) {
                     return variant.segment;
                 });
                 var sortedAvailableVariants = [];
                 sortedVariants.forEach(function (variant) {
-                    var sortedMatchedSegments = segments.filter(function (segment) {
-                        return segment.language.culture === variant.language.culture;
+                    var sortedMatchedSegments = variantsWithSegments.filter(function (segment) {
+                        return segment.language && variant.language && segment.language.culture === variant.language.culture;
                     }).sort(_this.sortVariants);
-                    segments = segments.filter(function (segment) {
-                        return segment.language.culture !== variant.language.culture;
+                    // remove variants for this culture
+                    variantsWithSegments = variantsWithSegments.filter(function (segment) {
+                        return !segment.language || segment.language && variant.language && segment.language.culture !== variant.language.culture;
                     });
                     sortedAvailableVariants = [].concat(_toConsumableArray(sortedAvailableVariants), [variant], _toConsumableArray(sortedMatchedSegments));
                 });
-                // if we have segments without a parent language variant we need to add the remaining segments to the array
-                sortedAvailableVariants = [].concat(_toConsumableArray(sortedAvailableVariants), _toConsumableArray(segments.sort(this.sortVariants)));
+                // if we have segments without a parent language variant we need to add the remaining variantsWithSegments to the array
+                sortedAvailableVariants = [].concat(_toConsumableArray(sortedAvailableVariants), _toConsumableArray(variantsWithSegments.sort(this.sortVariants)));
                 return sortedAvailableVariants;
             }
         };
@@ -3395,25 +3415,19 @@
                     ratio: ratio
                 };
             },
-            scaleToMaxSize: function scaleToMaxSize(srcWidth, srcHeight, maxSize) {
-                var retVal = {
-                    height: srcHeight,
-                    width: srcWidth
+            scaleToMaxSize: function scaleToMaxSize(srcWidth, srcHeight, maxWidth, maxHeight) {
+                // fallback to maxHeight:
+                maxHeight = maxHeight || maxWidth;
+                // get smallest ratio, if ratio exceeds 1 we will not scale(hence we parse 1 as the maximum allowed ratio)
+                var ratio = Math.min(maxWidth / srcWidth, maxHeight / srcHeight, 1);
+                return {
+                    width: srcWidth * ratio,
+                    height: srcHeight * ratio
                 };
-                if (srcWidth > maxSize || srcHeight > maxSize) {
-                    var ratio = [
-                        maxSize / srcWidth,
-                        maxSize / srcHeight
-                    ];
-                    ratio = Math.min(ratio[0], ratio[1]);
-                    retVal.height = srcHeight * ratio;
-                    retVal.width = srcWidth * ratio;
-                }
-                return retVal;
             },
             //returns a ng-style object with top,left,width,height pixel measurements
             //expects {left,right,top,bottom} - {width,height}, {width,height}, int
-            //offset is just to push the image position a number of pixels from top,left    
+            //offset is just to push the image position a number of pixels from top,left
             convertToStyle: function convertToStyle(coordinates, originalSize, viewPort, offset) {
                 var coordinates_px = service.coordinatesToPixels(coordinates, originalSize, offset);
                 var _offset = offset || 0;
@@ -3448,15 +3462,10 @@
                 var y2_px = image.height - (y1_px + height);
                 //crop coordinates in %
                 var crop = {};
-                crop.x1 = x1_px / image.width;
-                crop.y1 = y1_px / image.height;
-                crop.x2 = x2_px / image.width;
-                crop.y2 = y2_px / image.height;
-                for (var coord in crop) {
-                    if (crop[coord] < 0) {
-                        crop[coord] = 0;
-                    }
-                }
+                crop.x1 = Math.max(x1_px / image.width, 0);
+                crop.y1 = Math.max(y1_px / image.height, 0);
+                crop.x2 = Math.max(x2_px / image.width, 0);
+                crop.y2 = Math.max(y2_px / image.height, 0);
                 return crop;
             },
             alignToCoordinates: function alignToCoordinates(image, center, viewport) {
@@ -3506,11 +3515,12 @@
                 for (var i = 0; i < preVals.length; i++) {
                     preValues.push({
                         hideLabel: preVals[i].hideLabel,
-                        alias: preVals[i].key,
+                        alias: preVals[i].key != undefined ? preVals[i].key : preVals[i].alias,
                         description: preVals[i].description,
                         label: preVals[i].label,
                         view: preVals[i].view,
-                        value: preVals[i].value
+                        value: preVals[i].value,
+                        config: preVals[i].config
                     });
                 }
                 return preValues;
@@ -6215,7 +6225,7 @@ When building a custom infinite editor view you can use the same components as a
             }
             var elt;
             // Initialize opt object
-            opt = angular.extend({}, defaultOpt, opt);
+            opt = Utilities.extend({}, defaultOpt, opt);
             label = label.toLowerCase();
             elt = opt.target;
             if (typeof opt.target === 'string') {
@@ -7670,9 +7680,9 @@ When building a custom infinite editor view you can use the same components as a
             },
             getAllowedImagetypes: function getAllowedImagetypes(mediaId) {
                 // TODO: This is horribly inneficient - why make one request per type!?
-                //This should make a call to c# to get exactly what it's looking for instead of returning every single media type and doing 
+                //This should make a call to c# to get exactly what it's looking for instead of returning every single media type and doing
                 //some filtering on the client side.
-                //This is also called multiple times when it's not needed! Example, when launching the media picker, this will be called twice 
+                //This is also called multiple times when it's not needed! Example, when launching the media picker, this will be called twice
                 //which means we'll be making at least 6 REST calls to fetch each media type
                 // Get All allowedTypes
                 return mediaTypeResource.getAllowedTypes(mediaId).then(function (types) {
@@ -7681,17 +7691,11 @@ When building a custom infinite editor view you can use the same components as a
                     });
                     // Get full list
                     return $q.all(allowedQ).then(function (fullTypes) {
-                        // Find all the media types with an Image Cropper property editor
-                        var filteredTypes = mediaTypeHelperService.getTypeWithEditor(fullTypes, ['Umbraco.ImageCropper']);
-                        // If there is only one media type with an Image Cropper we will return this one
-                        if (filteredTypes.length === 1) {
-                            return filteredTypes;    // If there is more than one Image cropper, custom media types have been added, and we return all media types with and Image cropper or UploadField
-                        } else {
-                            return mediaTypeHelperService.getTypeWithEditor(fullTypes, [
-                                'Umbraco.ImageCropper',
-                                'Umbraco.UploadField'
-                            ]);
-                        }
+                        // Find all the media types with an Image Cropper or Upload Field property editor
+                        return mediaTypeHelperService.getTypeWithEditor(fullTypes, [
+                            'Umbraco.ImageCropper',
+                            'Umbraco.UploadField'
+                        ]);
                     });
                 });
             },
@@ -7706,6 +7710,36 @@ When building a custom infinite editor view you can use the same components as a
                             }
                         }
                     }
+                });
+            },
+            getTypeAcceptingFileExtensions: function getTypeAcceptingFileExtensions(mediaTypes, fileExtensions) {
+                return mediaTypes.filter(function (mediaType) {
+                    var uploadProperty;
+                    mediaType.groups.forEach(function (group) {
+                        var foundProperty = group.properties.find(function (property) {
+                            return property.alias === 'umbracoFile';
+                        });
+                        if (foundProperty) {
+                            uploadProperty = foundProperty;
+                        }
+                    });
+                    if (uploadProperty) {
+                        var acceptedFileExtensions;
+                        if (uploadProperty.editor === 'Umbraco.ImageCropper') {
+                            acceptedFileExtensions = Umbraco.Sys.ServerVariables.umbracoSettings.imageFileTypes;
+                        } else if (uploadProperty.editor === 'Umbraco.UploadField') {
+                            acceptedFileExtensions = uploadProperty.config.fileExtensions && uploadProperty.config.fileExtensions.length > 0 ? uploadProperty.config.fileExtensions.map(function (x) {
+                                return x.value;
+                            }) : null;
+                        }
+                        if (acceptedFileExtensions && acceptedFileExtensions.length > 0) {
+                            return fileExtensions.length === fileExtensions.filter(function (fileExt) {
+                                return acceptedFileExtensions.includes(fileExt);
+                            }).length;
+                        }
+                        return true;
+                    }
+                    return false;
                 });
             }
         };
@@ -9126,7 +9160,7 @@ When building a custom infinite editor view you can use the same components as a
     function searchResultFormatter(umbRequestHelper) {
         function configureDefaultResult(content, treeAlias, appAlias) {
             content.editorPath = appAlias + '/' + treeAlias + '/edit/' + content.id;
-            angular.extend(content.metaData, { treeAlias: treeAlias });
+            Utilities.extend(content.metaData, { treeAlias: treeAlias });
         }
         function configureContentResult(content, treeAlias, appAlias) {
             content.menuUrl = umbRequestHelper.getApiUrl('contentTreeBaseUrl', 'GetMenu', [
@@ -9134,7 +9168,7 @@ When building a custom infinite editor view you can use the same components as a
                 { application: appAlias }
             ]);
             content.editorPath = appAlias + '/' + treeAlias + '/edit/' + content.id;
-            angular.extend(content.metaData, { treeAlias: treeAlias });
+            Utilities.extend(content.metaData, { treeAlias: treeAlias });
             content.subTitle = content.metaData.Url;
         }
         function configureMemberResult(member, treeAlias, appAlias) {
@@ -9143,7 +9177,7 @@ When building a custom infinite editor view you can use the same components as a
                 { application: appAlias }
             ]);
             member.editorPath = appAlias + '/' + treeAlias + '/edit/' + (member.key ? member.key : member.id);
-            angular.extend(member.metaData, { treeAlias: treeAlias });
+            Utilities.extend(member.metaData, { treeAlias: treeAlias });
             member.subTitle = member.metaData.Email;
         }
         function configureMediaResult(media, treeAlias, appAlias) {
@@ -9152,7 +9186,7 @@ When building a custom infinite editor view you can use the same components as a
                 { application: appAlias }
             ]);
             media.editorPath = appAlias + '/' + treeAlias + '/edit/' + media.id;
-            angular.extend(media.metaData, { treeAlias: treeAlias });
+            Utilities.extend(media.metaData, { treeAlias: treeAlias });
         }
         return {
             configureContentResult: configureContentResult,
@@ -10523,7 +10557,7 @@ When building a custom infinite editor view you can use the same components as a
     function tinyMceService($rootScope, $q, imageHelper, $locale, $http, $timeout, stylesheetResource, macroResource, macroService, $routeParams, umbRequestHelper, angularHelper, userService, editorService, entityResource, eventsService, localStorageService) {
         //These are absolutely required in order for the macros to render inline
         //we put these as extended elements because they get merged on top of the normal allowed elements by tiny mce
-        var extendedValidElements = '@[id|class|style],-div[id|dir|class|align|style],ins[datetime|cite],-ul[class|style],-li[class|style],-h1[id|dir|class|align|style],-h2[id|dir|class|align|style],-h3[id|dir|class|align|style],-h4[id|dir|class|align|style],-h5[id|dir|class|align|style],-h6[id|style|dir|class|align],span[id|class|style]';
+        var extendedValidElements = '@[id|class|style],-div[id|dir|class|align|style],ins[datetime|cite],-ul[class|style],-li[class|style],-h1[id|dir|class|align|style],-h2[id|dir|class|align|style],-h3[id|dir|class|align|style],-h4[id|dir|class|align|style],-h5[id|dir|class|align|style],-h6[id|style|dir|class|align],span[id|class|style|lang]';
         var fallbackStyles = [
             {
                 title: 'Page header',
@@ -10903,8 +10937,7 @@ When building a custom infinite editor view you can use the same components as a
         // We are not ready to limit the pasted elements further than default, we will return to this feature. ( TODO: Make this feature an option. )
         // We keep spans here, cause removing spans here also removes b-tags inside of them, instead we strip them out later. (TODO: move this definition to the config file... )
         var validPasteElements = "-strong/b,-em/i,-u,-span,-p,-ol,-ul,-li,-p/div,-a[href|name],sub,sup,strike,br,del,table[width],tr,td[colspan|rowspan|width],th[colspan|rowspan|width],thead,tfoot,tbody,img[src|alt|width|height],ul,ol,li,hr,pre,dl,dt,figure,figcaption,wbr"
-        
-        // add elements from user configurated styleFormats to our list of validPasteElements.
+          // add elements from user configurated styleFormats to our list of validPasteElements.
         // (This means that we only allow H3-element if its configured as a styleFormat on this specific propertyEditor.)
         var style, i = 0;
         for(; i < styles.styleFormats.length; i++) {
@@ -10925,7 +10958,7 @@ When building a custom infinite editor view you can use the same components as a
                         //paste_word_valid_elements: validPasteElements,
                         paste_preprocess: cleanupPasteData
                     };
-                    angular.extend(config, pasteConfig);
+                    Utilities.extend(config, pasteConfig);
                     if (tinyMceConfig.customConfig) {
                         //if there is some custom config, we need to see if the string value of each item might actually be json and if so, we need to
                         // convert it to json instead of having it as a string since this is what tinymce requires
@@ -10940,7 +10973,7 @@ When building a custom infinite editor view you can use the same components as a
                                         //overwrite the baseline config item if it is an array, we want to concat the items in the array, otherwise
                                         //if it's an object it will overwrite the baseline
                                         if (Utilities.isArray(config[i]) && Utilities.isArray(tinyMceConfig.customConfig[i])) {
-                                            //concat it and below this concat'd array will overwrite the baseline in angular.extend
+                                            //concat it and below this concat'd array will overwrite the baseline in Utilities.extend
                                             tinyMceConfig.customConfig[i] = config[i].concat(tinyMceConfig.customConfig[i]);
                                         }
                                     } catch (e) {
@@ -10954,7 +10987,7 @@ When building a custom infinite editor view you can use the same components as a
                                 }
                             }
                         }
-                        angular.extend(config, tinyMceConfig.customConfig);
+                        Utilities.extend(config, tinyMceConfig.customConfig);
                     }
                     return config;
                 });
@@ -11686,10 +11719,22 @@ When building a custom infinite editor view you can use the same components as a
                     }
                 }
                 function syncContent() {
+                    if (args.model.value === args.editor.getContent()) {
+                        return;
+                    }
                     //stop watching before we update the value
                     stopWatch();
                     angularHelper.safeApply($rootScope, function () {
                         args.model.value = args.editor.getContent();
+                        //make the form dirty manually so that the track changes works, setting our model doesn't trigger
+                        // the angular bits because tinymce replaces the textarea.
+                        if (args.currentForm) {
+                            args.currentForm.$setDirty();
+                        }
+                        // With complex validation we need to set a input field to dirty, not the form. but we will keep the old code for backwards compatibility.
+                        if (args.currentFormInput) {
+                            args.currentFormInput.$setDirty();
+                        }
                     });
                     //re-watch the value
                     startWatch();
@@ -11712,7 +11757,7 @@ When building a custom infinite editor view you can use the same components as a
                     var content = e.content;
                     // Upload BLOB images (dragged/pasted ones)
                     // find src attribute where value starts with `blob:`
-                    // search is case-insensitive and allows single or double quotes 
+                    // search is case-insensitive and allows single or double quotes
                     if (content.search(/src=["']blob:.*?["']/gi) !== -1) {
                         args.editor.uploadImages(function (data) {
                             // Once all images have been uploaded
@@ -11763,6 +11808,9 @@ When building a custom infinite editor view you can use the same components as a
                 args.editor.on('Change', function (e) {
                     syncContent();
                 });
+                args.editor.on('Keyup', function (e) {
+                    syncContent();
+                });
                 //when we leave the editor (maybe)
                 args.editor.on('blur', function (e) {
                     syncContent();
@@ -11775,13 +11823,7 @@ When building a custom infinite editor view you can use the same components as a
                     syncContent();
                 });
                 args.editor.on('Dirty', function (e) {
-                    syncContent();
-                    // Set model.value to the RTE's content
-                    //make the form dirty manually so that the track changes works, setting our model doesn't trigger
-                    // the angular bits because tinymce replaces the textarea.
-                    if (args.currentForm) {
-                        args.currentForm.$setDirty();
-                    }
+                    syncContent();    // Set model.value to the RTE's content
                 });
                 var self = this;
                 //create link picker
@@ -15005,10 +15047,9 @@ When building a custom infinite editor view you can use the same components as a
         /**
    * Facade to angular.extend
    * Use this with Angular objects, for vanilla JS objects, use Object.assign()
+   * This is an alias as it to allow passing an unknown number of arguments
    */
-        var extend = function extend(dst, src) {
-            return angular.extend(dst, src);
-        };
+        var extend = angular.extend;
         /**
    * Equivalent to angular.isFunction
    */

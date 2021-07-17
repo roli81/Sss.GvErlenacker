@@ -15,10 +15,7 @@ namespace Sss.GvErlenacker.Models.PageModels
 {
     public class NewsPage : BasePage
     {
-       
-
         public string PageContent => Content.Value<string>("content");
-
         public bool ShowOnStartPage => Content.Value<bool>("showOnStartPage");
         public IEnumerable<Image> Images { get; set; }
         public IEnumerable<Document> Documents { get; set; }

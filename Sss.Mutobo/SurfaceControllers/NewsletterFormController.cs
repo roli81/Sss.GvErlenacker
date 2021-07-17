@@ -25,12 +25,17 @@ namespace Sss.Mutobo.SurfaceControllers
             if (!ModelState.IsValid)
                 return CurrentUmbracoPage();
 
+
       
             if (!string.IsNullOrEmpty(model.FuSb))
                 return new EmptyResult();
 
+            if (!_newsLetterService.IsAlreadyRegistered(model.EMail))
+                _newsLetterService.Subscribe(model);
+            else
+                return RedirectToCurrentUmbracoPage("view=registered");
 
-            return RedirectToCurrentUmbracoPage();
+            return RedirectToCurrentUmbracoPage("view=success");
         }
     }
 }
