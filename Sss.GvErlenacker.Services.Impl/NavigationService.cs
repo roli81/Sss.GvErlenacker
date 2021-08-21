@@ -103,10 +103,12 @@ namespace Sss.GvErlenacker.Services.Impl
                         Href = c.Url(),
 
                     },
+                    Content = c,
                     Children = c.Children.Where(cld => cld.ContentType.CompositionAliases.Contains("basePage"))
                         .Select(cld => new NavItem()
                         {
-                            HideFromNavigation = cld.Value<bool>("hideFromNavi"),
+                            HideFromNavigation = cld.Value<bool>("hideFromNavi"),                                                                                                    
+                            Content = cld,
                             Link = new Link()
                             {
                                 Text = cld.Name,

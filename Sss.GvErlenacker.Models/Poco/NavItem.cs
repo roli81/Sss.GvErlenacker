@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.AccessControl;
 using System.Text;
 using System.Threading.Tasks;
+using Umbraco.Core.Models.PublishedContent;
 
 namespace Sss.GvErlenacker.Models.Poco
 {
@@ -13,5 +14,7 @@ namespace Sss.GvErlenacker.Models.Poco
         public bool Clickable { get; set; }
         public Link Link { get; set; }
         public IEnumerable<NavItem> Children { get; set; }
+        public IPublishedContent Content { get; set; }
+
     }
 }

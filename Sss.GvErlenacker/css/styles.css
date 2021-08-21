@@ -1051,3 +1051,14 @@ a.gvea-toggler, a.gvea-toggler:link, a.gvea-toggler:hover {
 .fusp {
     visibility: hidden;
 }
+
+
+
+div.content-panel img {
+    max-width: 280px;
+    height: auto;
+}
+
+.navbar {
+    padding: 0;
+}

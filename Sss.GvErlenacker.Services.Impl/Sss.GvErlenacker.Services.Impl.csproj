@@ -45,8 +45,12 @@
     <Reference Include="CSharpTest.Net.Collections, Version=14.906.1403.1082, Culture=neutral, PublicKeyToken=06aee00cce822474, processorArchitecture=MSIL">
       <HintPath>..\packages\CSharpTest.Net.Collections.14.906.1403.1082\lib\net40\CSharpTest.Net.Collections.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
     <Reference Include="Examine, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Examine.1.2.0\lib\net452\Examine.dll</HintPath>
+    </Reference>
+    <Reference Include="Hangfire.Core, Version=1.7.24.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Hangfire.Core.1.7.24\lib\net46\Hangfire.Core.dll</HintPath>
     </Reference>
     <Reference Include="HtmlAgilityPack, Version=1.8.14.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
       <HintPath>..\packages\HtmlAgilityPack.1.8.14\lib\Net45\HtmlAgilityPack.dll</HintPath>
@@ -316,6 +320,7 @@
     <Compile Include="MemberService.cs" />
     <Compile Include="MemberBoardService.cs" />
     <Compile Include="NavigationService.cs" />
+    <Compile Include="NewsletterService.cs" />
     <Compile Include="NewsService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SearchService.cs" />
@@ -325,6 +330,10 @@
     <Compile Include="XmlSitemapService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Sss.GvErlenacker.DomainLayer\Sss.GvErlenacker.DomainLayer.csproj">
+      <Project>{3A7FEEB9-8028-4365-8BE0-EB72F0E0681D}</Project>
+      <Name>Sss.GvErlenacker.DomainLayer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Sss.GvErlenacker.Models\Sss.GvErlenacker.Models.csproj">
       <Project>{4755B53F-D389-4ECE-9585-AD1C1FD60DF7}</Project>
       <Name>Sss.GvErlenacker.Models</Name>

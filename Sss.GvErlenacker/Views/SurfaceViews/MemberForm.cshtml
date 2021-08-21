@@ -12,7 +12,7 @@
 
 
 
-@using (Html.BeginUmbracoForm("Submit", "MemberForm"))
+@using (Html.BeginUmbracoForm("Submit", "MemberForm", null, new {id="memberForm"}))
 {
     <div class="form-group">
         @Html.Label("Bitte wählen  Sie die Art ihrer Gönnerschaft:", new { @class = "label label-primary" })
@@ -95,13 +95,20 @@
 
     <div class="form-group right">
 
-        <button id="submitButton" type="submit"  style="text-align: right">Senden</button>   
+        <button id="submitButton" type="submit"  style="text-align: right" class="g-recaptcha" 
+                data-sitekey="6LcaIaAbAAAAAP0w23N_LWz53efZ2Cfu5MoD-8Zs" 
+                data-callback="onSubmit" 
+                data-action="submit">Senden</button>   
 
 
     </div>
 }
 
-
+<script>
+    function onSubmit(token) {
+        document.getElementById("memberForm").submit();
+    }
+</script>
 
 
 

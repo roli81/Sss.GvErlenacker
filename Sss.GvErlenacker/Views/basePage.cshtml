@@ -78,33 +78,35 @@
             crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script src="https://www.google.com/recaptcha/api.js"></script>
     @Html.RenderCssHere()
     @Html.RenderJsHere()
 </head>
 <body>
-    <div id="fb-root"></div>
-    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/de_DE/sdk.js#xfbml=1&version=v9.0&appId=100539033481224&autoLogAppEvents=1" nonce="h2RCEfZK"></script>
-    <!-- Google Tag Manager (noscript) -->
-    <noscript>
-        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P7MQ7D2"
-                height="0" width="0" style="display: none; visibility: hidden"></iframe>
-    </noscript>
-    <!-- End Google Tag Manager (noscript) -->
-    @Html.Action("Index", "Header")
-    <main>
-        <div class="container-fluid main-content">
+<div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/de_DE/sdk.js#xfbml=1&version=v9.0&appId=100539033481224&autoLogAppEvents=1" nonce="h2RCEfZK"></script>
+<!-- Google Tag Manager (noscript) -->
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-P7MQ7D2"
+            height="0" width="0" style="display: none; visibility: hidden"></iframe>
+</noscript>
+<!-- End Google Tag Manager (noscript) -->
+@Html.Action("Index", "Header")
+<main>
+    <div class="container-fluid main-content">
 
 
-            @RenderBody()
+        @RenderBody()
 
 
-        </div>
-    </main>
-    @Html.Action("Index", "Footer")
-    @Html.Partial("~/Views/SurfaceViews/SearchForm.cshtml", new SearchFormModel())
-    @Html.Action("Index", "CookieBanner")
+    </div>
+</main>
+@Html.Action("Index", "Footer")
+@Html.Partial("~/Views/SurfaceViews/SearchForm.cshtml", new SearchFormModel())
+@Html.Action("Index", "CookieBanner")
 
 
 
 </body>
+
 </html>

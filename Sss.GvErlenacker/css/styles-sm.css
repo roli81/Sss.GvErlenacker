@@ -51,4 +51,10 @@
         max-width: 250px;
        
     }
+
+
+    div.content-panel img {
+        max-width: 500px;
+        height: auto;
+    }
 }

@@ -1,0 +1,280 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<map>
+  <item key="L3VtYnJhY28vbGliL3RpbnltY2UvdGlueW1jZS5taW4uanM7L3VtYnJhY28vbGliL3RpbnltY2UvcGx1Z2lucy9wYXN0ZS9wbHVnaW4ubWluLmpzOy91bWJyYWNvL2xpYi90aW55bWNlL3BsdWdpbnMvYW5jaG9yL3BsdWdpbi5taW4uanM7L3VtYnJhY28vbGliL3RpbnltY2UvcGx1Z2lucy9jaGFybWFwL3BsdWdpbi5taW4uanM7L3VtYnJhY28vbGliL3RpbnltY2UvcGx1Z2lucy90YWJsZS9wbHVnaW4ubWluLmpzOy91bWJyYWNvL2xpYi90aW55bWNlL3BsdWdpbnMvbGlzdHMvcGx1Z2luLm1pbi5qczsvdW1icmFjby9saWIvdGlueW1jZS9wbHVnaW5zL2Fkdmxpc3QvcGx1Z2luLm1pbi5qczsvdW1icmFjby9saWIvdGlueW1jZS9wbHVnaW5zL2hyL3BsdWdpbi5taW4uanM7L3VtYnJhY28vbGliL3RpbnltY2UvcGx1Z2lucy9hdXRvbGluay9wbHVnaW4ubWluLmpzOy91bWJyYWNvL2xpYi90aW55bWNlL3BsdWdpbnMvZGlyZWN0aW9uYWxpdHkvcGx1Z2luLm1pbi5qczsvdW1icmFjby9saWIvdGlueW1jZS9wbHVnaW5zL3RhYmZvY3VzL3BsdWdpbi5taW4uanM7L3VtYnJhY28vbGliL3RpbnltY2UvcGx1Z2lucy9zZWFyY2hyZXBsYWNlL3BsdWdpbi5taW4uanM7L3VtYnJhY28vbGliL3RpbnltY2UvcGx1Z2lucy9mdWxsc2NyZWVuL3BsdWdpbi5taW4uanM7L3VtYnJhY28vbGliL3RpbnltY2UvcGx1Z2lucy9ub25lZGl0YWJsZS9wbHVnaW4ubWluLmpzOw" file="E:\_sss\projects\gv-erlenacker.ch\Sss.GvErlenacker\App_Data\TEMP\ClientDependency\429533163_7e57f18ea8c04bc0832d62c082524026.cdJ" compression="gzip" version="429533163">
+    <files>
+      <file name="/umbraco/lib/tinymce/tinymce.min.js" />
+      <file name="/umbraco/lib/tinymce/plugins/paste/plugin.min.js" />
+      <file name="/umbraco/lib/tinymce/plugins/anchor/plugin.min.js" />
+      <file name="/umbraco/lib/tinymce/plugins/charmap/plugin.min.js" />
+      <file name="/umbraco/lib/tinymce/plugins/table/plugin.min.js" />
+      <file name="/umbraco/lib/tinymce/plugins/lists/plugin.min.js" />
+      <file name="/umbraco/lib/tinymce/plugins/advlist/plugin.min.js" />
+      <file name="/umbraco/lib/tinymce/plugins/hr/plugin.min.js" />
+      <file name="/umbraco/lib/tinymce/plugins/autolink/plugin.min.js" />
+      <file name="/umbraco/lib/tinymce/plugins/directionality/plugin.min.js" />
+      <file name="/umbraco/lib/tinymce/plugins/tabfocus/plugin.min.js" />
+      <file name="/umbraco/lib/tinymce/plugins/searchreplace/plugin.min.js" />
+      <file name="/umbraco/lib/tinymce/plugins/fullscreen/plugin.min.js" />
+      <file name="/umbraco/lib/tinymce/plugins/noneditable/plugin.min.js" />
+    </files>
+  </item>
+  <item key="L2Nzcy9vcGVuLWljb25pYy9mb250L2Nzcy9vcGVuLWljb25pYy1ib290c3RyYXAuY3NzOy9jc3Mvc3R5bGVzLmNzczsvY3NzL3N0eWxlcy1zbS5jc3M7L2Nzcy9zdHlsZXMtbWQuY3NzOy9jc3Mvc3R5bGVzLWxnLmNzczsvY3NzL3N0eWxlcy14bC5jc3M7L0NvbnRlbnQvbWFnbmlmaWMtcG9wdXAuY3NzOw" file="E:\_sss\projects\gv-erlenacker.ch\Sss.GvErlenacker\App_Data\TEMP\ClientDependency\429533163_cc89adfad0d646bab94b1531e3c0a844.cdC" compression="gzip" version="429533163">
+    <files>
+      <file name="/css/open-iconic/font/css/open-iconic-bootstrap.css" />
+      <file name="/css/styles.css" />
+      <file name="/css/styles-sm.css" />
+      <file name="/css/styles-md.css" />
+      <file name="/css/styles-lg.css" />
+      <file name="/css/styles-xl.css" />
+      <file name="/Content/magnific-popup.css" />
+    </files>
+  </item>
+  <item key="L1NjcmlwdHMvanF1ZXJ5Lm1hZ25pZmljLXBvcHVwLm1pbi5qczsvU2NyaXB0cy9ndmVhLXNjcmlwdHMuanM7" file="E:\_sss\projects\gv-erlenacker.ch\Sss.GvErlenacker\App_Data\TEMP\ClientDependency\429533163_4c056b87cf1d48a583fdd1d931a8e46e.cdJ" compression="gzip" version="429533163">
+    <files>
+      <file name="/Scripts/jquery.magnific-popup.min.js" />
+      <file name="/Scripts/gvea-scripts.js" />
+    </files>
+  </item>
+  <item key="L1NjcmlwdHMvZ3ZlYS1mb3JtLmpzOy9TY3JpcHRzL2pxdWVyeS5tYWduaWZpYy1wb3B1cC5taW4uanM7L1NjcmlwdHMvZ3ZlYS1zY3JpcHRzLmpzOw" file="E:\_sss\projects\gv-erlenacker.ch\Sss.GvErlenacker\App_Data\TEMP\ClientDependency\429533163_76200f7aab8b43d89a19ca29dbd4bc9a.cdJ" compression="gzip" version="429533163">
+    <files>
+      <file name="/Scripts/gvea-form.js" />
+      <file name="/Scripts/jquery.magnific-popup.min.js" />
+      <file name="/Scripts/gvea-scripts.js" />
+    </files>
+  </item>
+  <item key="L3VtYnJhY28vYXNzZXRzL2Nzcy91bWJyYWNvLmNzczsvdW1icmFjby9saWIvYm9vdHN0cmFwLXNvY2lhbC9ib290c3RyYXAtc29jaWFsLmNzczsvdW1icmFjby9saWIvZm9udC1hd2Vzb21lL2Nzcy9mb250LWF3ZXNvbWUubWluLmNzczs" file="E:\_sss\projects\gv-erlenacker.ch\Sss.GvErlenacker\App_Data\TEMP\ClientDependency\429533163_90cd8a2c35114f3b9125537f2d4e4da6.cdC" compression="gzip" version="429533163">
+    <files>
+      <file name="/umbraco/assets/css/umbraco.css" />
+      <file name="/umbraco/lib/bootstrap-social/bootstrap-social.css" />
+      <file name="/umbraco/lib/font-awesome/css/font-awesome.min.css" />
+    </files>
+  </item>
+  <item key="L0FwcF9QbHVnaW5zL1NreWJydWQuQW5hbHl0aWNzL1N0eWxlcy9EZWZhdWx0LmNzczsvQXBwX1BsdWdpbnMvdVN5bmM4L3VzeW5jXzg5MS5jc3M7L0FwcF9QbHVnaW5zL3VTeW5jOC91c3luYy5jc3M7" file="E:\_sss\projects\gv-erlenacker.ch\Sss.GvErlenacker\App_Data\TEMP\ClientDependency\429533163_2f4bb13373ce40faa9e4cd13fc21ebdb.cdC" compression="gzip" version="429533163">
+    <files>
+      <file name="/App_Plugins/Skybrud.Analytics/Styles/Default.css" />
+      <file name="/App_Plugins/uSync8/usync_891.css" />
+      <file name="/App_Plugins/uSync8/usync.css" />
+    </files>
+  </item>
+  <item key="L0FwcF9QbHVnaW5zL1NreWJydWQuQW5hbHl0aWNzL1NjcmlwdHMvRGlyZWN0aXZlcy9DaGFydC5qczsvQXBwX1BsdWdpbnMvU2t5YnJ1ZC5BbmFseXRpY3MvU2NyaXB0cy9EaXJlY3RpdmVzL0NsaWVudHMuanM7L0FwcF9QbHVnaW5zL1NreWJydWQuQW5hbHl0aWNzL1NjcmlwdHMvRGlyZWN0aXZlcy9Vc2Vycy5qczsvQXBwX1BsdWdpbnMvU2t5YnJ1ZC5BbmFseXRpY3MvU2NyaXB0cy9EaXJlY3RpdmVzL1BpZS5qczsvQXBwX1BsdWdpbnMvU2t5YnJ1ZC5BbmFseXRpY3MvU2NyaXB0cy9Db250cm9sbGVycy9Db250ZW50QXBwLmpzOy9BcHBfUGx1Z2lucy9Ta3licnVkLkFuYWx5dGljcy9TY3JpcHRzL0NvbnRyb2xsZXJzL0hpc3RvcnkuanM7L0FwcF9QbHVnaW5zL1NreWJydWQuQW5hbHl0aWNzL1NjcmlwdHMvQ29udHJvbGxlcnMvT3ZlcnZpZXcuanM7L0FwcF9QbHVnaW5zL1NreWJydWQuQW5hbHl0aWNzL1NjcmlwdHMvQ29udHJvbGxlcnMvT3ZlcmxheXMvT0F1dGguanM7L0FwcF9QbHVnaW5zL1NreWJydWQuQW5hbHl0aWNzL1NjcmlwdHMvQ29udHJvbGxlcnMvT3ZlcmxheXMvUHJvZmlsZS5qczsvQXBwX1BsdWdpbnMvU2t5YnJ1ZC5BbmFseXRpY3MvU2NyaXB0cy9Db250cm9sbGVycy9PdmVybGF5cy9Qcm9wZXJ0aWVzLmpzOy9BcHBfUGx1Z2lucy9Ta3licnVkLkFuYWx5dGljcy9TY3JpcHRzL0NvbnRyb2xsZXJzL1Byb3BlcnR5RWRpdG9ycy9Qcm9maWxlLmpzOy9BcHBfUGx1Z2lucy9Ta3licnVkLkFuYWx5dGljcy9TY3JpcHRzL0FwcC5qczsvQXBwX1BsdWdpbnMvdVN5bmM4L3VzeW5jXzg5MS5qczsvQXBwX1BsdWdpbnMvdVN5bmM4L3VTeW5jU2VydmljZS5qczsvQXBwX1BsdWdpbnMvdVN5bmM4L3VTeW5jSHViLmpzOy9BcHBfUGx1Z2lucy91U3luYzgvYmFja29mZmljZS91U3luYzgvdVN5bmNEYXNoYm9hcmRDb250cm9sbGVyLmpzOy9BcHBfUGx1Z2lucy91U3luYzgvc2V0dGluZ3Mvc2V0dGluZ3NDb250cm9sbGVyLmpzOy9BcHBfUGx1Z2lucy91U3luYzgvc2V0dGluZ3MvZXhwYW5zaW9uQ29udHJvbGxlci5qczsvQXBwX1BsdWdpbnMvdVN5bmM4L3NldHRpbmdzL3VTeW5jQ29udHJvbGxlci5qczsvQXBwX1BsdWdpbnMvdVN5bmM4L2NoYW5nZURpYWxvZ0NvbnRyb2xsZXIuanM7L0FwcF9QbHVnaW5zL3VTeW5jOC9jb21wb25lbnRzL3VTeW5jUmVwb3J0Vmlld0NvbXBvbmVudC5qczsvQXBwX1BsdWdpbnMvdVN5bmM4L2NvbXBvbmVudHMvdVN5bmNQcm9ncmVzc1ZpZXdDb21wb25lbnQuanM7L0FwcF9QbHVnaW5zL3VTeW5jSGlzdG9yeS9zeW5jSGlzdG9yeVNlcnZpY2UuanM7L0FwcF9QbHVnaW5zL3VTeW5jSGlzdG9yeS9zeW5jSGlzdG9yeUNvbnRyb2xsZXIuanM7L0FwcF9QbHVnaW5zL3VTeW5jSGlzdG9yeS9zeW5jSGlzdG9yeURpYWxvZ0NvbnRyb2xsZXIuanM7" file="E:\_sss\projects\gv-erlenacker.ch\Sss.GvErlenacker\App_Data\TEMP\ClientDependency\429533163_11bfde52e2e541a9b1f6c69175d92f76.cdJ" compression="gzip" version="429533163">
+    <files>
+      <file name="/App_Plugins/Skybrud.Analytics/Scripts/Directives/Chart.js" />
+      <file name="/App_Plugins/Skybrud.Analytics/Scripts/Directives/Clients.js" />
+      <file name="/App_Plugins/Skybrud.Analytics/Scripts/Directives/Users.js" />
+      <file name="/App_Plugins/Skybrud.Analytics/Scripts/Directives/Pie.js" />
+      <file name="/App_Plugins/Skybrud.Analytics/Scripts/Controllers/ContentApp.js" />
+      <file name="/App_Plugins/Skybrud.Analytics/Scripts/Controllers/History.js" />
+      <file name="/App_Plugins/Skybrud.Analytics/Scripts/Controllers/Overview.js" />
+      <file name="/App_Plugins/Skybrud.Analytics/Scripts/Controllers/Overlays/OAuth.js" />
+      <file name="/App_Plugins/Skybrud.Analytics/Scripts/Controllers/Overlays/Profile.js" />
+      <file name="/App_Plugins/Skybrud.Analytics/Scripts/Controllers/Overlays/Properties.js" />
+      <file name="/App_Plugins/Skybrud.Analytics/Scripts/Controllers/PropertyEditors/Profile.js" />
+      <file name="/App_Plugins/Skybrud.Analytics/Scripts/App.js" />
+      <file name="/App_Plugins/uSync8/usync_891.js" />
+      <file name="/App_Plugins/uSync8/uSyncService.js" />
+      <file name="/App_Plugins/uSync8/uSyncHub.js" />
+      <file name="/App_Plugins/uSync8/backoffice/uSync8/uSyncDashboardController.js" />
+      <file name="/App_Plugins/uSync8/settings/settingsController.js" />
+      <file name="/App_Plugins/uSync8/settings/expansionController.js" />
+      <file name="/App_Plugins/uSync8/settings/uSyncController.js" />
+      <file name="/App_Plugins/uSync8/changeDialogController.js" />
+      <file name="/App_Plugins/uSync8/components/uSyncReportViewComponent.js" />
+      <file name="/App_Plugins/uSync8/components/uSyncProgressViewComponent.js" />
+      <file name="/App_Plugins/uSyncHistory/syncHistoryService.js" />
+      <file name="/App_Plugins/uSyncHistory/syncHistoryController.js" />
+      <file name="/App_Plugins/uSyncHistory/syncHistoryDialogController.js" />
+    </files>
+  </item>
+  <item key="L3VtYnJhY28vbGliL2pxdWVyeS9qcXVlcnkubWluLmpzOy91bWJyYWNvL2xpYi9qcXVlcnktdWkvanF1ZXJ5LXVpLm1pbi5qczsvdW1icmFjby9saWIvanF1ZXJ5LXVpLXRvdWNoLXB1bmNoL2pxdWVyeS51aS50b3VjaC1wdW5jaC5taW4uanM7L3VtYnJhY28vbGliL2FuZ3VsYXIvYW5ndWxhci5qczsvdW1icmFjby9saWIvdW5kZXJzY29yZS91bmRlcnNjb3JlLW1pbi5qczsvdW1icmFjby9saWIvbW9tZW50L21vbWVudC5taW4uanM7L3VtYnJhY28vbGliL2ZsYXRwaWNrci9mbGF0cGlja3IuanM7L3VtYnJhY28vbGliL2FuaW1lanMvYW5pbWUubWluLmpzOy91bWJyYWNvL2xpYi9hbmd1bGFyLXJvdXRlL2FuZ3VsYXItcm91dGUuanM7L3VtYnJhY28vbGliL2FuZ3VsYXItY29va2llcy9hbmd1bGFyLWNvb2tpZXMuanM7L3VtYnJhY28vbGliL2FuZ3VsYXItYXJpYS9hbmd1bGFyLWFyaWEubWluLmpzOy91bWJyYWNvL2xpYi9hbmd1bGFyLXRvdWNoL2FuZ3VsYXItdG91Y2guanM7L3VtYnJhY28vbGliL2FuZ3VsYXItc2FuaXRpemUvYW5ndWxhci1zYW5pdGl6ZS5qczsvdW1icmFjby9saWIvYW5ndWxhci1hbmltYXRlL2FuZ3VsYXItYW5pbWF0ZS5qczsvdW1icmFjby9saWIvYW5ndWxhci1tZXNzYWdlcy9hbmd1bGFyLW1lc3NhZ2VzLmpzOy91bWJyYWNvL2xpYi9hbmd1bGFyLXVpLXNvcnRhYmxlL3NvcnRhYmxlLmpzOy91bWJyYWNvL2xpYi9hbmd1bGFyLWR5bmFtaWMtbG9jYWxlL3RtaER5bmFtaWNMb2NhbGUubWluLmpzOy91bWJyYWNvL2xpYi9uZy1maWxlLXVwbG9hZC9uZy1maWxlLXVwbG9hZC5taW4uanM7L3VtYnJhY28vbGliL2FuZ3VsYXItbG9jYWwtc3RvcmFnZS9hbmd1bGFyLWxvY2FsLXN0b3JhZ2UubWluLmpzOy91bWJyYWNvL2xpYi9jaGFydC5qcy9jaGFydC5taW4uanM7L3VtYnJhY28vbGliL2FuZ3VsYXItY2hhcnQuanMvYW5ndWxhci1jaGFydC5taW4uanM7L3VtYnJhY28vbGliL3dpY2ctaW5lcnQvZGlzdC9pbmVydC5taW4uanM7L3VtYnJhY28vbGliL3VtYnJhY28vRXh0ZW5zaW9ucy5qczsvdW1icmFjby9saWIvdW1icmFjby9OYW1lc3BhY2VNYW5hZ2VyLmpzOy91bWJyYWNvL2xpYi91bWJyYWNvL0xlZ2FjeVNwZWVjaEJ1YmJsZS5qczsvdW1icmFjby9qcy91dGlsaXRpZXMuanM7L3VtYnJhY28vanMvYXBwLmpzOy91bWJyYWNvL2pzL3VtYnJhY28ucmVzb3VyY2VzLmpzOy91bWJyYWNvL2pzL3VtYnJhY28uZGlyZWN0aXZlcy5qczsvdW1icmFjby9qcy91bWJyYWNvLmZpbHRlcnMuanM7L3VtYnJhY28vanMvdW1icmFjby5zZXJ2aWNlcy5qczsvdW1icmFjby9qcy91bWJyYWNvLmludGVyY2VwdG9ycy5qczsvdW1icmFjby9qcy91bWJyYWNvLmNvbnRyb2xsZXJzLmpzOy91bWJyYWNvL2pzL3JvdXRlcy5qczsvdW1icmFjby9qcy9pbml0LmpzOy9BcHBfUGx1Z2lucy9Ta3licnVkLkFuYWx5dGljcy9TY3JpcHRzL1BsdWdpbnMvQ2hhcnQuanM7" file="E:\_sss\projects\gv-erlenacker.ch\Sss.GvErlenacker\App_Data\TEMP\ClientDependency\429533163_df210cc67fb44967a5ed9f69ab56cf0e.cdJ" compression="gzip" version="429533163">
+    <files>
+      <file name="/umbraco/lib/jquery/jquery.min.js" />
+      <file name="/umbraco/lib/jquery-ui/jquery-ui.min.js" />
+      <file name="/umbraco/lib/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js" />
+      <file name="/umbraco/lib/angular/angular.js" />
+      <file name="/umbraco/lib/underscore/underscore-min.js" />
+      <file name="/umbraco/lib/moment/moment.min.js" />
+      <file name="/umbraco/lib/flatpickr/flatpickr.js" />
+      <file name="/umbraco/lib/animejs/anime.min.js" />
+      <file name="/umbraco/lib/angular-route/angular-route.js" />
+      <file name="/umbraco/lib/angular-cookies/angular-cookies.js" />
+      <file name="/umbraco/lib/angular-aria/angular-aria.min.js" />
+      <file name="/umbraco/lib/angular-touch/angular-touch.js" />
+      <file name="/umbraco/lib/angular-sanitize/angular-sanitize.js" />
+      <file name="/umbraco/lib/angular-animate/angular-animate.js" />
+      <file name="/umbraco/lib/angular-messages/angular-messages.js" />
+      <file name="/umbraco/lib/angular-ui-sortable/sortable.js" />
+      <file name="/umbraco/lib/angular-dynamic-locale/tmhDynamicLocale.min.js" />
+      <file name="/umbraco/lib/ng-file-upload/ng-file-upload.min.js" />
+      <file name="/umbraco/lib/angular-local-storage/angular-local-storage.min.js" />
+      <file name="/umbraco/lib/chart.js/chart.min.js" />
+      <file name="/umbraco/lib/angular-chart.js/angular-chart.min.js" />
+      <file name="/umbraco/lib/wicg-inert/dist/inert.min.js" />
+      <file name="/umbraco/lib/umbraco/Extensions.js" />
+      <file name="/umbraco/lib/umbraco/NamespaceManager.js" />
+      <file name="/umbraco/lib/umbraco/LegacySpeechBubble.js" />
+      <file name="/umbraco/js/utilities.js" />
+      <file name="/umbraco/js/app.js" />
+      <file name="/umbraco/js/umbraco.resources.js" />
+      <file name="/umbraco/js/umbraco.directives.js" />
+      <file name="/umbraco/js/umbraco.filters.js" />
+      <file name="/umbraco/js/umbraco.services.js" />
+      <file name="/umbraco/js/umbraco.interceptors.js" />
+      <file name="/umbraco/js/umbraco.controllers.js" />
+      <file name="/umbraco/js/routes.js" />
+      <file name="/umbraco/js/init.js" />
+      <file name="/App_Plugins/Skybrud.Analytics/Scripts/Plugins/Chart.js" />
+    </files>
+  </item>
+  <item key="L2Nzcy9vcGVuLWljb25pYy9mb250L2Nzcy9vcGVuLWljb25pYy1ib290c3RyYXAuY3NzOy9jc3Mvc3R5bGVzLmNzczsvY3NzL3N0eWxlcy1zbS5jc3M7L2Nzcy9zdHlsZXMtbWQuY3NzOy9jc3Mvc3R5bGVzLWxnLmNzczsvY3NzL3N0eWxlcy14bC5jc3M7L0NvbnRlbnQvbWFnbmlmaWMtcG9wdXAuY3NzOw" file="E:\_sss\projects\gv-erlenacker.ch\Sss.GvErlenacker\App_Data\TEMP\ClientDependency\429533166_507f8dc8ab7a4b519ad93b4aef1a08be.cdC" compression="gzip" version="429533166">
+    <files>
+      <file name="/css/open-iconic/font/css/open-iconic-bootstrap.css" />
+      <file name="/css/styles.css" />
+      <file name="/css/styles-sm.css" />
+      <file name="/css/styles-md.css" />
+      <file name="/css/styles-lg.css" />
+      <file name="/css/styles-xl.css" />
+      <file name="/Content/magnific-popup.css" />
+    </files>
+  </item>
+  <item key="L1NjcmlwdHMvanF1ZXJ5Lm1hZ25pZmljLXBvcHVwLm1pbi5qczsvU2NyaXB0cy9ndmVhLXNjcmlwdHMuanM7" file="E:\_sss\projects\gv-erlenacker.ch\Sss.GvErlenacker\App_Data\TEMP\ClientDependency\429533166_0b54e77a5c464425ae8f2550ef0c7864.cdJ" compression="gzip" version="429533166">
+    <files>
+      <file name="/Scripts/jquery.magnific-popup.min.js" />
+      <file name="/Scripts/gvea-scripts.js" />
+    </files>
+  </item>
+  <item key="L2Nzcy9vcGVuLWljb25pYy9mb250L2Nzcy9vcGVuLWljb25pYy1ib290c3RyYXAuY3NzOy9jc3Mvc3R5bGVzLmNzczsvY3NzL3N0eWxlcy1zbS5jc3M7L2Nzcy9zdHlsZXMtbWQuY3NzOy9jc3Mvc3R5bGVzLWxnLmNzczsvY3NzL3N0eWxlcy14bC5jc3M7L0NvbnRlbnQvbWFnbmlmaWMtcG9wdXAuY3NzOw" file="E:\_sss\projects\gv-erlenacker.ch\Sss.GvErlenacker\App_Data\TEMP\ClientDependency\429533167_f4c997d5cf33412f9ecee9c315262fd7.cdC" compression="gzip" version="429533167">
+    <files>
+      <file name="/css/open-iconic/font/css/open-iconic-bootstrap.css" />
+      <file name="/css/styles.css" />
+      <file name="/css/styles-sm.css" />
+      <file name="/css/styles-md.css" />
+      <file name="/css/styles-lg.css" />
+      <file name="/css/styles-xl.css" />
+      <file name="/Content/magnific-popup.css" />
+    </files>
+  </item>
+  <item key="L1NjcmlwdHMvanF1ZXJ5Lm1hZ25pZmljLXBvcHVwLm1pbi5qczsvU2NyaXB0cy9ndmVhLXNjcmlwdHMuanM7" file="E:\_sss\projects\gv-erlenacker.ch\Sss.GvErlenacker\App_Data\TEMP\ClientDependency\429533167_6d2c196090bc4700a1ed7b754f6ca75b.cdJ" compression="gzip" version="429533167">
+    <files>
+      <file name="/Scripts/jquery.magnific-popup.min.js" />
+      <file name="/Scripts/gvea-scripts.js" />
+    </files>
+  </item>
+  <item key="L1NjcmlwdHMvanF1ZXJ5Lm1hZ25pZmljLXBvcHVwLm1pbi5qczsvU2NyaXB0cy9ndmVhLXNjcmlwdHMuanM7" file="E:\_sss\projects\gv-erlenacker.ch\Sss.GvErlenacker\App_Data\TEMP\ClientDependency\429533199_9744ba720d034f969ba71381d43d7438.cdJ" compression="gzip" version="429533199">
+    <files>
+      <file name="/Scripts/jquery.magnific-popup.min.js" />
+      <file name="/Scripts/gvea-scripts.js" />
+    </files>
+  </item>
+  <item key="L2Nzcy9vcGVuLWljb25pYy9mb250L2Nzcy9vcGVuLWljb25pYy1ib290c3RyYXAuY3NzOy9jc3Mvc3R5bGVzLmNzczsvY3NzL3N0eWxlcy1zbS5jc3M7L2Nzcy9zdHlsZXMtbWQuY3NzOy9jc3Mvc3R5bGVzLWxnLmNzczsvY3NzL3N0eWxlcy14bC5jc3M7L0NvbnRlbnQvbWFnbmlmaWMtcG9wdXAuY3NzOw" file="E:\_sss\projects\gv-erlenacker.ch\Sss.GvErlenacker\App_Data\TEMP\ClientDependency\429533199_07cca8303348481b8ab325b859cc19ad.cdC" compression="gzip" version="429533199">
+    <files>
+      <file name="/css/open-iconic/font/css/open-iconic-bootstrap.css" />
+      <file name="/css/styles.css" />
+      <file name="/css/styles-sm.css" />
+      <file name="/css/styles-md.css" />
+      <file name="/css/styles-lg.css" />
+      <file name="/css/styles-xl.css" />
+      <file name="/Content/magnific-popup.css" />
+    </files>
+  </item>
+  <item key="L3VtYnJhY28vYXNzZXRzL2Nzcy91bWJyYWNvLmNzczsvdW1icmFjby9saWIvYm9vdHN0cmFwLXNvY2lhbC9ib290c3RyYXAtc29jaWFsLmNzczsvdW1icmFjby9saWIvZm9udC1hd2Vzb21lL2Nzcy9mb250LWF3ZXNvbWUubWluLmNzczs" file="E:\_sss\projects\gv-erlenacker.ch\Sss.GvErlenacker\App_Data\TEMP\ClientDependency\429533199_084c5154fc07412aa8b2d14aae439a12.cdC" compression="gzip" version="429533199">
+    <files>
+      <file name="/umbraco/assets/css/umbraco.css" />
+      <file name="/umbraco/lib/bootstrap-social/bootstrap-social.css" />
+      <file name="/umbraco/lib/font-awesome/css/font-awesome.min.css" />
+    </files>
+  </item>
+  <item key="L0FwcF9QbHVnaW5zL1NreWJydWQuQW5hbHl0aWNzL1N0eWxlcy9EZWZhdWx0LmNzczsvQXBwX1BsdWdpbnMvdVN5bmM4L3VzeW5jXzg5MS5jc3M7L0FwcF9QbHVnaW5zL3VTeW5jOC91c3luYy5jc3M7" file="E:\_sss\projects\gv-erlenacker.ch\Sss.GvErlenacker\App_Data\TEMP\ClientDependency\429533199_976a498dfca248f5bc3ca6435e629d65.cdC" compression="gzip" version="429533199">
+    <files>
+      <file name="/App_Plugins/Skybrud.Analytics/Styles/Default.css" />
+      <file name="/App_Plugins/uSync8/usync_891.css" />
+      <file name="/App_Plugins/uSync8/usync.css" />
+    </files>
+  </item>
+  <item key="L0FwcF9QbHVnaW5zL1NreWJydWQuQW5hbHl0aWNzL1NjcmlwdHMvRGlyZWN0aXZlcy9DaGFydC5qczsvQXBwX1BsdWdpbnMvU2t5YnJ1ZC5BbmFseXRpY3MvU2NyaXB0cy9EaXJlY3RpdmVzL0NsaWVudHMuanM7L0FwcF9QbHVnaW5zL1NreWJydWQuQW5hbHl0aWNzL1NjcmlwdHMvRGlyZWN0aXZlcy9Vc2Vycy5qczsvQXBwX1BsdWdpbnMvU2t5YnJ1ZC5BbmFseXRpY3MvU2NyaXB0cy9EaXJlY3RpdmVzL1BpZS5qczsvQXBwX1BsdWdpbnMvU2t5YnJ1ZC5BbmFseXRpY3MvU2NyaXB0cy9Db250cm9sbGVycy9Db250ZW50QXBwLmpzOy9BcHBfUGx1Z2lucy9Ta3licnVkLkFuYWx5dGljcy9TY3JpcHRzL0NvbnRyb2xsZXJzL0hpc3RvcnkuanM7L0FwcF9QbHVnaW5zL1NreWJydWQuQW5hbHl0aWNzL1NjcmlwdHMvQ29udHJvbGxlcnMvT3ZlcnZpZXcuanM7L0FwcF9QbHVnaW5zL1NreWJydWQuQW5hbHl0aWNzL1NjcmlwdHMvQ29udHJvbGxlcnMvT3ZlcmxheXMvT0F1dGguanM7L0FwcF9QbHVnaW5zL1NreWJydWQuQW5hbHl0aWNzL1NjcmlwdHMvQ29udHJvbGxlcnMvT3ZlcmxheXMvUHJvZmlsZS5qczsvQXBwX1BsdWdpbnMvU2t5YnJ1ZC5BbmFseXRpY3MvU2NyaXB0cy9Db250cm9sbGVycy9PdmVybGF5cy9Qcm9wZXJ0aWVzLmpzOy9BcHBfUGx1Z2lucy9Ta3licnVkLkFuYWx5dGljcy9TY3JpcHRzL0NvbnRyb2xsZXJzL1Byb3BlcnR5RWRpdG9ycy9Qcm9maWxlLmpzOy9BcHBfUGx1Z2lucy9Ta3licnVkLkFuYWx5dGljcy9TY3JpcHRzL0FwcC5qczsvQXBwX1BsdWdpbnMvdVN5bmM4L3VzeW5jXzg5MS5qczsvQXBwX1BsdWdpbnMvdVN5bmM4L3VTeW5jU2VydmljZS5qczsvQXBwX1BsdWdpbnMvdVN5bmM4L3VTeW5jSHViLmpzOy9BcHBfUGx1Z2lucy91U3luYzgvYmFja29mZmljZS91U3luYzgvdVN5bmNEYXNoYm9hcmRDb250cm9sbGVyLmpzOy9BcHBfUGx1Z2lucy91U3luYzgvc2V0dGluZ3Mvc2V0dGluZ3NDb250cm9sbGVyLmpzOy9BcHBfUGx1Z2lucy91U3luYzgvc2V0dGluZ3MvZXhwYW5zaW9uQ29udHJvbGxlci5qczsvQXBwX1BsdWdpbnMvdVN5bmM4L3NldHRpbmdzL3VTeW5jQ29udHJvbGxlci5qczsvQXBwX1BsdWdpbnMvdVN5bmM4L2NoYW5nZURpYWxvZ0NvbnRyb2xsZXIuanM7L0FwcF9QbHVnaW5zL3VTeW5jOC9jb21wb25lbnRzL3VTeW5jUmVwb3J0Vmlld0NvbXBvbmVudC5qczsvQXBwX1BsdWdpbnMvdVN5bmM4L2NvbXBvbmVudHMvdVN5bmNQcm9ncmVzc1ZpZXdDb21wb25lbnQuanM7L0FwcF9QbHVnaW5zL3VTeW5jSGlzdG9yeS9zeW5jSGlzdG9yeVNlcnZpY2UuanM7L0FwcF9QbHVnaW5zL3VTeW5jSGlzdG9yeS9zeW5jSGlzdG9yeUNvbnRyb2xsZXIuanM7L0FwcF9QbHVnaW5zL3VTeW5jSGlzdG9yeS9zeW5jSGlzdG9yeURpYWxvZ0NvbnRyb2xsZXIuanM7" file="E:\_sss\projects\gv-erlenacker.ch\Sss.GvErlenacker\App_Data\TEMP\ClientDependency\429533199_c743c5b09107470fb8a966a8e4154592.cdJ" compression="gzip" version="429533199">
+    <files>
+      <file name="/App_Plugins/Skybrud.Analytics/Scripts/Directives/Chart.js" />
+      <file name="/App_Plugins/Skybrud.Analytics/Scripts/Directives/Clients.js" />
+      <file name="/App_Plugins/Skybrud.Analytics/Scripts/Directives/Users.js" />
+      <file name="/App_Plugins/Skybrud.Analytics/Scripts/Directives/Pie.js" />
+      <file name="/App_Plugins/Skybrud.Analytics/Scripts/Controllers/ContentApp.js" />
+      <file name="/App_Plugins/Skybrud.Analytics/Scripts/Controllers/History.js" />
+      <file name="/App_Plugins/Skybrud.Analytics/Scripts/Controllers/Overview.js" />
+      <file name="/App_Plugins/Skybrud.Analytics/Scripts/Controllers/Overlays/OAuth.js" />
+      <file name="/App_Plugins/Skybrud.Analytics/Scripts/Controllers/Overlays/Profile.js" />
+      <file name="/App_Plugins/Skybrud.Analytics/Scripts/Controllers/Overlays/Properties.js" />
+      <file name="/App_Plugins/Skybrud.Analytics/Scripts/Controllers/PropertyEditors/Profile.js" />
+      <file name="/App_Plugins/Skybrud.Analytics/Scripts/App.js" />
+      <file name="/App_Plugins/uSync8/usync_891.js" />
+      <file name="/App_Plugins/uSync8/uSyncService.js" />
+      <file name="/App_Plugins/uSync8/uSyncHub.js" />
+      <file name="/App_Plugins/uSync8/backoffice/uSync8/uSyncDashboardController.js" />
+      <file name="/App_Plugins/uSync8/settings/settingsController.js" />
+      <file name="/App_Plugins/uSync8/settings/expansionController.js" />
+      <file name="/App_Plugins/uSync8/settings/uSyncController.js" />
+      <file name="/App_Plugins/uSync8/changeDialogController.js" />
+      <file name="/App_Plugins/uSync8/components/uSyncReportViewComponent.js" />
+      <file name="/App_Plugins/uSync8/components/uSyncProgressViewComponent.js" />
+      <file name="/App_Plugins/uSyncHistory/syncHistoryService.js" />
+      <file name="/App_Plugins/uSyncHistory/syncHistoryController.js" />
+      <file name="/App_Plugins/uSyncHistory/syncHistoryDialogController.js" />
+    </files>
+  </item>
+  <item key="L3VtYnJhY28vbGliL2pxdWVyeS9qcXVlcnkubWluLmpzOy91bWJyYWNvL2xpYi9qcXVlcnktdWkvanF1ZXJ5LXVpLm1pbi5qczsvdW1icmFjby9saWIvanF1ZXJ5LXVpLXRvdWNoLXB1bmNoL2pxdWVyeS51aS50b3VjaC1wdW5jaC5taW4uanM7L3VtYnJhY28vbGliL2FuZ3VsYXIvYW5ndWxhci5qczsvdW1icmFjby9saWIvdW5kZXJzY29yZS91bmRlcnNjb3JlLW1pbi5qczsvdW1icmFjby9saWIvbW9tZW50L21vbWVudC5taW4uanM7L3VtYnJhY28vbGliL2ZsYXRwaWNrci9mbGF0cGlja3IuanM7L3VtYnJhY28vbGliL2FuaW1lanMvYW5pbWUubWluLmpzOy91bWJyYWNvL2xpYi9hbmd1bGFyLXJvdXRlL2FuZ3VsYXItcm91dGUuanM7L3VtYnJhY28vbGliL2FuZ3VsYXItY29va2llcy9hbmd1bGFyLWNvb2tpZXMuanM7L3VtYnJhY28vbGliL2FuZ3VsYXItYXJpYS9hbmd1bGFyLWFyaWEubWluLmpzOy91bWJyYWNvL2xpYi9hbmd1bGFyLXRvdWNoL2FuZ3VsYXItdG91Y2guanM7L3VtYnJhY28vbGliL2FuZ3VsYXItc2FuaXRpemUvYW5ndWxhci1zYW5pdGl6ZS5qczsvdW1icmFjby9saWIvYW5ndWxhci1hbmltYXRlL2FuZ3VsYXItYW5pbWF0ZS5qczsvdW1icmFjby9saWIvYW5ndWxhci1tZXNzYWdlcy9hbmd1bGFyLW1lc3NhZ2VzLmpzOy91bWJyYWNvL2xpYi9hbmd1bGFyLXVpLXNvcnRhYmxlL3NvcnRhYmxlLmpzOy91bWJyYWNvL2xpYi9hbmd1bGFyLWR5bmFtaWMtbG9jYWxlL3RtaER5bmFtaWNMb2NhbGUubWluLmpzOy91bWJyYWNvL2xpYi9uZy1maWxlLXVwbG9hZC9uZy1maWxlLXVwbG9hZC5taW4uanM7L3VtYnJhY28vbGliL2FuZ3VsYXItbG9jYWwtc3RvcmFnZS9hbmd1bGFyLWxvY2FsLXN0b3JhZ2UubWluLmpzOy91bWJyYWNvL2xpYi9jaGFydC5qcy9jaGFydC5taW4uanM7L3VtYnJhY28vbGliL2FuZ3VsYXItY2hhcnQuanMvYW5ndWxhci1jaGFydC5taW4uanM7L3VtYnJhY28vbGliL3dpY2ctaW5lcnQvZGlzdC9pbmVydC5taW4uanM7L3VtYnJhY28vbGliL3VtYnJhY28vRXh0ZW5zaW9ucy5qczsvdW1icmFjby9saWIvdW1icmFjby9OYW1lc3BhY2VNYW5hZ2VyLmpzOy91bWJyYWNvL2xpYi91bWJyYWNvL0xlZ2FjeVNwZWVjaEJ1YmJsZS5qczsvdW1icmFjby9qcy91dGlsaXRpZXMuanM7L3VtYnJhY28vanMvYXBwLmpzOy91bWJyYWNvL2pzL3VtYnJhY28ucmVzb3VyY2VzLmpzOy91bWJyYWNvL2pzL3VtYnJhY28uZGlyZWN0aXZlcy5qczsvdW1icmFjby9qcy91bWJyYWNvLmZpbHRlcnMuanM7L3VtYnJhY28vanMvdW1icmFjby5zZXJ2aWNlcy5qczsvdW1icmFjby9qcy91bWJyYWNvLmludGVyY2VwdG9ycy5qczsvdW1icmFjby9qcy91bWJyYWNvLmNvbnRyb2xsZXJzLmpzOy91bWJyYWNvL2pzL3JvdXRlcy5qczsvdW1icmFjby9qcy9pbml0LmpzOy9BcHBfUGx1Z2lucy9Ta3licnVkLkFuYWx5dGljcy9TY3JpcHRzL1BsdWdpbnMvQ2hhcnQuanM7" file="E:\_sss\projects\gv-erlenacker.ch\Sss.GvErlenacker\App_Data\TEMP\ClientDependency\429533199_b6ebd80eadd64e45b6c7f94757e664f7.cdJ" compression="gzip" version="429533199">
+    <files>
+      <file name="/umbraco/lib/jquery/jquery.min.js" />
+      <file name="/umbraco/lib/jquery-ui/jquery-ui.min.js" />
+      <file name="/umbraco/lib/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js" />
+      <file name="/umbraco/lib/angular/angular.js" />
+      <file name="/umbraco/lib/underscore/underscore-min.js" />
+      <file name="/umbraco/lib/moment/moment.min.js" />
+      <file name="/umbraco/lib/flatpickr/flatpickr.js" />
+      <file name="/umbraco/lib/animejs/anime.min.js" />
+      <file name="/umbraco/lib/angular-route/angular-route.js" />
+      <file name="/umbraco/lib/angular-cookies/angular-cookies.js" />
+      <file name="/umbraco/lib/angular-aria/angular-aria.min.js" />
+      <file name="/umbraco/lib/angular-touch/angular-touch.js" />
+      <file name="/umbraco/lib/angular-sanitize/angular-sanitize.js" />
+      <file name="/umbraco/lib/angular-animate/angular-animate.js" />
+      <file name="/umbraco/lib/angular-messages/angular-messages.js" />
+      <file name="/umbraco/lib/angular-ui-sortable/sortable.js" />
+      <file name="/umbraco/lib/angular-dynamic-locale/tmhDynamicLocale.min.js" />
+      <file name="/umbraco/lib/ng-file-upload/ng-file-upload.min.js" />
+      <file name="/umbraco/lib/angular-local-storage/angular-local-storage.min.js" />
+      <file name="/umbraco/lib/chart.js/chart.min.js" />
+      <file name="/umbraco/lib/angular-chart.js/angular-chart.min.js" />
+      <file name="/umbraco/lib/wicg-inert/dist/inert.min.js" />
+      <file name="/umbraco/lib/umbraco/Extensions.js" />
+      <file name="/umbraco/lib/umbraco/NamespaceManager.js" />
+      <file name="/umbraco/lib/umbraco/LegacySpeechBubble.js" />
+      <file name="/umbraco/js/utilities.js" />
+      <file name="/umbraco/js/app.js" />
+      <file name="/umbraco/js/umbraco.resources.js" />
+      <file name="/umbraco/js/umbraco.directives.js" />
+      <file name="/umbraco/js/umbraco.filters.js" />
+      <file name="/umbraco/js/umbraco.services.js" />
+      <file name="/umbraco/js/umbraco.interceptors.js" />
+      <file name="/umbraco/js/umbraco.controllers.js" />
+      <file name="/umbraco/js/routes.js" />
+      <file name="/umbraco/js/init.js" />
+      <file name="/App_Plugins/Skybrud.Analytics/Scripts/Plugins/Chart.js" />
+    </files>
+  </item>
+  <item key="L3VtYnJhY28vbGliL3RpbnltY2UvdGlueW1jZS5taW4uanM7L3VtYnJhY28vbGliL3RpbnltY2UvcGx1Z2lucy9wYXN0ZS9wbHVnaW4ubWluLmpzOy91bWJyYWNvL2xpYi90aW55bWNlL3BsdWdpbnMvYW5jaG9yL3BsdWdpbi5taW4uanM7L3VtYnJhY28vbGliL3RpbnltY2UvcGx1Z2lucy9jaGFybWFwL3BsdWdpbi5taW4uanM7L3VtYnJhY28vbGliL3RpbnltY2UvcGx1Z2lucy90YWJsZS9wbHVnaW4ubWluLmpzOy91bWJyYWNvL2xpYi90aW55bWNlL3BsdWdpbnMvbGlzdHMvcGx1Z2luLm1pbi5qczsvdW1icmFjby9saWIvdGlueW1jZS9wbHVnaW5zL2Fkdmxpc3QvcGx1Z2luLm1pbi5qczsvdW1icmFjby9saWIvdGlueW1jZS9wbHVnaW5zL2hyL3BsdWdpbi5taW4uanM7L3VtYnJhY28vbGliL3RpbnltY2UvcGx1Z2lucy9hdXRvbGluay9wbHVnaW4ubWluLmpzOy91bWJyYWNvL2xpYi90aW55bWNlL3BsdWdpbnMvZGlyZWN0aW9uYWxpdHkvcGx1Z2luLm1pbi5qczsvdW1icmFjby9saWIvdGlueW1jZS9wbHVnaW5zL3RhYmZvY3VzL3BsdWdpbi5taW4uanM7L3VtYnJhY28vbGliL3RpbnltY2UvcGx1Z2lucy9zZWFyY2hyZXBsYWNlL3BsdWdpbi5taW4uanM7L3VtYnJhY28vbGliL3RpbnltY2UvcGx1Z2lucy9mdWxsc2NyZWVuL3BsdWdpbi5taW4uanM7L3VtYnJhY28vbGliL3RpbnltY2UvcGx1Z2lucy9ub25lZGl0YWJsZS9wbHVnaW4ubWluLmpzOw" file="E:\_sss\projects\gv-erlenacker.ch\Sss.GvErlenacker\App_Data\TEMP\ClientDependency\429533199_15d6db1a47604beb9a83089132495c05.cdJ" compression="gzip" version="429533199">
+    <files>
+      <file name="/umbraco/lib/tinymce/tinymce.min.js" />
+      <file name="/umbraco/lib/tinymce/plugins/paste/plugin.min.js" />
+      <file name="/umbraco/lib/tinymce/plugins/anchor/plugin.min.js" />
+      <file name="/umbraco/lib/tinymce/plugins/charmap/plugin.min.js" />
+      <file name="/umbraco/lib/tinymce/plugins/table/plugin.min.js" />
+      <file name="/umbraco/lib/tinymce/plugins/lists/plugin.min.js" />
+      <file name="/umbraco/lib/tinymce/plugins/advlist/plugin.min.js" />
+      <file name="/umbraco/lib/tinymce/plugins/hr/plugin.min.js" />
+      <file name="/umbraco/lib/tinymce/plugins/autolink/plugin.min.js" />
+      <file name="/umbraco/lib/tinymce/plugins/directionality/plugin.min.js" />
+      <file name="/umbraco/lib/tinymce/plugins/tabfocus/plugin.min.js" />
+      <file name="/umbraco/lib/tinymce/plugins/searchreplace/plugin.min.js" />
+      <file name="/umbraco/lib/tinymce/plugins/fullscreen/plugin.min.js" />
+      <file name="/umbraco/lib/tinymce/plugins/noneditable/plugin.min.js" />
+    </files>
+  </item>
+</map>

@@ -88,7 +88,7 @@ namespace Sss.GvErlenacker.Services.Impl
             var result = new NewsPage(content)
             {
                 EmotionImage = content.HasProperty("emotionImage") && content.HasValue("emotionImage")
-                    ? _imageService.GetImage(content.Value<IPublishedContent>("emotionImage"))
+                    ? _imageService.GetImage(content.Value<IPublishedContent>("emotionImage"), 1600, 300)
                     : null,
                 Images = content.HasProperty("images") && content.HasValue("images")
                     ? _imageService.GetImages(content.Value<IEnumerable<IPublishedContent>>("images"))

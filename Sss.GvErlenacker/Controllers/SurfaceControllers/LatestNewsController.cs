@@ -22,7 +22,7 @@ namespace Sss.GvErlenacker.Controllers.SurfaceControllers
         // GET: LatestNews
         public ActionResult Index()
         {
-            return View("~/Views/Partials/LatestNews.cshtml", _newsService.GetLatestNews(3));
+            return View("~/Views/Partials/LatestNews.cshtml", _newsService.GetLatestNews(6));
         }
     }
 }

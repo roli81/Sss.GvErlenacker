@@ -13,6 +13,7 @@ namespace Sss.GvErlenacker.Controllers.Pages
     {
         private readonly IHomePageService _homePageService;
         private readonly INavigationService _navigationService;
+   
 
 
 
@@ -20,12 +21,14 @@ namespace Sss.GvErlenacker.Controllers.Pages
         public HomePageController(IHomePageService homePageService, INavigationService navigationService)
         {
             _navigationService = navigationService;
+
             _homePageService = homePageService;
         }
 
         // GET: HomePage
         public ActionResult Index(ContentModel model)
         {
+   
             return base.Index(_homePageService.GetHomePage(model.Content));
         }
     }

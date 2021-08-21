@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Sss.GvErlenacker.Models.Poco.NavItem>
+﻿@using Sss.GvErlenacker.Models.Poco
+@model IEnumerable<Sss.GvErlenacker.Models.Poco.NavItem>
 
 
 
@@ -38,8 +39,8 @@
             {
                 if (!page.HideFromNavigation)
                 {
-
-                    if (page.Children.Any())
+                    var pageChildren =  page.Content.ContentType.Alias == "blog" ?   page.Children.OrderByDescending(p => p.Content.CreateDate).ToArray() : page.Children.ToArray();
+                    if (pageChildren.Any())
                     {
                         <li class="nav-item dropdown">
                             <div class="gveanav-head">
@@ -54,11 +55,17 @@
                                 </a>
                             </div>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                @foreach (var child in page.Children)
-                                {
-                                    <a class="nav-link dropdown-item" href="@child.Link.Href">@child.Link.Text</a>
+                                
+                    
+                                    @foreach (var child in pageChildren)
+                                    {
+                                        <a class="nav-link dropdown-item" href="@child.Link.Href">@child.Link.Text</a>
 
-                                }
+                                    }
+                     
+                
+
+
 
                             </div>
 

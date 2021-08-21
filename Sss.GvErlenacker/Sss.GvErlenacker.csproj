@@ -67,6 +67,15 @@
     <Reference Include="Examine, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Examine.1.2.0\lib\net452\Examine.dll</HintPath>
     </Reference>
+    <Reference Include="Hangfire.AspNet, Version=0.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Hangfire.AspNet.0.2.0\lib\net45\Hangfire.AspNet.dll</HintPath>
+    </Reference>
+    <Reference Include="Hangfire.Core, Version=1.8.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Hangfire.Core.1.8.0-beta3\lib\net46\Hangfire.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Hangfire.SqlServer, Version=1.8.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Hangfire.SqlServer.1.8.0-beta3\lib\net45\Hangfire.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="HtmlAgilityPack, Version=1.8.14.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
       <HintPath>..\packages\HtmlAgilityPack.1.8.14\lib\Net45\HtmlAgilityPack.dll</HintPath>
     </Reference>
@@ -605,6 +614,7 @@
     <Compile Include="Controllers\SurfaceControllers\LatestNewsController.cs" />
     <Compile Include="Controllers\SurfaceControllers\MemberFormController.cs" />
     <Compile Include="Controllers\SurfaceControllers\NavigationController.cs" />
+    <Compile Include="Controllers\SurfaceControllers\NewsletterFormController.cs" />
     <Compile Include="Controllers\SurfaceControllers\SearchFormController.cs" />
     <Compile Include="Controllers\SurfaceControllers\SeoController.cs" />
     <Compile Include="Controllers\SurfaceControllers\SponsorBoardController.cs" />
@@ -690,6 +700,10 @@
     <Folder Include="Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Sss.GvErlenacker.DomainLayer\Sss.GvErlenacker.DomainLayer.csproj">
+      <Project>{3A7FEEB9-8028-4365-8BE0-EB72F0E0681D}</Project>
+      <Name>Sss.GvErlenacker.DomainLayer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Sss.GvErlenacker.Models\Sss.GvErlenacker.Models.csproj">
       <Project>{4755B53F-D389-4ECE-9585-AD1C1FD60DF7}</Project>
       <Name>Sss.GvErlenacker.Models</Name>
