@@ -1,5 +1,7 @@
 ﻿using System.Web.Mvc;
+using Sss.GvErlenacker.Newsletter.Interfaces;
 using Sss.GvErlenacker.Services;
+using Sss.GvErlenacker.Services.Impl;
 using Sss.Mutobo.Poco;
 using Umbraco.Web.Mvc;
 
@@ -10,17 +12,15 @@ namespace Sss.GvErlenacker.Controllers.SurfaceControllers
     public class NewsletterFormController : SurfaceController
     {
 
-        private readonly INewsLetterService _newsLetterService;
 
-        public NewsletterFormController(INewsLetterService newsLetterService)
-        {
-            _newsLetterService = newsLetterService;
-        }
 
 
         // GET: NewsletterForm
         public ActionResult Index(NewsletterUser model)
         {
+
+            var nlService = (INewsletterRegisterService)DependencyResolver.Current.GetService(typeof(INewsletterRegisterService));
+
 
             if (!ModelState.IsValid)
                 return CurrentUmbracoPage();
@@ -30,8 +30,8 @@ namespace Sss.GvErlenacker.Controllers.SurfaceControllers
             if (!string.IsNullOrEmpty(model.FuSb))
                 return new EmptyResult();
 
-            if (!_newsLetterService.IsAlreadyRegistered(model.EMail))
-                _newsLetterService.Subscribe(model);
+            if (!nlService.IsAlreadyRegistered(model.EMail))
+                nlService.Subscribe(model);
             else
                 return RedirectToCurrentUmbracoPage("view=registered");
 

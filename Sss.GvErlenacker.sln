@@ -15,7 +15,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sss.GvErlenacker.Search", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sss.Mutobo", "Sss.Mutobo\Sss.Mutobo.csproj", "{A8794103-0C44-465E-A822-7D3878AF4D70}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sss.GvErlenacker.DomainLayer", "Sss.GvErlenacker.DomainLayer\Sss.GvErlenacker.DomainLayer.csproj", "{3A7FEEB9-8028-4365-8BE0-EB72F0E0681D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sss.GvErlenacker.Newsletter.DomainLayer", "Sss.GvErlenacker.Newsletter.DomainLayer\Sss.GvErlenacker.Newsletter.DomainLayer.csproj", "{3A7FEEB9-8028-4365-8BE0-EB72F0E0681D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sss.GvErlenacker.Newsletter", "Sss.GvErlenacker.Newsletter\Sss.GvErlenacker.Newsletter.csproj", "{AA5678D2-0178-4195-84C5-CDE6B9669948}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,10 @@ Global
 		{3A7FEEB9-8028-4365-8BE0-EB72F0E0681D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3A7FEEB9-8028-4365-8BE0-EB72F0E0681D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3A7FEEB9-8028-4365-8BE0-EB72F0E0681D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA5678D2-0178-4195-84C5-CDE6B9669948}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA5678D2-0178-4195-84C5-CDE6B9669948}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA5678D2-0178-4195-84C5-CDE6B9669948}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA5678D2-0178-4195-84C5-CDE6B9669948}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

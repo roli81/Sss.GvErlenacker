@@ -40,6 +40,13 @@ namespace Sss.Mutobo.Services
                                 : new List<Image>()
                         });
                         break;
+                    case DocumentTypes.FlyerTeaserModule.Alias:
+                        result.Add(new FlyerTeaserModule(module, "FlyerTeaser")
+                        {
+                            Image = module.HasProperty(DocumentTypes.FlyerTeaserModule.Fields.Image) && module.HasValue(DocumentTypes.FlyerTeaserModule.Fields.Image) ?
+                            _imageService.GetImage(module.Value<IPublishedContent>(DocumentTypes.FlyerTeaserModule.Fields.Image), width: 800) : null
+                        });
+                        break;
                     default:
                         break;
                 }

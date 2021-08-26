@@ -6,6 +6,10 @@
     Layout = "basePage.cshtml";
 }
 
+
+
+
+
 <div class="page-intro-container">
     @if (Model.EmotionImage != null)
     {
@@ -21,6 +25,15 @@
 <div class="mx-auto content-panel">
     <article class="event-content">
         @Html.Raw(Model.PageContent)
+        @if (Model.Modules != null && Model.Modules.Any())
+        {
+
+            foreach (var module in Model.Modules)
+            {
+
+                @module.RenderModule(Html)
+            }
+        }
     </article>
     <div class="row">
         <div class="col-xs-12 col-md-5">
@@ -33,20 +46,12 @@
             @if (Model.Documents != null && Model.Documents.Any())
             {
                 <h3 class="document-list-title">Dokumente</h3>
-                
+
                 @Html.Partial("~/Views/Partials/DocumentList.cshtml", Model.Documents)
             }
         </div>
     </div>
-    @if (Model.Modules != null && Model.Modules.Any())
-    {
 
-        foreach (var module in Model.Modules)
-        {
-
-            @module.RenderModule(Html)
-        }
-    }
 
 </div>
 

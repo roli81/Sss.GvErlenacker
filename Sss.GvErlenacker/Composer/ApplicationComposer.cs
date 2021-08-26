@@ -14,7 +14,6 @@ namespace Sss.GvErlenacker.Composer
         public override void Compose(Composition composition)
         {
             // ApplicationStarting event in V7: add IContentFinders, register custom services and more here
-
             base.Compose(composition);
         }
     }

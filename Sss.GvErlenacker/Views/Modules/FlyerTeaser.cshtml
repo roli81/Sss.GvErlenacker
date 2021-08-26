@@ -1,0 +1,48 @@
+﻿@model Sss.Mutobo.Modules.FlyerTeaserModule
+
+
+<m-flyer direction=right
+         intersectionObserverInit="{'rootMargin': '0px 0px 0px 0px', 'threshold': 0}"
+       
+         >
+
+    <style>
+        :host {
+            --background-color: rgba(0,0,0,0.5);
+            --font-size-desktop: 1em;
+            --font-size-mobile: 0.7em;
+            width: auto;
+        }
+            :host > div {
+                width: 60vw;
+                height: auto;
+                color: whitesmoke;
+            }
+
+
+            :host > div  > p {
+                width: auto;
+                font-size: var(--font-size-mobile);
+                text-align: center;
+            }
+        @@media(min-width: 800px) {
+            :host > div {
+                width: 30vw;
+                height: auto;
+                color: whitesmoke;
+            }
+
+                :host > div > p {
+              
+                    font-size: var(--font-size-desktop);
+               
+                }
+        }
+    </style>
+    <span id="close">X</span>
+        <img src=@Model.Image.SmallUrl>
+        <p>@Model.Text</p>
+    <a href="@Model.TargetLink.Url">Mehr erfahren</a>
+
+
+</m-flyer>

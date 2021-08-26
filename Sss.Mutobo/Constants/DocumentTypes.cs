@@ -34,5 +34,20 @@ namespace Sss.Mutobo.Constants
 
         }
 
+
+        public static class FlyerTeaserModule
+        {
+            public const string Alias = "flyerTeaser";
+
+            public static class Fields
+            {
+                public const string Image = "image";
+                public const string Text = "text";
+                public const string TargetLink = "targetLink";
+            }
+
+
+        }
+
     }
 }

@@ -13,7 +13,17 @@
         </div>
 
     </div>
-    
+
+    @if (Model.Modules != null && Model.Modules.Any())
+        {
+
+            foreach (var module in Model.Modules)
+            {
+
+                @module.RenderModule(Html)
+            }
+        }
+
 
 
     <h1>@Model.Title</h1>
@@ -22,13 +32,13 @@
         Wir können auf die Unterstüzung von @Html.PrivateMembersCount() privaten und @Html.BusinessMembersCount() gewerblichen Gönnern zählen. Herzlichen Dank!
     </article>
 
-    <br/>
+    <br />
 
     @if (Model.EmotionImage != null && !string.IsNullOrEmpty(Model.EmotionImage.LargeUrl))
     {
-        <img class="rounded mx-auto d-block stage-image" src="@Model.EmotionImage.LargeUrl" alt="@Model.EmotionImage.Alt"/>
-        <br/>
-        <br/>
+        <img class="rounded mx-auto d-block stage-image" src="@Model.EmotionImage.LargeUrl" alt="@Model.EmotionImage.Alt" />
+        <br />
+        <br />
     }
 
     @if (!string.IsNullOrEmpty(Model.HomePageContent))
@@ -39,7 +49,7 @@
     }
 
 
-    <br/>
+    <br />
     <div>
         @Html.Action("Index", "Tile")
     </div>

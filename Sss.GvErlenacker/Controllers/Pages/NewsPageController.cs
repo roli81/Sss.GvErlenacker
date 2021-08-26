@@ -4,6 +4,7 @@ using Sss.Mutobo.Interfaces;
 using Umbraco.Core.Services;
 using Umbraco.Web.Models;
 using Umbraco.Web.Mvc;
+using Umbraco.Web;
 
 namespace Sss.GvErlenacker.Controllers.Pages
 {
@@ -23,7 +24,10 @@ namespace Sss.GvErlenacker.Controllers.Pages
         public ActionResult Index(ContentModel model)
         {
             var typedModel = _newsService.GetNews(model.Content);
-            typedModel.Modules = _contentService.GetModules(model.Content, "modules");
+            if (typedModel.Content.HasProperty("modules") && typedModel.Content.HasValue("modules"))
+            {
+                typedModel.Modules = _contentService.GetModules(model.Content, "modules");
+            }
             return base.Index(typedModel);
 
         }

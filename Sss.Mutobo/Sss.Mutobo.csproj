@@ -52,9 +52,6 @@
     <Reference Include="Examine, Version=1.2.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Examine.1.2.0\lib\net452\Examine.dll</HintPath>
     </Reference>
-    <Reference Include="Hangfire.Core, Version=1.7.24.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Hangfire.Core.1.7.24\lib\net46\Hangfire.Core.dll</HintPath>
-    </Reference>
     <Reference Include="HtmlAgilityPack, Version=1.8.14.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
       <HintPath>..\packages\HtmlAgilityPack.1.8.14\lib\Net45\HtmlAgilityPack.dll</HintPath>
     </Reference>
@@ -287,6 +284,7 @@
     <Compile Include="Interfaces\IMutoboContentService.cs" />
     <Compile Include="Interfaces\Services\IImageService.cs" />
     <Compile Include="Modules\CarouselModule.cs" />
+    <Compile Include="Modules\FlyerTeaserModule.cs" />
     <Compile Include="Modules\MutoboContentModule.cs" />
     <Compile Include="Modules\NewsletterModule.cs" />
     <Compile Include="Poco\Image.cs" />
