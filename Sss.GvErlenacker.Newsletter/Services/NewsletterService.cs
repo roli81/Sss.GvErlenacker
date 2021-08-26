@@ -129,7 +129,7 @@ namespace Sss.GvErlenacker.Newsletter.Services
 
         public void SendNewsLetter()
         {
-            aviaDebug.WriteLine("Send Newsletter");
+            Debug.WriteLine("Send Newsletter");
 
             using (var ctx = new NewsletterContext())
             {
