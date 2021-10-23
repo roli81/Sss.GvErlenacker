@@ -5,6 +5,7 @@ using System.EnterpriseServices;
 using System.Linq;
 using System.Text;
 using System.Web;
+using System.Web.Routing;
 using Examine;
 using Examine.Providers;
 using Sss.GvErlenacker.Models.DataModels;
@@ -50,6 +51,9 @@ namespace Sss.GvErlenacker.Components
 
             externalIndex.FieldDefinitionCollection.AddOrUpdate(new FieldDefinition("sponsors", FieldDefinitionTypes.FullText));
             ((BaseIndexProvider)externalIndex).TransformingIndexValues += OnTransformingIndexValues;
+
+            RouteTable.Routes.Ignore("{*botdetect}",
+              new { botdetect = @"(.*)BotDetectCaptcha\.ashx" });
  
         }
 

@@ -13,9 +13,8 @@ namespace Sss.GvErlenacker.Newsletter.DomainLayer.DataLayer.Entities
         public DateTime? DispatchDate { get; set; }
         public virtual ICollection<Article> Articles { get; set; }
         public Guid DispatchRunID { get; set; }
-        [ForeignKey("DispatchRunID")]
+        [ForeignKey("DispatchRunID")]  
         public DispatchRun DispatchRun { get; set; }
-
         public Guid UserID { get; set; }
         [ForeignKey("UserID")]
         public NewsletterUser User { get; set; }

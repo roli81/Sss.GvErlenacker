@@ -14,6 +14,8 @@ namespace Sss.GvErlenacker.Models.Poco
         public string Message { get; set; }
         public string FuSb { get; set; }
         public Guid Key { get; set; }
+        public string CaptchaCode { get; set; }
+
 
     }
 }

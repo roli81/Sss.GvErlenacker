@@ -1,15 +1,18 @@
 ﻿@using ClientDependency.Core.Mvc
 @model Sss.GvErlenacker.Models.Poco.ContactFormViewModel
-
+@using BotDetect.Web.Mvc;
 
 @{
     Html.RequiresJs("~/Scripts/gvea-form.js");
+    MvcCaptcha captcha = new MvcCaptcha("Captcha");
+    captcha.UserInputID = "CaptchaCode";
+
 
 }
 
 
 
-@using (Html.BeginUmbracoForm("index", "ContactForm",null , new { id="contactForm"}))
+@using (Html.BeginUmbracoForm("index", "ContactForm", null, new { id = "contactForm" }))
 {
     @Html.HiddenFor(m => m.Key)
     <div class="form-group">
@@ -32,20 +35,21 @@
         @Html.TextAreaFor(m => m.Message, new { @class = "form-control mandatory" })
         <p class="error-msg"></p>
     </div>
+
+    <div class="form-group">
+
+        @Html.Captcha(captcha)
+        @Html.TextBox("CaptchaCode")
+    </div>
     <div class="form-group fusp">
         @Html.Label("Website", new { @class = "label label-primary" })
         @Html.TextBoxFor(m => m.FuSb, new { @class = "form-control" })
     </div>
     <div class="form-group right">
-        <button id="submitButton" type="submit" style="text-align: right" class="g-recaptcha" 
-                data-sitekey="6LcaIaAbAAAAAP0w23N_LWz53efZ2Cfu5MoD-8Zs" 
-                data-callback="onSubmit" 
-                data-action="submit">Senden</button>
+        <button id="submitButton" type="submit" style="text-align: right">
+            Senden
+        </button>
     </div>
-   
+
 }
-<script>
-    function onSubmit(token) {
-        document.getElementById("contactForm").submit();
-    }
-</script>
+

@@ -24,6 +24,8 @@
         <article>
             @Html.Raw(Model.PageContent)
         </article>
-        @Html.Partial("~/Views/SurfaceViews/ContactForm.cshtml", new ContactFormViewModel())
+        @Html.Partial("~/Views/SurfaceViews/ContactForm.cshtml", new ContactFormViewModel() { 
+            FuSb = Model.SpamProtectKey.ToString()
+        })
     </div>
 </div>

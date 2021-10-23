@@ -40,7 +40,7 @@ namespace Sss.GvErlenacker.Models.Poco
         public string FuSb { get; set; }
         public HttpPostedFileBase Logo { get; set; }
 
-
+        public string CaptchaCode { get; set; }
         public ESponsorType SponsorType { get; set; }
 
         public IEnumerable<SelectListItem> SponsorTypes =>

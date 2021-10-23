@@ -13,7 +13,7 @@ namespace Sss.GvErlenacker.Newsletter.DomainLayer.DataLayer.Entities
         public string  Email { get; set; }
         public bool IsActive { get; set; }
         public DateTime? RegisterDate { get; set; }
-        public virtual ICollection<Dispatch> Dispatches { get; set; }
+        public virtual IEnumerable<Dispatch> Dispatches { get; set; }
 
     }
 }

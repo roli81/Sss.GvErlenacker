@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Http;
 using System.Web.Mvc;
+using BotDetect.Web.Mvc;
 using Sss.GvErlenacker.Models.DataModels;
 using Sss.GvErlenacker.Models.PageModels;
 using Sss.GvErlenacker.Models.Poco;
@@ -34,6 +35,7 @@ namespace Sss.GvErlenacker.Controllers.SurfaceControllers
 
 
         [System.Web.Mvc.HttpPost]
+        [CaptchaValidationActionFilter("CaptchaCode", "Captcha", "Bitte geben SIe den richtigen Code ein")]
         public ActionResult Submit(MemberFormModel model)
         {
             if (!ModelState.IsValid)
@@ -41,9 +43,7 @@ namespace Sss.GvErlenacker.Controllers.SurfaceControllers
 
 
 
-            // SPamBot Detetected!
-            if (!string.IsNullOrEmpty(model.FuSb))
-                return new EmptyResult();
+
 
 
 
@@ -66,7 +66,7 @@ namespace Sss.GvErlenacker.Controllers.SurfaceControllers
 
 
             // Work with form data here
-
+            MvcCaptcha.ResetCaptcha("Captcha");
             return RedirectToUmbracoPage(1528);
 
         }

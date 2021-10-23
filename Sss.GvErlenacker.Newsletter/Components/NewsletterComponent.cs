@@ -27,26 +27,26 @@ namespace Sss.GvErlenacker.Newsletter.Components
 
         public NewsletterComponent(INewsletterService newsletterService, IProfilingLogger logger, IRuntimeState runtime)
         {
-            _newsletterService = newsletterService;
-            _logger = logger;
-            _runtime = runtime;
-            _newsletterSendRunner = new BackgroundTaskRunner<IBackgroundTask>("NewsletterSend",_logger);
+            //_newsletterService = newsletterService;
+            //_logger = logger;
+            //_runtime = runtime;
+            //_newsletterSendRunner = new BackgroundTaskRunner<IBackgroundTask>("NewsletterSend",_logger);
 
         }
 
         public void Initialize()
         {
 
-            int delayBeforeWeStart = 0; // 0
-                                        //int howOftenWeRepeat = 86400000; //24h
-            int howOftenWeRepeat = 1000; //24h
+            //int delayBeforeWeStart = 0; // 0
+            //                            //int howOftenWeRepeat = 86400000; //24h
+            //int howOftenWeRepeat = 1000; //24h
 
-            _newsletterService.InitNewsletterNews();
+            //_newsletterService.InitNewsletterNews();
 
-            var task = new NewsletterSender(_newsletterSendRunner, delayBeforeWeStart, howOftenWeRepeat, _runtime, _logger, _newsletterService);
+            //var task = new NewsletterSender(_newsletterSendRunner, delayBeforeWeStart, howOftenWeRepeat, _runtime, _logger, _newsletterService);
 
-            //As soon as we add our task to the runner it will start to run (after its delay period)
-            _newsletterSendRunner.TryAdd(task);
+            ////As soon as we add our task to the runner it will start to run (after its delay period)
+            //_newsletterSendRunner.TryAdd(task);
 
 
         }

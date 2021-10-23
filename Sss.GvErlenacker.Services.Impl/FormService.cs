@@ -23,7 +23,9 @@ namespace Sss.GvErlenacker.Services.Impl
 
         public FormPage GetFormPageModel(IPublishedContent content)
         {
-            var result = new FormPage(content);
+            var result = new FormPage(content) {
+               
+            };
 
             result.EmotionImage = _imageService.GetImage(content.Value<IPublishedContent>("emotionImage"));
             result.MemberFormModel = new MemberFormModel()
@@ -37,7 +39,8 @@ namespace Sss.GvErlenacker.Services.Impl
                 LabelZipCity = result.LabelZipCity,
                 LabelEmail = result.LabelEmail,
                 LabelLogo = result.LabelLogo,
-                LabelSalutation = result.LabelSalutation
+                LabelSalutation = result.LabelSalutation,
+                
             };
 
 

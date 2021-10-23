@@ -17,7 +17,6 @@ namespace Sss.GvErlenacker.Newsletter.DomainLayer.DataLayer.Entities
         public bool IsEvent { get; set; }
         public DateTime? EventDate { get; set; }
         public string Content { get; set; }
-
         public Guid? DispatchRunId { get; set; }
         [ForeignKey("DispatchRunId")]
         public DispatchRun DispatchRun { get; set; }

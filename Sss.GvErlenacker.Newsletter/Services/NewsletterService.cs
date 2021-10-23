@@ -129,60 +129,69 @@ namespace Sss.GvErlenacker.Newsletter.Services
 
         public void SendNewsLetter()
         {
+
+
+
+            var newDispatchRun = new DispatchRun()
+            {
+                DispatchRunID = Guid.NewGuid(),
+                RunDate = DateTime.Now
+
+            };
             Debug.WriteLine("Send Newsletter");
+            var users = GetNewsletterUsers(newDispatchRun.DispatchRunID);
 
             using (var ctx = new NewsletterContext())
             {
-
-
-                var newDispatchRun = new DispatchRun()
-                {
-                    DispatchRunID = Guid.NewGuid(),
-                    RunDate = DateTime.Now
-
-                };
-
                 ctx.DispatchRuns.Add(newDispatchRun);
                 ctx.SaveChanges();
                 var allArticles = ctx.Articles.ToList();
+                var articles = new List<Article>();
 
-                foreach (var user in ctx.Users)
+                foreach (var user in users)
                 {
-
-                    var articles = new List<Article>();
-
                     foreach (var article in allArticles)
                     {
                         if (user.Dispatches == null || !user.Dispatches.ToList().Any(dp => dp.DispatchRunID == article.DispatchRunId))
                         {
                             articles.Add(article);
-
                             var atricleEntity = ctx.Articles.FirstOrDefault(a => a.ArticleID == article.ArticleID);
                             atricleEntity.DispatchRunId = newDispatchRun.DispatchRunID;
                         }
-                        
+                        var html = GetHtmlMail(articles);
+                        var dispatch = new Dispatch()
+                        {
+                            DispatchID = Guid.NewGuid(),
+                            User = user,
+                            UserID = user.NewsletterUserID,
+                            DispatchDate = DateTime.Now,
+                            DispatchRun = newDispatchRun,
+                            DispatchRunID = newDispatchRun.DispatchRunID
+                        };
+
+                        ctx.Dispatches.Add(dispatch);
+
                     }
-
-                    var html = GetHtmlMail(articles);
-
-                    var dispatch = new Dispatch()
-                    {
-                        DispatchID = Guid.NewGuid(),
-                        User = user,
-                        UserID = user.NewsletterUserID,
-                        DispatchDate = DateTime.Now,
-                        DispatchRun = newDispatchRun,
-                        DispatchRunID = newDispatchRun.DispatchRunID
-                    };
-
-                    ctx.Dispatches.Add(dispatch);
+                    ctx.SaveChanges();
                 }
 
-                ctx.SaveChanges();
+            
+            }
+        }
+
+
+        private IEnumerable<NewsletterUser> GetNewsletterUsers(Guid dispatchRunID)
+        {
+            var result = new List<NewsletterUser>();
+
+            using (var ctx = new NewsletterContext())
+            {
+                result = ctx.Users.ToList();
             }
 
-
+            return result;
         }
+
 
 
         private string GetHtmlMail(ICollection<Article> articlesToSend)

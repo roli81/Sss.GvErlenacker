@@ -23,6 +23,9 @@ namespace Sss.GvErlenacker.Models.PageModels
         public string LabelSalutation => Content.Value<string>("labelSalutation");
         public string PageContent => Content.Value<string>("pageContent");
 
+
+        public Guid SpamProtectKey { get; set; }
+
         public MemberFormModel MemberFormModel { get; set; }
 
         public FormPage(IPublishedContent content) : base(content)
