@@ -13,8 +13,23 @@
             --font-size-mobile: 0.7em;
             width: auto;
         }
+
+            :host a {
+                text-decoration: none;
+                color: rgba(133, 21, 21, 1);
+            }
+
+
+            :host a:hover {
+                text-decoration: none;
+                color: white;
+                background-color: #424242;
+               
+            }
+
+
             :host > div {
-                width: 60vw;
+   
                 height: auto;
                 color: whitesmoke;
             }
@@ -27,7 +42,7 @@
             }
         @@media(min-width: 800px) {
             :host > div {
-                width: 30vw;
+    
                 height: auto;
                 color: whitesmoke;
             }
@@ -39,9 +54,16 @@
                 }
         }
     </style>
-    <span id="close">X</span>
+
+    <div style="text-align:left" >
+        <span  id="close">X</span>
+    </div>
+    
         <img src=@Model.Image.SmallUrl>
+
         <p>@Model.Text</p>
+
+
     <a href="@Model.TargetLink.Url">Mehr erfahren</a>
 
 

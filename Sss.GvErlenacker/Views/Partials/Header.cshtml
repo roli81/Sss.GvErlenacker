@@ -10,6 +10,14 @@
             <img src="@Model.Logo.LargeUrl" alt="@Model.Logo.Alt" />
             <span>...ein Volltreffer für den Schützennachwuchs!</span>
         </div>
+        <style>
+            .page-intro-container img {
+                opacity: @(1 - Model.HeaderImageOpacity / 100);
+                filter: @($"grayscale({1 - Model.HeaderImageColorSaturation})");
+            }
+        </style>
+
+
         @if (Model.HeaderCarousel != null && Model.HeaderCarousel.Any())
         {
             <div class="w-100 carousel-wrapper">
@@ -30,13 +38,6 @@
             </div>
         }
     </div>
-
-
-
-
-
-
-    
 </header>
 
 

@@ -64,7 +64,9 @@ namespace Sss.GvErlenacker.Services.Impl
 
             var result = new HeaderConfig(config) {
                 Logo = _imageService.GetImage(config.Value("logo") as IPublishedContent, height: 150),
-                BackLink = currentPage.Parent?.Url ?? string.Empty
+                BackLink = currentPage.Parent?.Url ?? string.Empty,
+                HeaderImageColorSaturation = config.Value<double>("headerImageColorSaturation"),
+                HeaderImageOpacity = config.Value<double>("headerImageOpacity")
             };
             if (config.HasValue("headerCarousel"))
             {

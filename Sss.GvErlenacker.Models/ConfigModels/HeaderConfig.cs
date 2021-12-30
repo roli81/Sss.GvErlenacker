@@ -17,6 +17,11 @@ namespace Sss.GvErlenacker.Models.ConfigModels
 
         public string BackLink { get; set; }
 
+
+        public double HeaderImageOpacity { get; set; }
+
+        public double HeaderImageColorSaturation { get; set; }
+
         public HeaderConfig(IPublishedContent content) : base(content)
         {
         }
