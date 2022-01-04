@@ -599,6 +599,7 @@ a.sponsor-link:hover {
     margin-top: auto;
     margin-bottom: auto;
     font-size: 1.3em;
+    width: 100%;
 }
 
 .private-sponsors {

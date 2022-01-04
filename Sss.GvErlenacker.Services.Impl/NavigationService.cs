@@ -104,7 +104,7 @@ namespace Sss.GvErlenacker.Services.Impl
 
                     },
                     Content = c,
-                    Children = c.Children.Where(cld => cld.ContentType.CompositionAliases.Contains("basePage"))
+                    Children = c.ContentType.Alias != "blog" ?  c.Children.Where(cld => cld.ContentType.CompositionAliases.Contains("basePage"))
                         .Select(cld => new NavItem()
                         {
                             HideFromNavigation = cld.Value<bool>("hideFromNavi"),                                                                                                    
@@ -116,7 +116,7 @@ namespace Sss.GvErlenacker.Services.Impl
 
                             }
 
-                        }).Where(ni => !ni.HideFromNavigation)
+                        }).Where(ni => !ni.HideFromNavigation) : null
                 }).Where(ni => !ni.HideFromNavigation);
 
 
