@@ -9,7 +9,7 @@
 <div class="page-intro-container">
     @if (Model.EmotionImage != null)
     {
-        <img src="@Model.EmotionImage.SmallUrl"  alt="@Model.EmotionImage.Alt" />
+        <img src="@Model.EmotionImage.LargeUrl"  alt="@Model.EmotionImage.Alt" />
     }
     <div class="page-intro">
         <h1 class="page-title">@Model.Title</h1>
@@ -30,7 +30,7 @@
         <a href="@Model.PremiumSponsor.Website" target="_blank" class="sponsor-link">
             <div class="row">
                 <div class="col-xl-6 col-lg-12">
-                    <img src="@Model.PremiumSponsor.Logo.SmallUrl" alt="@Model.PremiumSponsor.Logo.Alt" />
+                    <img src="@Model.PremiumSponsor.Logo.LargeUrl" alt="@Model.PremiumSponsor.Logo.Alt" />
                 </div>
                 <div class="col-xl-6 col-lg-12">
                     <div class="sponsor-text-container">

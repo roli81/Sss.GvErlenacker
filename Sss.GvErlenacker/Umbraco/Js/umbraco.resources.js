@@ -676,7 +676,7 @@
     *       Do stuff...
     *    });
     * </pre>
-    * 
+    *
     * @returns {Promise} resourcePromise object.
     *
     */
@@ -1156,6 +1156,17 @@
                     return $q.when(umbDataFormatter.formatContentGetData(result));
                 });
             },
+            getScaffolds: function getScaffolds(parentId, aliases) {
+                return umbRequestHelper.resourcePromise($http.post(umbRequestHelper.getApiUrl('contentApiBaseUrl', 'GetEmptyByAliases'), {
+                    parentId: parentId,
+                    contentTypeAliases: aliases
+                }), 'Failed to retrieve data for empty content item aliases ' + aliases.join(', ')).then(function (result) {
+                    Object.keys(result).map(function (key) {
+                        result[key] = umbDataFormatter.formatContentGetData(result[key]);
+                    });
+                    return $q.when(result);
+                });
+            },
             /**
      * @ngdoc method
      * @name umbraco.resources.contentResource#getScaffoldByKey
@@ -1197,10 +1208,10 @@
                 });
             },
             getScaffoldByKeys: function getScaffoldByKeys(parentId, scaffoldKeys) {
-                return umbRequestHelper.resourcePromise($http.get(umbRequestHelper.getApiUrl('contentApiBaseUrl', 'GetEmptyByKeys', {
+                return umbRequestHelper.resourcePromise($http.post(umbRequestHelper.getApiUrl('contentApiBaseUrl', 'GetEmptyByKeys'), {
                     contentTypeKeys: scaffoldKeys,
                     parentId: parentId
-                })), 'Failed to retrieve data for empty content items ids' + scaffoldKeys.join(', ')).then(function (result) {
+                }), 'Failed to retrieve data for empty content items ids' + scaffoldKeys.join(', ')).then(function (result) {
                     Object.keys(result).map(function (key) {
                         result[key] = umbDataFormatter.formatContentGetData(result[key]);
                     });
