@@ -45,6 +45,7 @@ Umbraco.Core.Migrations.Upgrade.V_8_6_0.AddNewRelationTypes, Umbraco.Core, Versi
 Umbraco.Core.Migrations.Upgrade.V_8_6_0.UpdateRelationTypeTable, Umbraco.Core, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Core.Migrations.Upgrade.V_8_6_0.AddPropertyTypeValidationMessageColumns, Umbraco.Core, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Core.Migrations.Upgrade.V_8_9_0.ExternalLoginTableUserData, Umbraco.Core, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
+Umbraco.Core.Migrations.Upgrade.V_8_18_0.AddContentVersionCleanupFeature, Umbraco.Core, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Core.Migrations.Upgrade.V_8_17_0.AddPropertyTypeGroupColumns, Umbraco.Core, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Core.Migrations.Upgrade.V_8_10_0.AddPropertyTypeLabelOnTopColumn, Umbraco.Core, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Core.Migrations.Upgrade.V_8_15_0.AddCmsContentNuByteColumn, Umbraco.Core, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
@@ -91,6 +92,55 @@ Umbraco.Core.Migrations.Upgrade.V_8_0_0.ContentVariationMigration, Umbraco.Core,
 Umbraco.Core.Migrations.Upgrade.V_8_0_0.DataTypes.PreValueMigratorComposer, Umbraco.Core, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Core.Logging.Viewer.LogViewerComposer, Umbraco.Core, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Core.Services.Implement.KeyValueService+InitializeMigration, Umbraco.Core, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
+Sss.GvErlenacker.Newsletter.Composer.NewsletterComposer, Sss.GvErlenacker.Newsletter, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+uSync8.Core.uSyncCoreComposer, uSync8.Core, Version=8.11.0.0, Culture=neutral, PublicKeyToken=null
+UmbracoExamine.PDF.ExaminePdfComposer, UmbracoExamine.PDF, Version=0.8.7634.9991, Culture=neutral, PublicKeyToken=null
+Skybrud.Umbraco.Analytics.AnalyticsPropertyValueConverter, Skybrud.Umbraco.Analytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+Skybrud.Umbraco.Analytics.Controllers.Trees.SkybrudAnalyticsTreeController, Skybrud.Umbraco.Analytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+Skybrud.Umbraco.Analytics.Controllers.Surface.AnalyticsOAuthController, Skybrud.Umbraco.Analytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+Skybrud.Umbraco.Analytics.Controllers.Api.AnalyticsController, Skybrud.Umbraco.Analytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+Sss.GvErlenacker.Controllers.XmlSitemapController, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+Sss.GvErlenacker.Controllers.SurfaceControllers.BreadcrumbController, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+Sss.GvErlenacker.Controllers.SurfaceControllers.CarouselController, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+Sss.GvErlenacker.Controllers.SurfaceControllers.ContactFormController, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+Sss.GvErlenacker.Controllers.SurfaceControllers.CookieBannerController, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+Sss.GvErlenacker.Controllers.SurfaceControllers.EvenListController, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+Sss.GvErlenacker.Controllers.SurfaceControllers.FooterController, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+Sss.GvErlenacker.Controllers.SurfaceControllers.HeaderController, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+Sss.GvErlenacker.Controllers.SurfaceControllers.LatestNewsController, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+Sss.GvErlenacker.Controllers.SurfaceControllers.MemberFormController, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+Sss.GvErlenacker.Controllers.SurfaceControllers.NavigationController, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+Sss.GvErlenacker.Controllers.SurfaceControllers.NewsletterFormController, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+Sss.GvErlenacker.Controllers.SurfaceControllers.SearchFormController, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+Sss.GvErlenacker.Controllers.SurfaceControllers.SeoController, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+Sss.GvErlenacker.Controllers.SurfaceControllers.TileController, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+Sss.GvErlenacker.Controllers.Pages.BlogController, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+Sss.GvErlenacker.Controllers.Pages.EventController, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+Sss.GvErlenacker.Controllers.Pages.DocumentListController, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+Sss.GvErlenacker.Controllers.Pages.EventListController, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+Sss.GvErlenacker.Controllers.Pages.FormPageController, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+Sss.GvErlenacker.Controllers.Pages.MemberBoardController, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+Sss.GvErlenacker.Controllers.Pages.NewsPageController, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+Sss.GvErlenacker.Controllers.Pages.HomePageController, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+Sss.GvErlenacker.Controllers.Pages.SearchResultPageController, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+Sss.GvErlenacker.Controllers.Pages.SectionPageController, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+Sss.GvErlenacker.Controllers.Pages.SponsorPageController, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+Sss.GvErlenacker.Composer.ApplicationComposer, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+Sss.GvErlenacker.Composer.DependencyInjectionComposer, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+uSync8.BackOffice.uSyncBackOfficeConfigComposer, uSync8.BackOffice, Version=8.11.0.0, Culture=neutral, PublicKeyToken=null
+uSync8.BackOffice.uSyncBackOfficeComposer, uSync8.BackOffice, Version=8.11.0.0, Culture=neutral, PublicKeyToken=null
+uSync8.BackOffice.Controllers.uSyncDashboardApiController, uSync8.BackOffice, Version=8.11.0.0, Culture=neutral, PublicKeyToken=null
+uSync8.BackOffice.Controllers.Trees.uSyncTreeController, uSync8.BackOffice, Version=8.11.0.0, Culture=neutral, PublicKeyToken=null
+uSync8.BackOffice.Cache.RebuildCacheComposer, uSync8.BackOffice, Version=8.11.0.0, Culture=neutral, PublicKeyToken=null
+uSync8.ContentEdition.uSyncContentComposer, uSync8.ContentEdition, Version=8.10.6.0, Culture=neutral, PublicKeyToken=null
+Umbraco.ModelsBuilder.Embedded.ModelsBuilderDashboard, Umbraco.ModelsBuilder.Embedded, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
+Umbraco.ModelsBuilder.Embedded.Compose.ModelsBuilderComposer, Umbraco.ModelsBuilder.Embedded, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
+Umbraco.ModelsBuilder.Embedded.BackOffice.MediaTypeModelValidator, Umbraco.ModelsBuilder.Embedded, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
+Umbraco.ModelsBuilder.Embedded.BackOffice.MemberTypeModelValidator, Umbraco.ModelsBuilder.Embedded, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
+Umbraco.ModelsBuilder.Embedded.BackOffice.ModelsBuilderDashboardController, Umbraco.ModelsBuilder.Embedded, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
+Umbraco.ModelsBuilder.Embedded.BackOffice.ContentTypeModelValidator, Umbraco.ModelsBuilder.Embedded, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
+uSync8.HistoryView.HistoryComposer, uSync8.HistoryView, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+uSync8.HistoryView.Controllers.uSyncHistoryApiController, uSync8.HistoryView, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.Controllers.UmbProfileController, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.Controllers.UmbLoginStatusController, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.Controllers.UmbRegisterController, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
@@ -209,6 +259,7 @@ Umbraco.Web.HealthCheck.HealthCheckController, Umbraco.Web, Version=8.0.0.0, Cul
 Umbraco.Web.HealthCheck.NotificationMethods.EmailNotificationMethod, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.HealthCheck.Checks.Permissions.FolderAndFilePermissionsCheck, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.HealthCheck.Checks.Services.SmtpCheck, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
+Umbraco.Web.HealthCheck.Checks.Security.UmbracoApplicationUrlCheck, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.HealthCheck.Checks.Security.XssProtectionCheck, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.HealthCheck.Checks.Security.HstsCheck, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.HealthCheck.Checks.Security.NoSniffCheck, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
@@ -299,55 +350,6 @@ Umbraco.Web.Cache.MemberGroupCacheRefresher, Umbraco.Web, Version=8.0.0.0, Cultu
 Umbraco.Web.Cache.PublicAccessCacheRefresher, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.Cache.TemplateCacheRefresher, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.Cache.UserCacheRefresher, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
-Sss.GvErlenacker.Newsletter.Composer.NewsletterComposer, Sss.GvErlenacker.Newsletter, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-uSync8.Core.uSyncCoreComposer, uSync8.Core, Version=8.10.6.0, Culture=neutral, PublicKeyToken=null
-uSync8.HistoryView.HistoryComposer, uSync8.HistoryView, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-uSync8.HistoryView.Controllers.uSyncHistoryApiController, uSync8.HistoryView, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-UmbracoExamine.PDF.ExaminePdfComposer, UmbracoExamine.PDF, Version=0.8.7634.9991, Culture=neutral, PublicKeyToken=null
-uSync8.ContentEdition.uSyncContentComposer, uSync8.ContentEdition, Version=8.10.6.0, Culture=neutral, PublicKeyToken=null
-Skybrud.Umbraco.Analytics.AnalyticsPropertyValueConverter, Skybrud.Umbraco.Analytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-Skybrud.Umbraco.Analytics.Controllers.Trees.SkybrudAnalyticsTreeController, Skybrud.Umbraco.Analytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-Skybrud.Umbraco.Analytics.Controllers.Surface.AnalyticsOAuthController, Skybrud.Umbraco.Analytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-Skybrud.Umbraco.Analytics.Controllers.Api.AnalyticsController, Skybrud.Umbraco.Analytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-Sss.GvErlenacker.Controllers.XmlSitemapController, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-Sss.GvErlenacker.Controllers.SurfaceControllers.BreadcrumbController, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-Sss.GvErlenacker.Controllers.SurfaceControllers.CarouselController, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-Sss.GvErlenacker.Controllers.SurfaceControllers.ContactFormController, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-Sss.GvErlenacker.Controllers.SurfaceControllers.CookieBannerController, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-Sss.GvErlenacker.Controllers.SurfaceControllers.EvenListController, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-Sss.GvErlenacker.Controllers.SurfaceControllers.FooterController, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-Sss.GvErlenacker.Controllers.SurfaceControllers.HeaderController, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-Sss.GvErlenacker.Controllers.SurfaceControllers.LatestNewsController, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-Sss.GvErlenacker.Controllers.SurfaceControllers.MemberFormController, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-Sss.GvErlenacker.Controllers.SurfaceControllers.NavigationController, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-Sss.GvErlenacker.Controllers.SurfaceControllers.NewsletterFormController, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-Sss.GvErlenacker.Controllers.SurfaceControllers.SearchFormController, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-Sss.GvErlenacker.Controllers.SurfaceControllers.SeoController, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-Sss.GvErlenacker.Controllers.SurfaceControllers.TileController, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-Sss.GvErlenacker.Controllers.Pages.BlogController, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-Sss.GvErlenacker.Controllers.Pages.EventController, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-Sss.GvErlenacker.Controllers.Pages.DocumentListController, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-Sss.GvErlenacker.Controllers.Pages.EventListController, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-Sss.GvErlenacker.Controllers.Pages.FormPageController, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-Sss.GvErlenacker.Controllers.Pages.MemberBoardController, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-Sss.GvErlenacker.Controllers.Pages.NewsPageController, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-Sss.GvErlenacker.Controllers.Pages.HomePageController, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-Sss.GvErlenacker.Controllers.Pages.SearchResultPageController, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-Sss.GvErlenacker.Controllers.Pages.SectionPageController, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-Sss.GvErlenacker.Controllers.Pages.SponsorPageController, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-Sss.GvErlenacker.Composer.ApplicationComposer, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-Sss.GvErlenacker.Composer.DependencyInjectionComposer, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-Umbraco.ModelsBuilder.Embedded.ModelsBuilderDashboard, Umbraco.ModelsBuilder.Embedded, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
-Umbraco.ModelsBuilder.Embedded.Compose.ModelsBuilderComposer, Umbraco.ModelsBuilder.Embedded, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
-Umbraco.ModelsBuilder.Embedded.BackOffice.MediaTypeModelValidator, Umbraco.ModelsBuilder.Embedded, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
-Umbraco.ModelsBuilder.Embedded.BackOffice.MemberTypeModelValidator, Umbraco.ModelsBuilder.Embedded, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
-Umbraco.ModelsBuilder.Embedded.BackOffice.ModelsBuilderDashboardController, Umbraco.ModelsBuilder.Embedded, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
-Umbraco.ModelsBuilder.Embedded.BackOffice.ContentTypeModelValidator, Umbraco.ModelsBuilder.Embedded, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
-uSync8.BackOffice.uSyncBackOfficeConfigComposer, uSync8.BackOffice, Version=8.10.6.0, Culture=neutral, PublicKeyToken=null
-uSync8.BackOffice.uSyncBackOfficeComposer, uSync8.BackOffice, Version=8.10.6.0, Culture=neutral, PublicKeyToken=null
-uSync8.BackOffice.Controllers.uSyncDashboardApiController, uSync8.BackOffice, Version=8.10.6.0, Culture=neutral, PublicKeyToken=null
-uSync8.BackOffice.Controllers.Trees.uSyncTreeController, uSync8.BackOffice, Version=8.10.6.0, Culture=neutral, PublicKeyToken=null
-uSync8.BackOffice.Cache.RebuildCacheComposer, uSync8.BackOffice, Version=8.10.6.0, Culture=neutral, PublicKeyToken=null
 
 Umbraco.Core.Composing.IComposer
 
@@ -358,6 +360,17 @@ Umbraco.Core.Compose.RelateOnTrashComposer, Umbraco.Core, Version=8.0.0.0, Cultu
 Umbraco.Core.Runtime.CoreInitialComposer, Umbraco.Core, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Core.Migrations.Upgrade.V_8_0_0.DataTypes.PreValueMigratorComposer, Umbraco.Core, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Core.Logging.Viewer.LogViewerComposer, Umbraco.Core, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
+Sss.GvErlenacker.Newsletter.Composer.NewsletterComposer, Sss.GvErlenacker.Newsletter, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+uSync8.Core.uSyncCoreComposer, uSync8.Core, Version=8.11.0.0, Culture=neutral, PublicKeyToken=null
+UmbracoExamine.PDF.ExaminePdfComposer, UmbracoExamine.PDF, Version=0.8.7634.9991, Culture=neutral, PublicKeyToken=null
+Sss.GvErlenacker.Composer.ApplicationComposer, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+Sss.GvErlenacker.Composer.DependencyInjectionComposer, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+uSync8.BackOffice.uSyncBackOfficeConfigComposer, uSync8.BackOffice, Version=8.11.0.0, Culture=neutral, PublicKeyToken=null
+uSync8.BackOffice.uSyncBackOfficeComposer, uSync8.BackOffice, Version=8.11.0.0, Culture=neutral, PublicKeyToken=null
+uSync8.BackOffice.Cache.RebuildCacheComposer, uSync8.BackOffice, Version=8.11.0.0, Culture=neutral, PublicKeyToken=null
+uSync8.ContentEdition.uSyncContentComposer, uSync8.ContentEdition, Version=8.10.6.0, Culture=neutral, PublicKeyToken=null
+Umbraco.ModelsBuilder.Embedded.Compose.ModelsBuilderComposer, Umbraco.ModelsBuilder.Embedded, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
+uSync8.HistoryView.HistoryComposer, uSync8.HistoryView, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.SignalR.PreviewHubComposer, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.Runtime.WebInitialComposer, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.Runtime.WebFinalComposer, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
@@ -377,17 +390,6 @@ Umbraco.Web.Compose.NotificationsComposer, Umbraco.Web, Version=8.0.0.0, Culture
 Umbraco.Web.Compose.PublicAccessComposer, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.Compose.NestedContentPropertyComposer, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.Cache.DistributedCacheBinderComposer, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
-Sss.GvErlenacker.Newsletter.Composer.NewsletterComposer, Sss.GvErlenacker.Newsletter, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-uSync8.Core.uSyncCoreComposer, uSync8.Core, Version=8.10.6.0, Culture=neutral, PublicKeyToken=null
-uSync8.HistoryView.HistoryComposer, uSync8.HistoryView, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-UmbracoExamine.PDF.ExaminePdfComposer, UmbracoExamine.PDF, Version=0.8.7634.9991, Culture=neutral, PublicKeyToken=null
-uSync8.ContentEdition.uSyncContentComposer, uSync8.ContentEdition, Version=8.10.6.0, Culture=neutral, PublicKeyToken=null
-Sss.GvErlenacker.Composer.ApplicationComposer, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-Sss.GvErlenacker.Composer.DependencyInjectionComposer, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-Umbraco.ModelsBuilder.Embedded.Compose.ModelsBuilderComposer, Umbraco.ModelsBuilder.Embedded, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
-uSync8.BackOffice.uSyncBackOfficeConfigComposer, uSync8.BackOffice, Version=8.10.6.0, Culture=neutral, PublicKeyToken=null
-uSync8.BackOffice.uSyncBackOfficeComposer, uSync8.BackOffice, Version=8.10.6.0, Culture=neutral, PublicKeyToken=null
-uSync8.BackOffice.Cache.RebuildCacheComposer, uSync8.BackOffice, Version=8.10.6.0, Culture=neutral, PublicKeyToken=null
 
 Umbraco.Core.PropertyEditors.IPropertyValueConverter
 
@@ -412,6 +414,7 @@ Umbraco.Core.PropertyEditors.ValueConverters.TextStringValueConverter, Umbraco.C
 Umbraco.Core.PropertyEditors.ValueConverters.TinyMceValueConverter, Umbraco.Core, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Core.PropertyEditors.ValueConverters.UploadPropertyConverter, Umbraco.Core, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Core.PropertyEditors.ValueConverters.YesNoValueConverter, Umbraco.Core, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
+Skybrud.Umbraco.Analytics.AnalyticsPropertyValueConverter, Skybrud.Umbraco.Analytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.PropertyEditors.ValueConverters.BlockListPropertyValueConverter, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.PropertyEditors.ValueConverters.MediaPickerWithCropsValueConverter, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.PropertyEditors.ValueConverters.MultiUrlPickerValueConverter, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
@@ -425,14 +428,9 @@ Umbraco.Web.PropertyEditors.ValueConverters.ContentPickerValueConverter, Umbraco
 Umbraco.Web.PropertyEditors.ValueConverters.MarkdownEditorValueConverter, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.PropertyEditors.ValueConverters.TextStringValueConverter, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.PropertyEditors.ValueConverters.RteMacroRenderingValueConverter, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
-Skybrud.Umbraco.Analytics.AnalyticsPropertyValueConverter, Skybrud.Umbraco.Analytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 
 Umbraco.Web.Mvc.PluginController
 
-Umbraco.Web.Controllers.UmbProfileController, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
-Umbraco.Web.Controllers.UmbLoginStatusController, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
-Umbraco.Web.Controllers.UmbRegisterController, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
-Umbraco.Web.Controllers.UmbLoginController, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Skybrud.Umbraco.Analytics.Controllers.Surface.AnalyticsOAuthController, Skybrud.Umbraco.Analytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 Sss.GvErlenacker.Controllers.SurfaceControllers.BreadcrumbController, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 Sss.GvErlenacker.Controllers.SurfaceControllers.CarouselController, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
@@ -448,10 +446,13 @@ Sss.GvErlenacker.Controllers.SurfaceControllers.NewsletterFormController, Sss.Gv
 Sss.GvErlenacker.Controllers.SurfaceControllers.SearchFormController, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 Sss.GvErlenacker.Controllers.SurfaceControllers.SeoController, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 Sss.GvErlenacker.Controllers.SurfaceControllers.TileController, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+Umbraco.Web.Controllers.UmbProfileController, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
+Umbraco.Web.Controllers.UmbLoginStatusController, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
+Umbraco.Web.Controllers.UmbRegisterController, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
+Umbraco.Web.Controllers.UmbLoginController, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 
 Umbraco.Web.Mvc.IRenderMvcController
 
-Umbraco.Web.Mvc.RenderMvcController, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Sss.GvErlenacker.Controllers.XmlSitemapController, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 Sss.GvErlenacker.Controllers.Pages.BlogController, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 Sss.GvErlenacker.Controllers.Pages.EventController, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
@@ -464,9 +465,16 @@ Sss.GvErlenacker.Controllers.Pages.HomePageController, Sss.GvErlenacker, Version
 Sss.GvErlenacker.Controllers.Pages.SearchResultPageController, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 Sss.GvErlenacker.Controllers.Pages.SectionPageController, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 Sss.GvErlenacker.Controllers.Pages.SponsorPageController, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+Umbraco.Web.Mvc.RenderMvcController, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 
 Umbraco.Web.WebApi.UmbracoApiController
 
+Skybrud.Umbraco.Analytics.Controllers.Trees.SkybrudAnalyticsTreeController, Skybrud.Umbraco.Analytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+Skybrud.Umbraco.Analytics.Controllers.Api.AnalyticsController, Skybrud.Umbraco.Analytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+uSync8.BackOffice.Controllers.uSyncDashboardApiController, uSync8.BackOffice, Version=8.11.0.0, Culture=neutral, PublicKeyToken=null
+uSync8.BackOffice.Controllers.Trees.uSyncTreeController, uSync8.BackOffice, Version=8.11.0.0, Culture=neutral, PublicKeyToken=null
+Umbraco.ModelsBuilder.Embedded.BackOffice.ModelsBuilderDashboardController, Umbraco.ModelsBuilder.Embedded, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
+uSync8.HistoryView.Controllers.uSyncHistoryApiController, uSync8.HistoryView, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.Trees.LogViewerTreeController, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.Trees.FilesTreeController, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.Trees.ContentBlueprintTreeController, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
@@ -539,19 +547,9 @@ Umbraco.Web.Editors.ContentTypeController, Umbraco.Web, Version=8.0.0.0, Culture
 Umbraco.Web.Editors.MediaTypeController, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.Editors.SectionController, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.Editors.MediaController, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
-uSync8.HistoryView.Controllers.uSyncHistoryApiController, uSync8.HistoryView, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-Skybrud.Umbraco.Analytics.Controllers.Trees.SkybrudAnalyticsTreeController, Skybrud.Umbraco.Analytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-Skybrud.Umbraco.Analytics.Controllers.Api.AnalyticsController, Skybrud.Umbraco.Analytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-Umbraco.ModelsBuilder.Embedded.BackOffice.ModelsBuilderDashboardController, Umbraco.ModelsBuilder.Embedded, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
-uSync8.BackOffice.Controllers.uSyncDashboardApiController, uSync8.BackOffice, Version=8.10.6.0, Culture=neutral, PublicKeyToken=null
-uSync8.BackOffice.Controllers.Trees.uSyncTreeController, uSync8.BackOffice, Version=8.10.6.0, Culture=neutral, PublicKeyToken=null
 
 Umbraco.Web.Mvc.SurfaceController
 
-Umbraco.Web.Controllers.UmbProfileController, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
-Umbraco.Web.Controllers.UmbLoginStatusController, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
-Umbraco.Web.Controllers.UmbRegisterController, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
-Umbraco.Web.Controllers.UmbLoginController, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Skybrud.Umbraco.Analytics.Controllers.Surface.AnalyticsOAuthController, Skybrud.Umbraco.Analytics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 Sss.GvErlenacker.Controllers.SurfaceControllers.BreadcrumbController, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 Sss.GvErlenacker.Controllers.SurfaceControllers.CarouselController, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
@@ -567,10 +565,15 @@ Sss.GvErlenacker.Controllers.SurfaceControllers.NewsletterFormController, Sss.Gv
 Sss.GvErlenacker.Controllers.SurfaceControllers.SearchFormController, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 Sss.GvErlenacker.Controllers.SurfaceControllers.SeoController, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 Sss.GvErlenacker.Controllers.SurfaceControllers.TileController, Sss.GvErlenacker, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+Umbraco.Web.Controllers.UmbProfileController, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
+Umbraco.Web.Controllers.UmbLoginStatusController, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
+Umbraco.Web.Controllers.UmbRegisterController, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
+Umbraco.Web.Controllers.UmbLoginController, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 
 Umbraco.Core.Dashboards.IDashboard
 
 Umbraco.Core.Manifest.ManifestDashboard, Umbraco.Core, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
+Umbraco.ModelsBuilder.Embedded.ModelsBuilderDashboard, Umbraco.ModelsBuilder.Embedded, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.Dashboards.ContentDashboard, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.Dashboards.ExamineDashboard, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.Dashboards.FormsDashboard, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
@@ -581,17 +584,16 @@ Umbraco.Web.Dashboards.ProfilerDashboardDashboard, Umbraco.Web, Version=8.0.0.0,
 Umbraco.Web.Dashboards.PublishedStatusDashboard, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.Dashboards.RedirectUrlDashboard, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.Dashboards.SettingsDashboard, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
-Umbraco.ModelsBuilder.Embedded.ModelsBuilderDashboard, Umbraco.ModelsBuilder.Embedded, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 
 uSync8.Core.Tracking.ISyncTrackerBase
 
-uSync8.Core.Tracking.Impliment.ContentTypeTracker, uSync8.Core, Version=8.10.6.0, Culture=neutral, PublicKeyToken=null
-uSync8.Core.Tracking.Impliment.DataTypeTracker, uSync8.Core, Version=8.10.6.0, Culture=neutral, PublicKeyToken=null
-uSync8.Core.Tracking.Impliment.LanguageTracker, uSync8.Core, Version=8.10.6.0, Culture=neutral, PublicKeyToken=null
-uSync8.Core.Tracking.Impliment.MacroTracker, uSync8.Core, Version=8.10.6.0, Culture=neutral, PublicKeyToken=null
-uSync8.Core.Tracking.Impliment.MediaTypeTracker, uSync8.Core, Version=8.10.6.0, Culture=neutral, PublicKeyToken=null
-uSync8.Core.Tracking.Impliment.MemberTypeTracker, uSync8.Core, Version=8.10.6.0, Culture=neutral, PublicKeyToken=null
-uSync8.Core.Tracking.Impliment.TemplateTracker, uSync8.Core, Version=8.10.6.0, Culture=neutral, PublicKeyToken=null
+uSync8.Core.Tracking.Impliment.ContentTypeTracker, uSync8.Core, Version=8.11.0.0, Culture=neutral, PublicKeyToken=null
+uSync8.Core.Tracking.Impliment.DataTypeTracker, uSync8.Core, Version=8.11.0.0, Culture=neutral, PublicKeyToken=null
+uSync8.Core.Tracking.Impliment.LanguageTracker, uSync8.Core, Version=8.11.0.0, Culture=neutral, PublicKeyToken=null
+uSync8.Core.Tracking.Impliment.MacroTracker, uSync8.Core, Version=8.11.0.0, Culture=neutral, PublicKeyToken=null
+uSync8.Core.Tracking.Impliment.MediaTypeTracker, uSync8.Core, Version=8.11.0.0, Culture=neutral, PublicKeyToken=null
+uSync8.Core.Tracking.Impliment.MemberTypeTracker, uSync8.Core, Version=8.11.0.0, Culture=neutral, PublicKeyToken=null
+uSync8.Core.Tracking.Impliment.TemplateTracker, uSync8.Core, Version=8.11.0.0, Culture=neutral, PublicKeyToken=null
 uSync8.ContentEdition.Tracker.ContentXmlTracker, uSync8.ContentEdition, Version=8.10.6.0, Culture=neutral, PublicKeyToken=null
 uSync8.ContentEdition.Tracker.DictionaryItemTracker, uSync8.ContentEdition, Version=8.10.6.0, Culture=neutral, PublicKeyToken=null
 uSync8.ContentEdition.Tracker.DomainTracker, uSync8.ContentEdition, Version=8.10.6.0, Culture=neutral, PublicKeyToken=null
@@ -729,6 +731,7 @@ Umbraco.Web.HealthCheck.HealthCheck
 
 Umbraco.Web.HealthCheck.Checks.Permissions.FolderAndFilePermissionsCheck, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.HealthCheck.Checks.Services.SmtpCheck, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
+Umbraco.Web.HealthCheck.Checks.Security.UmbracoApplicationUrlCheck, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.HealthCheck.Checks.Security.XssProtectionCheck, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.HealthCheck.Checks.Security.HstsCheck, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
 Umbraco.Web.HealthCheck.Checks.Security.NoSniffCheck, Umbraco.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=null
@@ -752,20 +755,17 @@ uSync8.Core.DataTypes.IConfigurationSerializer
 
 uSync8.BackOffice.SyncHandlers.ISyncHandler
 
-uSync8.BackOffice.SyncHandlers.Handlers.DataTypeHandler, uSync8.BackOffice, Version=8.10.6.0, Culture=neutral, PublicKeyToken=null
-uSync8.BackOffice.SyncHandlers.Handlers.LanguageHandler, uSync8.BackOffice, Version=8.10.6.0, Culture=neutral, PublicKeyToken=null
-uSync8.BackOffice.SyncHandlers.Handlers.MacroHandler, uSync8.BackOffice, Version=8.10.6.0, Culture=neutral, PublicKeyToken=null
-uSync8.BackOffice.SyncHandlers.Handlers.MediaTypeHandler, uSync8.BackOffice, Version=8.10.6.0, Culture=neutral, PublicKeyToken=null
-uSync8.BackOffice.SyncHandlers.Handlers.MemberTypeHandler, uSync8.BackOffice, Version=8.10.6.0, Culture=neutral, PublicKeyToken=null
-uSync8.BackOffice.SyncHandlers.Handlers.TemplateHandler, uSync8.BackOffice, Version=8.10.6.0, Culture=neutral, PublicKeyToken=null
-uSync8.BackOffice.SyncHandlers.Handlers.ContentTypeHandler, uSync8.BackOffice, Version=8.10.6.0, Culture=neutral, PublicKeyToken=null
+uSync8.BackOffice.SyncHandlers.Handlers.DataTypeHandler, uSync8.BackOffice, Version=8.11.0.0, Culture=neutral, PublicKeyToken=null
+uSync8.BackOffice.SyncHandlers.Handlers.LanguageHandler, uSync8.BackOffice, Version=8.11.0.0, Culture=neutral, PublicKeyToken=null
+uSync8.BackOffice.SyncHandlers.Handlers.MacroHandler, uSync8.BackOffice, Version=8.11.0.0, Culture=neutral, PublicKeyToken=null
+uSync8.BackOffice.SyncHandlers.Handlers.MediaTypeHandler, uSync8.BackOffice, Version=8.11.0.0, Culture=neutral, PublicKeyToken=null
+uSync8.BackOffice.SyncHandlers.Handlers.MemberTypeHandler, uSync8.BackOffice, Version=8.11.0.0, Culture=neutral, PublicKeyToken=null
+uSync8.BackOffice.SyncHandlers.Handlers.TemplateHandler, uSync8.BackOffice, Version=8.11.0.0, Culture=neutral, PublicKeyToken=null
+uSync8.BackOffice.SyncHandlers.Handlers.ContentTypeHandler, uSync8.BackOffice, Version=8.11.0.0, Culture=neutral, PublicKeyToken=null
 uSync8.ContentEdition.Handlers.ContentHandler, uSync8.ContentEdition, Version=8.10.6.0, Culture=neutral, PublicKeyToken=null
 uSync8.ContentEdition.Handlers.ContentTemplateHandler, uSync8.ContentEdition, Version=8.10.6.0, Culture=neutral, PublicKeyToken=null
 uSync8.ContentEdition.Handlers.DictionaryHandler, uSync8.ContentEdition, Version=8.10.6.0, Culture=neutral, PublicKeyToken=null
 uSync8.ContentEdition.Handlers.DomainHandler, uSync8.ContentEdition, Version=8.10.6.0, Culture=neutral, PublicKeyToken=null
 uSync8.ContentEdition.Handlers.MediaHandler, uSync8.ContentEdition, Version=8.10.6.0, Culture=neutral, PublicKeyToken=null
 uSync8.ContentEdition.Handlers.RelationTypeHandler, uSync8.ContentEdition, Version=8.10.6.0, Culture=neutral, PublicKeyToken=null
-
-Umbraco.Core.Deploy.IServiceConnector
-
 

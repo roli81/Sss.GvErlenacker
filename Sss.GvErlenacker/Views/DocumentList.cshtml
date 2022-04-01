@@ -25,8 +25,14 @@
             if (list.Documents.Any())
             {
                 <div class="doc-list-container">
-                    <small>@list.ReleaseDate.Year</small>
-                    @Html.Partial("~/Views/Partials/DocumentList.cshtml", list.Documents)
+                    <details style="margin-bottom: 2em;">
+                        <summary>
+                            <h4 style="display: inline;">@list.ReleaseDate.Year</h4>
+                        </summary>
+                        @Html.Partial("~/Views/Partials/DocumentList.cshtml", list.Documents)
+                    </details>
+    
+             
                 </div>
             }
         }

@@ -107,9 +107,7 @@ header {
     top: 100px;
     padding-top: 15px;
     width: 100%;
-    background: black;
-    opacity: 0.7;
-   
+    background: #424242;
 }
 
     .tool-bar a, .tool-bar a:link, .tool-bar a:visited, .tool-bar a:hover {
