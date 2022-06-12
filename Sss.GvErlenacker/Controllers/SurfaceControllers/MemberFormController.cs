@@ -35,17 +35,11 @@ namespace Sss.GvErlenacker.Controllers.SurfaceControllers
 
 
         [System.Web.Mvc.HttpPost]
-        [CaptchaValidationActionFilter("CaptchaCode", "Captcha", "Bitte geben SIe den richtigen Code ein")]
+        [CaptchaValidationActionFilter("CaptchaCode", "Captcha", "Bitte geben Sie den richtigen Code ein")]
         public ActionResult Submit(MemberFormModel model)
         {
             if (!ModelState.IsValid)
                 return CurrentUmbracoPage();
-
-
-
-
-
-
 
             IMedia media = null;
             if (model.Logo != null)
